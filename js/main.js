@@ -21,7 +21,7 @@
       if (!container.is(e.target) && container.has(e.target).length === 0) {
           $('.mobile-nav-overly').fadeOut();
       }
-      return false
+      // return false
     });
   } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
     $(".mobile-nav, .mobile-nav-toggle").hide();

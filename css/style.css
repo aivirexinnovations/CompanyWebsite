@@ -605,7 +605,7 @@ section {
 
 /* Call to Action */
 .cta {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("../img/cta-bg.jpg") center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("../img/coding.jpg") center center;
   background-size: cover;
   padding: 60px 0;
 }
@@ -651,6 +651,7 @@ section {
 /* Team Section */
 .team {
   background: #fff;
+  
 }
 
 .team .member {
@@ -732,9 +733,10 @@ section {
 
 /* blog Section */
 .blog-boxes {
-  background: url("../img/blog-boxes-bg.jpg") center top no-repeat fixed;
+  background: url("../img/bg2.jpg") center top no-repeat fixed;
   background-size: cover;
   position: relative;
+  color: #ede9e9;
 }
 
 .blog-boxes .container, .blog-boxes .container-fluid {

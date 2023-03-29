@@ -70,6 +70,8 @@
       dots: true,
       center: true,
       margin: 15,
+      mouseDrag:true,
+      touchDrag:true,
       slideSpeed: 1000,
       stopOnHover: true,
       autoPlay: true,
@@ -93,6 +95,7 @@
         },
       },
     });
+ 
 
     /* Back Top Link active
     ========================================================*/

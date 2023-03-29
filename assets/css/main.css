@@ -1006,6 +1006,11 @@ hr {
   -o-transition: all 0.4s ease-in-out;
 }
 
+.owl-carousel .owl-stage, .owl-carousel.owl-drag .owl-item {
+  -ms-touch-action: pan-y !important;
+  touch-action: pan-y !important;
+}
+
 .owl-carousel button.owl-dot.active span,
 .owl-carousel button.owl-dot.clickable,
 .owl-carousel button.owl-dot:hover span {

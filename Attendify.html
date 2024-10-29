@@ -300,11 +300,7 @@
               <div class="line"></div>
               <h4 class="title">Comprehensive Value</h4>
             </div> <!-- section title -->
-            <p class="text">We offer a comprehensive package that includes budget-friendly pricing at just
-              Rs.350/- Per month, ensuring it's accessible to all. You'll experience a smooth journey with user-friendly
-              interfaces
-              catering to users of all levels, and your data's security remains paramount with our robust measures,
-              allowing you to focus on what truly matters with peace of mind.</p>
+            <p class="text">Attendify offers a complete management solution at just ₹350 per facility per month, which means you’re paying as little as ₹1 per user for up to 350 users! With an intuitive interface designed for users at all levels, you’ll enjoy effortless navigation, while our top-notch security first architecture ensure your data stays safe. Focus on what matters most, knowing Attendify has you covered with accessible pricing and peace of mind.</p>
             <!-- <a href="#" class="main-btn">Try it Free</a> -->
           </div> <!-- about content -->
         </div>
@@ -398,60 +394,71 @@
   </section>
   <!-- Features Section End -->
 
-  <!-- Pricing section Start -->
-  <section id="pricing" class="section-padding">
-    <div class="container">
-      <div class="section-header text-center">
-        <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Pricing</h2>
-        <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
-      </div>
-      <div class="row">
-        <div class="col-lg-5 col-md-6 col-xs-12">
-          <div class="table wow fadeInLeft" data-wow-delay="1.2s">
-            <div class="icon-box">
-              <i class="lni-layout"></i>
-            </div>
-            <div class="pricing-header">
-              <p class="price-value">₹ 350<span> /month</span></p>
-            </div>
-            <div class="title">
-              <h3>Quick Stride Plan</h3>
-            </div>
-            <ul class="description">
-              <!-- <li>1 user</li> -->
-            </ul>
-            <a class="btn btn-common" href="https://play.google.com/store/apps/details?id=com.aivirex.attendify&pcampaignid=web_share" target="_blank">Download Now</a>
-          </div>
-        </div>
-
-        <div class="col-lg-2"></div>
-
-        <div class="col-lg-5 col-md-6 col-xs-12 active">
-          <div class="table wow fadeInUp" id="active-tb" data-wow-delay="1.2s">
-            <span
-              class="position-absolute top-0 start-100 translate-middle p-2 bg-light text-dark border border-primary rounded-circle stamp-image text-lg"><strong>28%
-                <br> off</strong></span>
-            <!-- <span class="position-absolute top-0 start-100 translate-middle p-2 bg-primary border border-dark rounded-circle stamp-image text-lg" ><strong >16% <br> off</strong></span> -->
-            <!-- <img src="./assets/img/Stamp.png" alt="Stamp Image" class="stamp-image"> -->
-            <div class="icon-box">
-              <i class="lni-rocket"></i>
-            </div>
-            <div class="pricing-header">
-              <p class="price-value">₹ 3000<span> /anum</span></p>
-            </div>
-            <div class="title">
-              <h3>All Season Plan</h3>
-            </div>
-            <ul class="description">
-              <!-- <li>10 user</li> -->
-            </ul>
-            <a class="btn btn-common" href="https://play.google.com/store/apps/details?id=com.aivirex.attendify&pcampaignid=web_share" target="_blank">Download Now</a>
-          </div>
+  <!-- Pricing Section Start -->
+<section id="pricing" class="section-padding">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header text-center">
+      <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Pricing</h2>
+      <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+      <h5 data-wow-delay="0.3s">Complete management solution at just ₹1 per user for up to 350 users! </h5>
+    </div>
+    
+    <!-- New Slider Section -->
+    <div class="row mb-5 text-center">
+      <div class="col-12">
+        <div class="slider-container">
+          <h4 id="sliderValue" style="font-size: larger;">Select User Range</h4>
+          <input type="range" id="userRange" min="50" max="1000" step="50" value="350" class="slider">
+          <!-- Add this line to display the user count -->
+          <div id="userCount" style="margin-top: 10px; opacity: 0;">350 Users</div>
         </div>
       </div>
     </div>
-  </section>
-  <!-- Pricing Table Section End -->
+    <!-- Pricing Cards Section -->
+    <div class="row">
+      <div class="col-lg-5 col-md-6 col-xs-12">
+        <div class="table wow fadeInLeft" data-wow-delay="1.2s">
+          <div class="icon-box">
+            <i class="lni-layout"></i>
+          </div>
+          <div class="pricing-header">
+            <p id="monthly" class="price-value">₹ 350<span> /month</span></p>
+          </div>
+          <div class="title">
+            <h3>Quick Stride Plan</h3>
+          </div>
+          <ul class="description">
+            <!-- <li>Complete management solution for just Rs.1 / user upto 350 users</li> -->
+          </ul>
+          <a class="btn btn-common" href="https://play.google.com/store/apps/details?id=com.aivirex.attendify&pcampaignid=web_share" target="_blank">Download Now</a>
+        </div>
+      </div>
+
+      <div class="col-lg-2"></div>
+
+      <div class="col-lg-5 col-md-6 col-xs-12 active">
+        <div class="table wow fadeInUp" id="active-tb" data-wow-delay="1.2s">
+          <span class="position-absolute top-0 start-100 translate-middle p-2 bg-light text-dark border border-primary rounded-circle stamp-image text-lg"><strong>28%<br> off</strong></span>
+          <div class="icon-box">
+            <i class="lni-rocket"></i>
+          </div>
+          <div class="pricing-header">
+            <p id="yearly" class="price-value">₹ 3000<span> /anum</span></p>
+          </div>
+          <div class="title">
+            <h3>All Season Plan</h3>
+          </div>
+          <ul class="description">
+            <!-- <li>All-in-one solution for up to <span id="userCountAnnual">350</span> users annually!</li> -->
+          </ul>
+          <a class="btn btn-common" href="https://play.google.com/store/apps/details?id=com.aivirex.attendify&pcampaignid=web_share" target="_blank">Download Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Pricing Section End -->
 
 
 

@@ -5,6 +5,48 @@
   const mob_desk = document.querySelector(".bg-video-desk > video");
   const mob_video = document.querySelector(".bg-video-mob  > video");
 
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.getElementById("userRange");
+    const sliderValue = document.getElementById("sliderValue");
+    const monthly = document.getElementById("monthly");
+    const yearly = document.getElementById("yearly");
+  
+    // Check if all elements are found before proceeding
+    if (!slider || !sliderValue || !monthly || !yearly) {
+      console.error("One or more elements not found in the DOM");
+      return;
+    }
+  
+    slider.addEventListener("input", function () {
+      // Update displayed user count
+      sliderValue.textContent = `${slider.value} Users`;
+      document.getElementById("userCount").textContent = slider.value;
+      // document.getElementById("userCountMonthly").textContent = slider.value;
+      // document.getElementById("userCountAnnual").textContent = slider.value;
+  
+          // Pricing conditions
+    if (slider.value > 350 && slider.value < 700) {
+      monthly.innerHTML = "₹ 500<span> /month</span>";
+      yearly.innerHTML = "₹ 4500<span> /year</span>";
+    } else if (slider.value >= 700) {
+      monthly.innerHTML = "₹ 650<span> /month</span>";
+      yearly.innerHTML = "₹ 5500<span> /year</span>";
+    } else {
+      monthly.innerHTML = "₹ 350<span> /month</span>";
+      yearly.innerHTML = "₹ 3000<span> /year</span>"; // Corrected year value
+    }
+  });
+
+  
+    // JavaScript-driven fill effect for slider
+    slider.addEventListener("input", function () {
+      const value = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+      slider.style.background = `linear-gradient(to right, #007bff ${value}%, #ddd ${value}%)`;
+    });
+  });
+  
+
   // Mute button
   muteBtn.addEventListener("click", function () {
     muteBtnSrc.src = "assets/img/unmute.png";

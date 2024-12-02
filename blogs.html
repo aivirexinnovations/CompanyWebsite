@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Attendify Blogs</title>
+  <meta name="description" content="AiVirex Attendify: All-in-One Membership Management Software Powerful Membership Management App for gyms, badminton courts, swimming pools, and any other sports facilities.">
+  <meta name="keywords"
+  content="best, company, startup, cheap, business, insights, attendify, membership, management, app, gym, badminton, sports, facilities, swimming, attendance, app, smart, tracker, small, business, sports, fitness, attendance platform, software for attendance tracking, team tracking app, attendance system software, attendance monitoring app, app for management, gym erp, badminton crm, badminton, crm, erp, membership management software, smart attendance tracker, members software, download, free, affordable, business intelligence, fitness management, club membership, dance membership, student management, automatic attendance, swimming pools, badminton courts, cricket clubs, tution centers, tennis, boxing, facility management, database, attendify, download app ">
+<meta name="author" content="Attendify by Aivirex innovations">
+
+  <link rel="shortcut icon" type="image/ico" href="./assets/img/favicon/favicon.ico">
+  <link rel="shortcut icon" href="./assets/img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="./assets/img/favicon/site.webmanifest">
+
+  <!-- Bootstrap CSS -->
+   
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!-- Icon -->
+  <link rel="stylesheet" href="assets/fonts/line-icons.css">
+  <!-- Owl carousel -->
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/owl.theme.css">
+
+  <!-- lottiefiles  -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <!-- Animate -->
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <!-- Main Style -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- Responsive Style -->
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-199268142-1">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-199268142-1');
+  </script>
+
+</head>
+
+<body>
+
+
+  <!-- Header Area wrapper Starts -->
+  <header id="header-wrap">
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar" style="background-color: #272727;">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <img src="./assets/img/black bg.png" height="60" alt="logo">
+        <!-- <h5 style="color:#fff !important ;"> AIVIREX</h5> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="lni-menu"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+            <li class="nav-item active">
+              <a class="nav-link" href="/attendify">
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/attendify#features">
+                Features
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Products
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" target="_blank" href="https://sportios.in">Sportios</a></li>
+                <li><a class="dropdown-item" href="/Attendify.html">Attendify</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/attendify#pricing">
+                Pricing
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+  </header>
+  <!-- Header Area wrapper End -->
+<br><br>
+
+<!-- Blogs Section Start -->
+<section id="features" class="section-padding">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title wow fadeInDown" data-wow-delay="0.4s">Blogs</h2>
+        <div class="shape wow fadeInDown" data-wow-delay="0.4s"></div>
+      </div>
+      <div id="blog-container" class="row"></div>
+    </div>
+  </section>
+  <!-- Blogs Section End -->
+  
+  <script>
+    // Function to fetch and parse CSV data
+    function fetchCSV() {
+      fetch('data.csv')
+        .then(response => response.text())
+        .then(data => {
+          const rows = data.split('\n').slice(1); // Skip header row
+          const blogContainer = document.getElementById('blog-container');
+  
+          rows.forEach(row => {
+            const columns = row.split(',');
+            if (columns.length === 4) { // Ensure there are four columns
+              const title = columns[0].trim();
+              const description = columns[1].trim();
+              const link = columns[2].trim();
+              const image = columns[3].trim();
+  
+              // Create a column for the card
+              const col = document.createElement('div');
+              col.classList.add('col-lg-4', 'col-md-6', 'mb-4'); // Responsive grid
+  
+              // Create a card for each blog post
+              const card = document.createElement('div');
+              card.classList.add('box-item', 'wow', 'fadeInUp', 'h-100', 'text-center'); // Custom effects and alignment
+              card.setAttribute('data-wow-delay', '0.4s');
+  
+              // Card content
+              card.innerHTML = `
+                <img src="${image}" alt="${title}" style="max-width: 100%; height: auto;" class="card-img">
+                <br><br>
+                <div class="text">
+                  <h4>${title}</h4>
+                  <p>${description}</p>
+                  <br>
+                  <a href="${link}" target="_blank" class="btn btn-primary">Read More</a>
+                </div>
+              `;
+  
+              // Append card to the column and column to the container
+              col.appendChild(card);
+              blogContainer.appendChild(col);
+            }
+          });
+        })
+        .catch(error => console.error('Error fetching CSV:', error));
+    }
+  
+    // Fetch CSV data when the page loads
+    window.onload = fetchCSV;
+  </script>
+  
+  
+
+
+  <!-- Footer Section Start -->
+  <footer id="footer" class="footer-area section-padding">
+    <div class="container">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
+            <div class="widget">
+              <h3 class="footer-logo"><img src="assets/img/logo.png" height="50" alt="Aivirex Logo"></h3>
+              <div class="textwidget">
+                <p>AiVirex is a start-up company that was created primarily to solve problems that majority of people
+                  face.
+                  Every day, we work hard in the hopes of accomplishing two goals: satisfying our clients' needs and
+                  making the world a better place.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <h3 class="footer-titel">Links</h3>
+            <ul class="footer-link">
+              <li><a href="#hero-are">Home</a></li>
+              <li><a href="#services">About</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+              <li><a href="#team">Projects</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <h3 class="footer-titel">Services</h3>
+            <ul class="footer-link">
+              <li><a href="#services">Web App development</a></li>
+              <li><a href="#services">Mobile App Development</a></li>
+              <li><a href="#services">Desktop App Development</a></li>
+              <li><a href="#services">Graphic Designs</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+            <h3 class="footer-titel">Contact</h3>
+            <ul class="address">
+              <li><a target="_blank" href="/privacypolicy">Privacy Policy</a></li>
+<li><a target="_blank" href="/terms">Terms and Conditions</a></li>
+
+
+              <li>
+                <a target="_blank" title="Internship" href="https://forms.gle/BBn1C5nLkHhQ6rhaA"><i
+                    class="lni-user"></i> Internship </a>
+              </li>
+              <li>
+                <a target="_blank" title="Whatsapp" href="https://wa.me/916382729213"><i class="lni-phone-handset"></i>
+                  +91 6382729213</a>
+              </li>
+              <li>
+                <a target="_blank" title="Gmail"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=contactaivirex@gmail.com"><i
+                    class="lni-envelope"></i> contactaivirex@gmail.com</a>
+              </li>
+              <div class="social-icon">
+                <a class="facebook" target="_blank" title="Facebook"
+                  href="https://www.facebook.com/AiVirex-Innovations-108689034703627/"><i
+                    class="lni-facebook-filled"></i></a>
+                <a class="instagram" target="_blank" title="Instagram" href="https://www.instagram.com/aivirex.in/"><i
+                    class="lni-instagram-filled"></i></a>
+                <a class="linkedin" target="_blank" title="Linkedin"
+                  href="https://www.linkedin.com/company/aandvinnovations"><i class="lni-linkedin-filled"></i></a>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="copyright-content">
+
+              <p>Attendify a Product of <a href="https://aivirex.in">Aivirex</a>❤️</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer Section End -->
+
+  <!-- Go to Top Link -->
+  <a href="#" class="back-to-top">
+    <i class="lni-arrow-up"></i>
+  </a>
+
+
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="assets/js/jquery-min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="assets/js/wow.js"></script>
+  <script src="assets/js/jquery.nav.js"></script>
+  <script src="assets/js/scrolling-nav.js"></script>
+  <script src="assets/js/jquery.easing.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

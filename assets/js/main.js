@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const billingToggle = document.getElementById('billingToggle');
   const monthlyToggle = document.getElementById('monthlyToggle');
   const yearlyToggle = document.getElementById('yearlyToggle');
+  const planName = document.getElementById('planName');
   
   // Constants for pricing
   const MONTHLY_FACILITY_PRICE = 350;
@@ -72,10 +73,12 @@ document.addEventListener('DOMContentLoaded', function() {
       // Yearly is selected
       monthlyToggle.classList.remove('active');
       yearlyToggle.classList.add('active');
+      planName.textContent="All Season Plan"
     } else {
       // Monthly is selected
       yearlyToggle.classList.remove('active');
       monthlyToggle.classList.add('active');
+      planName.textContent="Quick Stride Plan"
     }
     updatePricing();
   });

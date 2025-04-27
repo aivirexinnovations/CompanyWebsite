@@ -6,23 +6,103 @@
   const mob_video = document.querySelector(".bg-video-mob  > video");
 
   // Mute button
-  muteBtn.addEventListener("click", function () {
-    muteBtnSrc.src = "assets/img/unmute.png";
-    if (mob_desk.muted === false && mob_video.muted === false) {
-      mob_desk.muted = true;
-      mob_video.muted = true;
-      muteBtnSrc.src = "assets/img/mute.png";
-    } else {
-      mob_desk.muted = false;
-      mob_video.muted = false;
+  if (muteBtn) {
+    muteBtn.addEventListener("click", function () {
       muteBtnSrc.src = "assets/img/unmute.png";
+      if (mob_desk.muted === false && mob_video.muted === false) {
+        mob_desk.muted = true;
+        mob_video.muted = true;
+        muteBtnSrc.src = "assets/img/mute.png";
+      } else {
+        mob_desk.muted = false;
+        mob_video.muted = false;
+        muteBtnSrc.src = "assets/img/unmute.png";
+      }
+    });
+  }
+
+  // Add this to your main.js file
+document.addEventListener('DOMContentLoaded', function() {
+  const slider = document.getElementById('studentSlider');
+  const sliderValue = document.getElementById('sliderValue');
+  const displayPrice = document.getElementById('displayPrice');
+  const facilityPrice = document.getElementById('facilityPrice');
+  const billingToggle = document.getElementById('billingToggle');
+  const monthlyToggle = document.getElementById('monthlyToggle');
+  const yearlyToggle = document.getElementById('yearlyToggle');
+  
+  // Constants for pricing
+  const MONTHLY_FACILITY_PRICE = 350;
+  const YEARLY_FACILITY_PRICE = 3000;
+  const YEARLY_MONTHLY_EQUIVALENT = 250; // 3000/12 = 250
+  
+  // Update values when slider changes
+  function updatePricing() {
+    const students = parseInt(slider.value);
+    sliderValue.textContent = students;
+    
+    // Determine if monthly or yearly is selected
+    const isYearly = billingToggle.checked;
+    
+    // Calculate price per student
+    let pricePerStudent, facility;
+    
+    if (isYearly) {
+      pricePerStudent = (YEARLY_MONTHLY_EQUIVALENT / students).toFixed(2);
+      facility = YEARLY_FACILITY_PRICE;
+    } else {
+      pricePerStudent = (MONTHLY_FACILITY_PRICE / students).toFixed(2);
+      facility = MONTHLY_FACILITY_PRICE;
     }
+    
+    // Update the display
+    displayPrice.textContent = pricePerStudent;
+    facilityPrice.textContent = facility;
+  }
+  
+  // Initialize
+  updatePricing();
+  
+  // Update when slider is moved
+  slider.addEventListener('input', updatePricing);
+  
+  // Update when billing toggle is changed
+  billingToggle.addEventListener('change', function() {
+    if (this.checked) {
+      // Yearly is selected
+      monthlyToggle.classList.remove('active');
+      yearlyToggle.classList.add('active');
+    } else {
+      // Monthly is selected
+      yearlyToggle.classList.remove('active');
+      monthlyToggle.classList.add('active');
+    }
+    updatePricing();
   });
+  
+  // Allow clicking on the text labels to toggle
+  monthlyToggle.addEventListener('click', function() {
+    billingToggle.checked = false;
+    monthlyToggle.classList.add('active');
+    yearlyToggle.classList.remove('active');
+    updatePricing();
+  });
+  
+  yearlyToggle.addEventListener('click', function() {
+    billingToggle.checked = true;
+    yearlyToggle.classList.add('active');
+    monthlyToggle.classList.remove('active');
+    updatePricing();
+  });
+});
 
   $(window).on("load", function () {
     /*Page Loader active
-  ========================================================*/
+    ========================================================*/
     $("#preloader").fadeOut();
+
+    // Initialize the student slider
+    initializeStudentSlider();
 
     // Sticky Nav
     $(window).on("scroll", function () {
@@ -70,8 +150,8 @@
       dots: true,
       center: true,
       margin: 15,
-      mouseDrag:true,
-      touchDrag:true,
+      mouseDrag: true,
+      touchDrag: true,
       slideSpeed: 1000,
       stopOnHover: true,
       autoPlay: true,
@@ -96,7 +176,6 @@
       },
     });
  
-
     /* Back Top Link active
     ========================================================*/
     var offset = 200;
@@ -119,5 +198,11 @@
       );
       return false;
     });
+  });
+
+  // Add a second initialization attempt using jQuery's document ready
+  $(document).ready(function() {
+    // This gives us a second chance to initialize if window.load hasn't triggered yet
+    setTimeout(initializeStudentSlider, 1000);
   });
 })(jQuery);

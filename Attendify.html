@@ -405,60 +405,129 @@
   </section>
   <!-- Features Section End -->
 
- <!-- Pricing section Start -->
- <section id="pricing" class="section-padding">
-   <div class="container">
-     <div class="section-header text-center">
-       <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Pricing</h2>
-       <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+ 
+<!-- Pricing section Start -->
+<section id="pricing" class="section-padding">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Attendify Pricing</h2>
+      <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+      <h5 class="wow fadeInUp" data-wow-delay="0.4s">Pricing that grows for you, not on you.</h5>
+    </div>
+    
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-8 col-md-10">
+        <!-- <div class="pricing-selector-container text-center"> -->
+          <!-- <h5 class="selector-title mb-3">How many students or members do you have?</h5> -->
+          <div class="slider-container my-4 px-4">
+            <input type="range" min="10" max="1000" step="5" value="100" class="custom-slider" id="studentSlider">
+            <div class="slider-labels d-flex justify-content-between px-2">
+              <span>10</span>
+              <span>250</span>
+              <span>500</span>
+              <span>750</span>
+              <span>1000</span>
+            </div>
+          </div>
+          
+          <div class="student-counter-container mb-3">
+            <div class="student-count">
+              <span id="sliderValue" class="count-value">100</span>
+              <span class="count-label">Students/Members</span>
+            </div>
+          </div>
+          
+        <!-- </div> -->
       </div>
-      <div class="row">
-      <div class="col-lg-3 col-md-3"></div>
-      <div class="col-lg-6 col-md-6 col-xs-12">
-        <div class="table wow fadeInLeft" data-wow-delay="1.2s">
-
-          <div class="icon-box">
-            <i class="lni-rocket"></i>
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="pricing-toggle-container text-center mb-4">
+          <div class="toggle-switch d-inline-flex align-items-center">
+            <span class="pricing-option mr-3 active" id="monthlyToggle">Monthly</span>
+            <label class="switch mx-3">
+              <input type="checkbox" id="billingToggle">
+              <span class="slider round"></span>
+            </label>
+            <span class="pricing-option ml-3" id="yearlyToggle">Yearly <span class="save-badge">Save 28%</span></span>
           </div>
-          <div class="pricing-header">
-            <p class="price-value">₹ 1<span> / user / month *</span></p>
-          </div>
-          <div class="title">
-            <h3>Quick Stride Plan</h3>
-          </div>
-          <ul class="description">
-            <hr>
-            <li>Smart Attendance Tracking</li>
-            <hr>
-            <li>Fee Payment Reminders</li>
-            <hr>
-            <li>Unlimited Marketing Messages</li>
-            <hr>
-            <li>Custom Message Templates</li>
-            <hr>
-            <li>Income & Expense Tracker</li>
-            <hr>
-            <li>Business Intelligence</li>
-            <hr>
-            <!-- <li>Additional 28% off on yearly plans</li>
-            <hr> -->
-
-          </ul>
-          <!-- <p>Get it for ₹250 per month on yearly plans – that’s over <span style="color: aliceblue;"> 28% off!</span></p> -->
-          <br>
-          <p><span style="color: aliceblue;">*</span> ₹350 per facility per month, covering up to 350 users! Perfect for growing businesses – scale up with no extra cost per member.</p>
-          <br>
-          <a class="btn btn-common" href="https://play.google.com/store/apps/details?id=com.aivirex.attendify&pcampaignid=web_share" target="_blank">Download Now</a>
         </div>
-        <div class="col-lg-3 col-md-3"></div>
+        
+        <div class="pricing-card wow fadeInUp" data-wow-delay="0.5s">
+          <div class="pricing-header-unified">
+            <div class="row align-items-center">
+              <div class="col-md-7">
+                <h3 class="plan-name">Quick Stride Plan</h3>
+                <p class="plan-description">Everything you need to manage your institution efficiently</p>
+              </div>
+              <div class="col-md-5 text-md-right">
+                <div class="price-container" id="monthlyPriceContainer">
+                  <p class="price-value">₹<span id="displayPrice">3.50</span> <span class="per-unit">per student/month</span></p>
+                  <p class="facility-price">Billed at ₹<span id="facilityPrice">350</span> per facility</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pricing-features">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="feature-item d-flex align-items-center">
+                  <div class="feature-icon">
+                    <i class="lni-check-mark-circle"></i>
+                  </div>
+                  <div class="feature-text">Smart Attendance Tracking</div>
+                </div>
+                <div class="feature-item d-flex align-items-center">
+                  <div class="feature-icon">
+                    <i class="lni-check-mark-circle"></i>
+                  </div>
+                  <div class="feature-text">Fee Payment Reminders</div>
+                </div>
+                <div class="feature-item d-flex align-items-center">
+                  <div class="feature-icon">
+                    <i class="lni-check-mark-circle"></i>
+                  </div>
+                  <div class="feature-text">Unlimited Marketing Messages</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="feature-item d-flex align-items-center">
+                  <div class="feature-icon">
+                    <i class="lni-check-mark-circle"></i>
+                  </div>
+                  <div class="feature-text">Custom Message Templates</div>
+                </div>
+                <div class="feature-item d-flex align-items-center">
+                  <div class="feature-icon">
+                    <i class="lni-check-mark-circle"></i>
+                  </div>
+                  <div class="feature-text">Income & Expense Tracker</div>
+                </div>
+                <div class="feature-item d-flex align-items-center">
+                  <div class="feature-icon">
+                    <i class="lni-check-mark-circle"></i>
+                  </div>
+                  <div class="feature-text">Business Intelligence</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pricing-footer text-center">
+            <p class="scaling-text">Perfect for growing businesses – scale up with no extra cost per member.</p>
+            <a class="btn btn-common btn-lg" href="https://play.google.com/store/apps/details?id=com.aivirex.attendify&pcampaignid=web_share" target="_blank">
+              <i class="lni-android"></i> Download Now
+            </a>
+          </div>
+        </div>
       </div>
-
-
-      
     </div>
   </div>
 </section>
 <!-- Pricing Table Section End -->
+
 
 <!-- Blog Section start -->
 <div id="about" class="about-area section-padding bg-gray">

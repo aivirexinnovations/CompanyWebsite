@@ -21,44 +21,56 @@
     });
   }
 
-  // Add this to your main.js file
+
 document.addEventListener('DOMContentLoaded', function() {
   const slider = document.getElementById('studentSlider');
   const sliderValue = document.getElementById('sliderValue');
   const displayPrice = document.getElementById('displayPrice');
   const facilityPrice = document.getElementById('facilityPrice');
-  const billingToggle = document.getElementById('billingToggle');
-  const monthlyToggle = document.getElementById('monthlyToggle');
-  const yearlyToggle = document.getElementById('yearlyToggle');
   const planName = document.getElementById('planName');
   
+  // Get all plan option buttons
+  const planOptions = document.querySelectorAll('.plan-option');
+  let currentPlan = 'monthly';
+  
   // Constants for pricing
-  const MONTHLY_FACILITY_PRICE = 350;
-  const YEARLY_FACILITY_PRICE = 3000;
-  const YEARLY_MONTHLY_EQUIVALENT = 250; // 3000/12 = 250
+  const PRICING_PLANS = {
+    monthly: {
+      facilityPrice: 350,
+      monthlyEquivalent: 350,
+      planName: "Quick Stride Plan"
+    },
+    quarterly: {
+      facilityPrice: 960,
+      monthlyEquivalent: 320, // 960/3 = 320
+      planName: "Quick Leap Plan"
+    },
+    halfyearly: {
+      facilityPrice: 1800,
+      monthlyEquivalent: 300, // 1800/6 = 300
+      planName: "Halftime Plan"
+    },
+    yearly: {
+      facilityPrice: 3000,
+      monthlyEquivalent: 250, // 3000/12 = 250
+      planName: "All Season Plan"
+    }
+  };
   
   // Update values when slider changes
   function updatePricing() {
     const students = parseInt(slider.value);
     sliderValue.textContent = students;
     
-    // Determine if monthly or yearly is selected
-    const isYearly = billingToggle.checked;
+    const currentPlanData = PRICING_PLANS[currentPlan];
     
     // Calculate price per student
-    let pricePerStudent, facility;
-    
-    if (isYearly) {
-      pricePerStudent = (YEARLY_MONTHLY_EQUIVALENT / students).toFixed(2);
-      facility = YEARLY_FACILITY_PRICE;
-    } else {
-      pricePerStudent = (MONTHLY_FACILITY_PRICE / students).toFixed(2);
-      facility = MONTHLY_FACILITY_PRICE;
-    }
+    const pricePerStudent = (currentPlanData.monthlyEquivalent / students).toFixed(2);
     
     // Update the display
     displayPrice.textContent = pricePerStudent;
-    facilityPrice.textContent = facility;
+    facilityPrice.textContent = currentPlanData.facilityPrice;
+    planName.textContent = currentPlanData.planName;
   }
   
   // Initialize
@@ -67,45 +79,30 @@ document.addEventListener('DOMContentLoaded', function() {
   // Update when slider is moved
   slider.addEventListener('input', updatePricing);
   
-  // Update when billing toggle is changed
-  billingToggle.addEventListener('change', function() {
-    if (this.checked) {
-      // Yearly is selected
-      monthlyToggle.classList.remove('active');
-      yearlyToggle.classList.add('active');
-      planName.textContent="All Season Plan"
-    } else {
-      // Monthly is selected
-      yearlyToggle.classList.remove('active');
-      monthlyToggle.classList.add('active');
-      planName.textContent="Quick Stride Plan"
-    }
-    updatePricing();
-  });
-  
-  // Allow clicking on the text labels to toggle
-  monthlyToggle.addEventListener('click', function() {
-    billingToggle.checked = false;
-    monthlyToggle.classList.add('active');
-    yearlyToggle.classList.remove('active');
-    updatePricing();
-  });
-  
-  yearlyToggle.addEventListener('click', function() {
-    billingToggle.checked = true;
-    yearlyToggle.classList.add('active');
-    monthlyToggle.classList.remove('active');
-    updatePricing();
+  // Handle plan option clicks
+  planOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      // Remove active class from all options
+      planOptions.forEach(opt => opt.classList.remove('active'));
+      
+      // Add active class to clicked option
+      this.classList.add('active');
+      
+      // Update current plan
+      currentPlan = this.getAttribute('data-plan');
+      
+      // Update pricing
+      updatePricing();
+    });
   });
 });
-
   $(window).on("load", function () {
     /*Page Loader active
     ========================================================*/
     $("#preloader").fadeOut();
 
     // Initialize the student slider
-    initializeStudentSlider();
+    // initializeStudentSlider();
 
     // Sticky Nav
     $(window).on("scroll", function () {
@@ -206,6 +203,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Add a second initialization attempt using jQuery's document ready
   $(document).ready(function() {
     // This gives us a second chance to initialize if window.load hasn't triggered yet
-    setTimeout(initializeStudentSlider, 1000);
+    // setTimeout(initializeStudentSlider, 1000);
   });
 })(jQuery);

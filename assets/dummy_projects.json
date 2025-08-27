@@ -1,0 +1,406 @@
+[
+  {
+    "title": "Attendify Project",
+    "description": "Websites and graphics were designed with the goal of encouraging players and building trust and confidence. Sports academy management system with booking, scheduling, and player progress tracking.",
+    "technologies": [
+      "WordPress",
+      "PHP",
+      "MySQL",
+      "Custom Design"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_Attendify.png",
+    "previewLink": "https://aivirex.in/attendify",
+    "metrics": [
+      {
+        "name": "LOAD TIME",
+        "value": "1.2s"
+      },
+      {
+        "name": "USER ENGAGEMENT",
+        "value": "94%"
+      },
+      {
+        "name": "ACCESSIBILITY",
+        "value": "97%"
+      }
+    ]
+  },
+  {
+    "title": "Author Project",
+    "description": "End-to-end e-commerce platform built with a custom CMS and integrated payment gateways. Designed to optimize conversions and provide a seamless checkout experience.",
+    "technologies": [
+      "React",
+      "Node.js",
+      "MongoDB"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_Author.png",
+    "previewLink": "https://booksbyanirudh.netlify.app",
+    "metrics": [
+      {
+        "name": "CONVERSION RATE",
+        "value": "3.4%"
+      },
+      {
+        "name": "USER ENGAGEMENT",
+        "value": "94%"
+      },
+      {
+        "name": "DOWNTIME",
+        "value": "0.01%"
+      }
+    ]
+  },
+  {
+    "title": "Avittam Project",
+    "description": "Learning management system for institutions to manage courses, assignments, and student progress. Real-time tracking and analytics included.",
+    "technologies": [
+      "Flutter",
+      "Firebase",
+      "Material 3"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_Avittam.png",
+    "previewLink": "https://avittamhomes.in",
+    "metrics": [
+      {
+        "name": "ACCESSIBILITY",
+        "value": "97%"
+      },
+      {
+        "name": "LOAD TIME",
+        "value": "1.2s"
+      },
+      {
+        "name": "CONVERSION RATE",
+        "value": "3.4%"
+      }
+    ]
+  },
+  {
+    "title": "CA Project",
+    "description": "A job portal for freelancers with a bidding system, messaging module, and secure payments.",
+    "technologies": [
+      "Next.js",
+      "Tailwind CSS",
+      "PostgreSQL"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_CA.png",
+    "previewLink": "https://kmjco.in",
+    "metrics": [
+      {
+        "name": "LOAD TIME",
+        "value": "1.2s"
+      },
+      {
+        "name": "DOWNTIME",
+        "value": "0.01%"
+      },
+      {
+        "name": "ACCESSIBILITY",
+        "value": "97%"
+      }
+    ]
+  },
+  {
+    "title": "MedicalData Project",
+    "description": "Health and fitness app that tracks user activities and provides personalized recommendations using AI.",
+    "technologies": [
+      "Vue.js",
+      "Laravel",
+      "MySQL"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_MedicalData.png",
+    "metrics": [
+      {
+        "name": "SEO SCORE",
+        "value": "98%"
+      },
+      {
+        "name": "DOWNTIME",
+        "value": "0.01%"
+      },
+      {
+        "name": "USER ENGAGEMENT",
+        "value": "94%"
+      },
+      {
+        "name": "REPEAT USERS",
+        "value": "72%"
+      }
+    ]
+  },
+  {
+    "title": "Hazlo Project",
+    "description": "Booking system for salons with slot management, stylist profiles, and automated reminders.",
+    "technologies": [
+      "Django",
+      "PostgreSQL",
+      "Custom Design"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_Hazlo.png",
+    "metrics": [
+      {
+        "name": "SEO SCORE",
+        "value": "98%"
+      },
+      {
+        "name": "REPEAT USERS",
+        "value": "72%"
+      }
+    ]
+  },
+  {
+    "title": "Flint Project",
+    "description": "Travel planning website with itinerary builder, map integration, and real-time weather forecasts.",
+    "technologies": [
+      "Shopify",
+      "Liquid",
+      "GraphQL"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_Flint.png",
+    "previewLink": "https://flintm.in",
+    "metrics": [
+      {
+        "name": "DOWNTIME",
+        "value": "0.01%"
+      },
+      {
+        "name": "SEO SCORE",
+        "value": "98%"
+      },
+      {
+        "name": "REPEAT USERS",
+        "value": "72%"
+      }
+    ]
+  },
+  {
+    "title": "Mun Project",
+    "description": "Community-based social platform focused on niche interest groups with media uploads and group chats.",
+    "technologies": [
+      "Angular",
+      "Firebase"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_Mun.png",
+    "previewLink": "https://themuncompany.com",
+    "metrics": [
+      {
+        "name": "SEO SCORE",
+        "value": "98%"
+      },
+      {
+        "name": "REPEAT USERS",
+        "value": "72%"
+      }
+    ]
+  },
+  {
+    "title": "Myndz Project",
+    "description": "Portfolio website for a design agency showcasing projects, client testimonials, and blog content.",
+    "technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_Myndz.png",
+    "previewLink": "https://myndzbadminton.com",
+    "metrics": [
+      {
+        "name": "REPEAT USERS",
+        "value": "72%"
+      },
+      {
+        "name": "USER ENGAGEMENT",
+        "value": "94%"
+      },
+      {
+        "name": "ACCESSIBILITY",
+        "value": "97%"
+      }
+    ]
+  },
+  {
+    "title": "Plant Project",
+    "description": "Real estate listing site with dynamic filtering, map view, and property comparison.",
+    "technologies": [
+      "Ruby on Rails",
+      "PostgreSQL"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_Plant.png",
+    "metrics": [
+      {
+        "name": "USER ENGAGEMENT",
+        "value": "94%"
+      },
+      {
+        "name": "CONVERSION RATE",
+        "value": "3.4%"
+      }
+    ]
+  },
+  {
+    "title": "Loan Project",
+    "description": "CRM solution for small businesses to manage leads, communication, and sales pipelines.",
+    "technologies": [
+      "ASP.NET",
+      "MSSQL"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_Loan.png",
+    "metrics": [
+      {
+        "name": "LOAD TIME",
+        "value": "1.2s"
+      },
+      {
+        "name": "ACCESSIBILITY",
+        "value": "97%"
+      },
+      {
+        "name": "CONVERSION RATE",
+        "value": "3.4%"
+      }
+    ]
+  },
+  {
+    "title": "StockMarket Project",
+    "description": "Multilingual news aggregation platform with sentiment analysis and trending topic detection.",
+    "technologies": [
+      "React Native",
+      "AWS Amplify"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_StockMarket.png",
+    "metrics": [
+      {
+        "name": "CONVERSION RATE",
+        "value": "3.4%"
+      },
+      {
+        "name": "DOWNTIME",
+        "value": "0.01%"
+      },
+      {
+        "name": "USER ENGAGEMENT",
+        "value": "94%"
+      }
+    ]
+  },
+  {
+    "title": "TT Project",
+    "description": "Event management and RSVP tracking tool built for corporate and social gatherings.",
+    "technologies": [
+      "Svelte",
+      "Supabase"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_TT.png",
+    "previewLink": "https://ttsportsacademy.in",
+    "metrics": [
+      {
+        "name": "ACCESSIBILITY",
+        "value": "97%"
+      },
+      {
+        "name": "LOAD TIME",
+        "value": "1.2s"
+      }
+    ]
+  },
+  {
+    "title": "Techiegen Project",
+    "description": "An online food ordering system with delivery partner integration and real-time tracking.",
+    "technologies": [
+      "Gatsby",
+      "GraphQL"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_Techiegen.png",
+    "previewLink": "https://techiegen.com",
+    "metrics": [
+      {
+        "name": "REPEAT USERS",
+        "value": "72%"
+      },
+      {
+        "name": "DOWNTIME",
+        "value": "0.01%"
+      },
+      {
+        "name": "CONVERSION RATE",
+        "value": "3.4%"
+      }
+    ]
+  },
+  {
+    "title": "Temple Project",
+    "description": "Inventory management solution with barcode scanning, alerts, and supplier dashboards.",
+    "technologies": [
+      "PHP",
+      "MySQL",
+      "Bootstrap"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_Temple.png",
+    "metrics": [
+      {
+        "name": "REPEAT USERS",
+        "value": "72%"
+      },
+      {
+        "name": "CONVERSION RATE",
+        "value": "3.4%"
+      }
+    ]
+  },
+  {
+    "title": "WebAnalysis Project",
+    "description": "Custom blogging platform with Markdown support, draft management, and SEO previews.",
+    "technologies": [
+      "Ionic",
+      "Capacitor",
+      "Firebase"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_WebAnalysis.png",
+    "metrics": [
+      {
+        "name": "SEO SCORE",
+        "value": "98%"
+      },
+      {
+        "name": "REPEAT USERS",
+        "value": "72%"
+      },
+      {
+        "name": "LOAD TIME",
+        "value": "1.2s"
+      },
+      {
+        "name": "CONVERSION RATE",
+        "value": "3.4%"
+      }
+    ]
+  },
+  {
+    "title": "ColorCoding Project",
+    "description": "Mobile-first sports score tracking app with push notifications and player statistics.",
+    "technologies": [
+      "Spring Boot",
+      "Thymeleaf",
+      "MySQL"
+    ],
+    "projectImage": "assets/img/Project Mockups/Project_ColorCoding.png",
+    "metrics": [
+      {
+        "name": "SEO SCORE",
+        "value": "98%"
+      },
+      {
+        "name": "DOWNTIME",
+        "value": "0.01%"
+      },
+      {
+        "name": "LOAD TIME",
+        "value": "1.2s"
+      },
+      {
+        "name": "USER ENGAGEMENT",
+        "value": "94%"
+      }
+    ]
+  }
+]

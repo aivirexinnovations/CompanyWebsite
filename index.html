@@ -5,12 +5,12 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="title" content="AiVirex Innovations - Web & App Development | AI, ML & Design Services">
+  <title>AiVirex Innovations</title>
   <meta name="description"
-    content="AiVirex is a tech-driven startup building websites, apps, designs, and machine learning solutions. Based in Chennai, we deliver quality and affordable custom software to clients worldwide.">
+    content="AiVirex Innovations: A leading tech startup in Chennai specializing in web & app development, AI, ML, and design services. We build custom software solutions for businesses worldwide. Get stunning websites, mobile apps, and AI models from a trusted Chennai startup.">
 
   <meta name="keywords"
-    content="best,attendify, membership, management, app, gym, badminton, sports, dance, company, startup, aivirex, sportios, sportios.in, innovations, llp, projects, web, development, mobile, graphic, design, cheap, low cost, myndz, flintm, maruti printers, techiegen, avittam homes, ML, custom, design, business, insights, chennai, tamilnadu, startup,app development India, affordable software company, AI development, startup design team, custom ML models, software services India ">
+    content="Aivirex, AiVirex Innovations, web development Chennai, app development Chennai, AI development India, ML solutions, graphic design, custom software, Chennai startup, tech company Chennai, affordable software, startup design, custom ML models, software services India, Attendify, membership management app, gym software, badminton software, sports app, dance studio software">
   <meta name="author" content="Aivirex innovations">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aivirex.in">
@@ -25,6 +25,13 @@
   <link rel="shortcut icon" href="./assets/img/favicon/favicon.ico" type="image/x-icon">
   <link rel="manifest" href="./assets/img/favicon/site.webmanifest">
 
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://calendar.google.com">
+ <link rel="preload" href="/assets/css/bootstrap.min.css" as="style">
+ <link rel="preload" href="/assets/fonts/line-icons.css" as="style">
+ <link rel="preload" href="/assets/css/main.css" as="style">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -67,9 +74,13 @@
   <!-- Animate -->
   <link rel="stylesheet" href="assets/css/animate.css">
   <!-- Main Style -->
-  <link rel="stylesheet" href="assets/css/main.css">
-  <!-- Responsive Style -->
+   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <!-- tsparticles CDN for particle effects -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+  <!-- Particles.js for process section -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-199268142-1">
@@ -81,6 +92,10 @@
 
     gtag('config', 'UA-199268142-1');
   </script>
+
+
+
+  <!-- Google Calendar Appointment Scheduling - Direct Link Approach -->
 
 </head>
 
@@ -122,6 +137,11 @@
             </li>
 
             <li class="nav-item">
+              <a class="nav-link" href="#process">
+                Process
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#about">
                 About
               </a>
@@ -155,7 +175,7 @@
                 </a>
               </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="#footer">
+              <a class="nav-link" href="#contact">
                 Contact
               </a>
             </li>
@@ -165,25 +185,55 @@
     </nav>
     <!-- Navbar End -->
 
-    <div class="intro-section" id="hero-are">
+    <!-- Enhanced Hero Section with Particles -->
+    <div class="enhanced-hero-section" id="hero-are">
+      <div id="tsparticles" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="content-wrapper text-center">
+                <div class="trust-badge">
+                  <span class="trust-icon" aria-hidden="true">⭐</span>
+                  <span class="trust-text">Trusted by 100+ clients across 10+ countries</span>
+                </div>
+                <h1 class="hero-title">Get Your <span style="color: #007bff;">Business</span> Online with Us</h1>
+                <p class="hero-subtitle">Modern Web Apps, AI Solutions, and Digital Transformation for Ambitious Brands.
+                </p>
+                <div class="hero-ctas">
+                  <a href="#services" class="btn btn-primary">Get Started</a>
+                  <a href="#" onclick="openGoogleCalendarDirect(event)" class="btn btn-secondary">Book a Call</a>
+                </div>
 
-      <div class="bg-video-desk">
-
-
-        <video width="100%" autoplay="" muted>
-          <source src="assets/img/Stunning Websites c.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="bg-video-mob">
-        <video width="500%" autoplay="" muted>
-          <source src="assets/img/Stunning Websites (Instagram Reel).mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="mute-container rounded p-2 d-flex justify-content-center align-items-center">
-        <img src="assets/img/mute.png" alt="mute button">
+                <!-- Stats Section with Rolling Numbers -->
+                <div class="hero-stats">
+                  <div class="stats-grid">
+                    <div class="stat-card">
+                      <div class="stat-number" data-target="170">0</div><span class="stat-plus">+</span>
+                      <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-card">
+                      <div class="stat-number" data-target="100">0</div><span class="stat-plus">+</span>
+                      <div class="stat-label">Customers</div>
+                    </div>
+                    <div class="stat-card">
+                      <div class="stat-number" data-target="10">0</div><span class="stat-plus">+</span>
+                      <div class="stat-label">Countries </div>
+                    </div>
+                    <div class="stat-card">
+                      <div class="stat-number" data-target="30">0</div>
+                      <div class="stat-label">Avg Delivery Time (Days)</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+
 
   </header>
   <!-- Header Area wrapper End -->
@@ -200,7 +250,7 @@
         <div class="col-md-6 col-lg-3 col-xs-12">
           <div class="services-item wow fadeInRight" data-wow-delay="0.4s">
             <div class="icon">
-              <i class="lni lni-layout"></i>
+              <i class="lni lni-code"></i>
             </div>
             <div class="services-content">
               <h3><a href="#">Beautiful Websites</a></h3>
@@ -229,7 +279,7 @@
         <div class="col-md-6 col-lg-3 col-xs-12">
           <div class="services-item wow fadeInRight" data-wow-delay="0.9s">
             <div class="icon">
-              <i class="lni lni-ruler-pencil"></i>
+              <i class="lni lni-brush"></i>
             </div>
             <div class="services-content">
               <h3><a href="#">Graphic Design</a></h3>
@@ -307,18 +357,18 @@
         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
           <div class="content-center text-center">
             <div class="box-item wow fadeInLeft" data-wow-delay="0.4s">
-              <span class="icon">
+              <div class="icon">
                 <i class="lni-laptop-phone"></i>
-              </span>
+              </div>
               <div class="text">
                 <h4>Tailor made support</h4>
                 <p>Our services are customized with ❤️ for the creativity client wishes for.</p>
               </div>
             </div>
             <div class="box-item wow fadeInLeft" data-wow-delay="0.6s">
-              <span class="icon">
+              <div class="icon">
                 <i class="lni-user"></i>
-              </span>
+              </div>
               <div class="text">
                 <h4>Customer Satisfaction </h4>
                 <p>Every good business understands that the customer is in charge and that their needs are the standard.
@@ -338,18 +388,18 @@
         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
           <div class="content-center text-center">
             <div class="box-item wow fadeInRight" data-wow-delay="0.4s">
-              <span class="icon">
+              <div class="icon">
                 <i class="lni-layout"></i>
-              </span>
+              </div>
               <div class="text">
                 <h4>Modern Design</h4>
                 <p>Innovation and design go hand in hand, and we believe in innovating designs.</p>
               </div>
             </div>
             <div class="box-item wow fadeInRight" data-wow-delay="0.6s">
-              <span class="icon">
+              <div class="icon">
                 <i class="lni-mastercard"></i>
-              </span>
+              </div>
               <div class="text">
                 <h4>Pocket Friendly</h4>
                 <p>We firmly believe that innovation doesn't have to come at a steep price. Our services offer quality
@@ -364,135 +414,70 @@
   </section>
   <!-- Features Section End -->
 
-
-
-  <!-- Projects Section Start -->
-  <section id="team" class="section-padding bg-gray">
+  <!-- Our Process Section Start -->
+  <section id="process" class="enhanced-process-section section-padding">
+    <div class="particles-bg" id="process-particles"></div>
     <div class="container">
       <div class="section-header text-center">
-        <h2 class="section-title wow fadeInDown" data-wow-delay="0.4s">Our Work</h2>
+        <h2 class="section-title wow fadeInDown" data-wow-delay="0.4s">Our Process</h2>
         <div class="shape wow fadeInDown" data-wow-delay="0.4s"></div>
+        <p class="section-subtitle">We follow a streamlined approach to deliver your project efficiently</p>
       </div>
-      <div class="row">
-        <div class="col-lg-6 col-md-12 col-xs-12">
-          <!-- Project Item Starts -->
-          <div class="team-item wow fadeInRight" data-wow-delay="0.2s">
-            <div class="team-img">
-              <img class="img-fluid" src="assets/img/Techie2.png" alt="Techiegen logo">
-            </div>
-            <div class="contetn">
-              <div class="info-text">
-                <h3><a href="https://app.techiegen.com" target="_blank" title="Techiegen">Techiegen</a></h3>
-              </div>
-              <p>We developed and designed a (PWA) for this ED-Tech company with the user experience in mind.</p>
-              <ul class="social-icons">
-                <li><a href="#"><lottie-player
-                      src="https://assets6.lottiefiles.com/datafiles/fab7172a9302d416bcdb8ac7e1c71123/data.json"
-                      background="transparent" speed="1" style="width: 50px; height: 50px;" autoplay></lottie-player>
-                </li>
-                <li><a href="#"><lottie-player src="https://assets5.lottiefiles.com/packages/lf20_s3zjvwxq.json"
-                      background="transparent" speed="0.6" style="width: 40px; height: 40px;" autoplay></lottie-player>
-                </li>
-                <li><a href="#"><img src="./assets/img/Mui.png" height="40" style="margin-bottom: 40px !important;"
-                      alt="material ui" /></a></li>
-                <li><a href="#"><lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_lohxkokx.json"
-                      background="transparent" speed="1" style="width: 50px; height: 50px;" autoplay></lottie-player>
-                </li>
+      <div class="process-timeline">
+        <div class="process-step wow fadeInLeft" data-wow-delay="0.2s">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3 class="step-title">Book a Meeting</h3>
+            <p class="step-description">Schedule a consultation with our team to discuss your project requirements and
+              goals.</p>
+          </div>
+        </div>
+        <div class="process-step wow fadeInRight" data-wow-delay="0.4s">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3 class="step-title">Requirement Analysis</h3>
+            <p class="step-description">We evaluate your needs and develop a comprehensive plan tailored to your
+              business objectives.</p>
+          </div>
+        </div>
+        <div class="process-step wow fadeInLeft" data-wow-delay="0.6s">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3 class="step-title">Proposal & Quotation</h3>
+            <p class="step-description">Receive a detailed proposal with timeline, deliverables, and transparent
+              pricing.</p>
+          </div>
+        </div>
+        <div class="process-step wow fadeInRight" data-wow-delay="0.8s">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3 class="step-title">Project Execution</h3>
+            <p class="step-description">Our team works diligently to deliver high-quality results that exceed your
+              expectations.</p>
+          </div>
+        </div>
+      </div>
+      <div class="process-cta text-center">
+        <a href="#" onclick="openGoogleCalendarDirect(event)" class="btn btn-common">Take the First Step – Book a
+          Call Now</a>
+      </div>
+    </div>
+  </section>
+  <!-- Our Process Section End -->
 
-              </ul>
-            </div>
-          </div>
-          <!-- Project Item Ends -->
-        </div>
-        <div class="col-lg-6 col-md-12 col-xs-12">
-          <!-- Project Item Starts -->
-          <div class="team-item wow fadeInLeft" data-wow-delay="0.4s">
-            <div class="team-img">
-              <img class="img-fluid" src="assets/img/Flint.png" alt="Flint logo">
-            </div>
-            <div class="contetn">
-              <div class="info-text">
-                <h3><a href="https://flintm.in" target="blank" title="FlintM">FlintM</a></h3>
-              </div>
-              <p>We have modeled the required websites and graphic designs according to the customer's needs.</p>
-              <ul class="social-icons">
-                <li><a href="#"><lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ydpjd0ig.json"
-                      background="transparent" speed="0.5" style="width: 50px; height: 50px;"
-                      autoplay></lottie-player></a></li>
-                <li><a href="#"><lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_wuuqhfmi.json"
-                      background="transparent" speed="1" style="width: 55px; height: 55px;"
-                      autoplay></lottie-player></a></li>
-                <li><a href="#"><lottie-player src="https://assets5.lottiefiles.com/packages/lf20_s3zjvwxq.json"
-                      background="transparent" speed="0.6" style="width: 40px; height: 40px;" autoplay></lottie-player>
-                </li>
-                <li><a href="#"><img src="./assets/img/bootstrap.png" height="40"
-                      style="margin-bottom: 40px !important;" alt="bootstrap" /></a></li>
-                <li><a href="#"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_j2d6owpx.json"
-                      background="transparent" speed="0.75" style="width: 50px; height: 50px;" autoplay></lottie-player>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- Project Item Ends -->
-        </div>
-        <div class="col-lg-6 col-md-12 col-xs-12">
-          <!-- Project Item Starts -->
-          <div class="team-item wow fadeInRight" data-wow-delay="0.6s">
-            <div class="team-img">
-              <img class="img-fluid" src="assets/img/myndz1.png" alt="myndz logo">
-            </div>
-            <div class="contetn">
-              <div class="info-text">
-                <h3><a href="https://myndzbadminton.com" target="blank" title="Myndz Website">Myndz Badminton</a></h3>
-              </div>
-              <p>Websites and graphics were designed with the goal of encouraging players and building trust and
-                confidence.</p>
-              <ul class="social-icons">
-                <li><a href="#"><lottie-player src="https://assets4.lottiefiles.com/packages/lf20_j2d6owpx.json"
-                      background="transparent" speed="0.75" style="width: 50px; height: 50px;" autoplay></lottie-player>
-                </li>
-                <li><a href="#"><lottie-player src="https://assets5.lottiefiles.com/packages/lf20_s3zjvwxq.json"
-                      background="transparent" speed="0.6" style="width: 40px; height: 40px;" autoplay></lottie-player>
-                </li>
-                <li><a href="#"><lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_wuuqhfmi.json"
-                      background="transparent" speed="1" style="width: 55px; height: 55px;"
-                      autoplay></lottie-player></a></li>
-                <li><a href="#"><img src="./assets/img/bootstrap.png" height="40"
-                      style="margin-bottom: 40px !important;" alt="bootstrap" /></a></li>
-                <li><a href="#"><lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ydpjd0ig.json"
-                      background="transparent" speed="0.5" style="width: 50px; height: 50px;"
-                      autoplay></lottie-player></a></li>
-              </ul>
-            </div>
-          </div>
-          <!-- Project Item Ends -->
-        </div>
-        <div class="col-lg-6 col-md-12 col-xs-12">
-          <!-- Project Item Starts -->
-          <div class="team-item wow fadeInLeft" data-wow-delay="0.8s">
-            <div class="team-img">
-              <img class="img-fluid" src="./assets/img/avittam homes.png" alt="avittam homes logo">
-            </div>
-            <div class="contetn">
-              <div class="info-text">
-                <h3><a href="https://avittamhomes.com" target="blank" title="maruthiprinter">Avittam Homes</a></h3>
-              </div>
-              <p>Website was made with a modern, user-friendly interface and eye-catching pictures and improved seo
-                ranking.</p>
-              <ul class="social-icons">
-                <li><a href="#"><img src="./assets/img/bootstrap.png" height="40"
-                      style="margin-bottom: 40px !important;" alt="bootstrap" /></a></li>
-                <li><a href="#"><img src="./assets/img/canva.png" height="30" style="margin-bottom: 40px !important;"
-                      alt="canva" /></a></li>
-                <li><a href="#"><img src="./assets/img/css.png" height="35"
-                      style="margin-bottom: 40px !important; margin-left: 10px;" alt="css" /></a></li>
-                <li><a href="#"><lottie-player src="https://assets1.lottiefiles.com/private_files/lf30_wuuqhfmi.json"
-                      background="transparent" speed="1" style="width: 55px; height: 55px;"
-                      autoplay></lottie-player></a></li>
-              </ul>
-            </div>
-          </div>
-          <!-- Project Item Ends -->
+  <!-- Projects Section Start -->
+  <section id="team" class="enhanced-projects-section section-padding">
+    <div class="container"></div>
+    <div class="section-header text-center">
+      <h2 class="section-title wow fadeInDown" data-wow-delay="0.4s">Our Work</h2>
+      <div class="shape wow fadeInDown" data-wow-delay="0.4s"></div>
+      <p class="section-subtitle">Showcasing innovative solutions and exceptional performance</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div id="projects-carousel" class="owl-carousel wow fadeInUp" data-wow-delay="0.4s">
+          <!-- Projects will be loaded dynamically from updated_projects.json -->
         </div>
       </div>
     </div>
@@ -608,6 +593,74 @@
                 </div>
               </div>
             </div>
+            <div class="item">
+              <div class="testimonial-item">
+                <div class="img-thumb">
+                  S
+                </div>
+                <div class="info">
+                  <h2><a target="_blank"
+                      href="https://www.google.com/maps/contrib/113615705144577634459?hl=en-US&sa=X&ved=2ahUKEwj35bPK5Zf8AhWOTWwGHW-SAU8QvvQBegQIARA5">Santosh
+                      Kumar</a></h2>
+                </div>
+                <div class="content">
+                  <p class="description">Inspiring story of two young boys starting a start up company, met them in
+                    umagine chennai trade Center expo, 💯 clever and a passionate guys.</p>
+                  <div class="star-icon mt-3">
+                    <span><i class="lni-star-filled"></i></span>
+                    <span><i class="lni-star-filled"></i></span>
+                    <span><i class="lni-star-filled"></i></span>
+                    <span><i class="lni-star-filled"></i></span>
+                    <span><i class="lni-star-filled"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="testimonial-item">
+                <div class="img-thumb">
+                  S
+                </div>
+                <div class="info">
+                  <h2><a target="_blank"
+                      href="https://www.google.com/maps/contrib/113615705144577634459?hl=en-US&sa=X&ved=2ahUKEwj35bPK5Zf8AhWOTWwGHW-SAU8QvvQBegQIARA5">Srividhya
+                      Chandrasekar</a></h2>
+                </div>
+                <div class="content">
+                  <p class="description">A very good team, they take their time to build the software but it is worth
+                    the wait. They know what they are doing</p>
+                  <div class="star-icon mt-3">
+                    <span><i class="lni-star-filled"></i></span>
+                    <span><i class="lni-star-filled"></i></span>
+                    <span><i class="lni-star-filled"></i></span>
+                    <span><i class="lni-star-filled"></i></span>
+                    <span><i class="lni-star-filled"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="testimonial-item">
+                <div class="img-thumb">
+                  N
+                </div>
+                <div class="info">
+                  <h2><a target="_blank"
+                      href="https://www.google.com/maps/contrib/113615705144577634459?hl=en-US&sa=X&ved=2ahUKEwj35bPK5Zf8AhWOTWwGHW-SAU8QvvQBegQIARA5">Nikarika
+                      Raje</a></h2>
+                </div>
+                <div class="content">
+                  <p class="description">Very friendly group to work with</p>
+                  <div class="star-icon mt-3">
+                    <span><i class="lni-star-filled"></i></span>
+                    <span><i class="lni-star-filled"></i></span>
+                    <span><i class="lni-star-filled"></i></span>
+                    <span><i class="lni-star-filled"></i></span>
+                    <span><i class="lni-star-filled"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -616,7 +669,69 @@
 
   <!-- Testimonial Section End -->
 
+  <!-- Contact Section Start -->
+  <section id="contact" class="section-padding">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title wow fadeInDown" data-wow-delay="0.4s">Let's Talk About Your Project</h2>
+        <div class="shape wow fadeInDown" data-wow-delay="0.4s"></div>
+        <p class="section-subtitle wow fadeInUp" data-wow-delay="0.6s">Book a Free 30-Minute Consultation</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-12 col-xs-12">
+          <div class="contact-info wow fadeInLeft" data-wow-delay="0.4s">
+            <div class="contact-feature">
+              <div class="contact-icon">
+                <i class="lni lni-timer"></i>
+              </div>
+              <div class="contact-content">
+                <h4>Quick Response</h4>
+                <p>We'll get back to you within 24 hours</p>
+              </div>
+            </div>
+            <div class="contact-feature">
+              <div class="contact-icon">
+                <i class="lni lni-check-mark-circle"></i>
+              </div>
+              <div class="contact-content">
+                <h4>No Obligation</h4>
+                <p>Free consultation with no strings attached</p>
+              </div>
+            </div>
+            <div class="contact-feature">
+              <div class="contact-icon">
+                <i class="lni lni-shield"></i>
+              </div>
+              <div class="contact-content">
+                <h4>Secure & Confidential</h4>
+                <p>Your information is protected with us</p>
+              </div>
+            </div>
+            <div class="contact-cta">
+              <h3 class="cta-title">Ready to transform your business?</h3>
+              <p class="cta-description">Schedule a free 30-minute call to discuss your project needs and goals.</p>
+              <!-- Google Calendar Appointment Scheduling begin -->
+              <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+              <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+              <script>(function () { var target = document.currentScript; window.addEventListener('load', function () { calendar.schedulingButton.load({ url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true', color: '#039BE5', label: 'Book an appointment', target, }); }); })();</script>
+              <!-- end Google Calendar Appointment Scheduling -->
+            </div>
 
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-xs-12">
+          <div class="calendar-container wow fadeInRight" data-wow-delay="0.4s">
+            <!-- Google Calendar Appointment Scheduling begin -->
+            <iframe
+              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true"
+              style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+            <!-- end Google Calendar Appointment Scheduling -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Contact Section End -->
 
   <!-- Footer Section Start -->
   <footer id="footer" class="footer-area section-padding">
@@ -703,9 +818,12 @@
   </footer>
   <!-- Footer Section End -->
 
-  <!-- Go to Top Link -->
-  <a href="#" class="back-to-top">
-    <i class="lni-arrow-up"></i>
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/916382729213" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.516" />
+    </svg>
   </a>
 
   <!-- Preloader -->
@@ -723,6 +841,19 @@
   <script src="assets/js/scrolling-nav.js"></script>
   <script src="assets/js/jquery.easing.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <!-- Projects Loader JS -->
+  <script src="assets/js/projects-loader.js"></script>
+
+  <!-- Google Calendar Scheduling Function -->
+  <script>
+    function openGoogleCalendarDirect(event) {
+      event.preventDefault();
+      // Open the Google Calendar scheduling page directly in a new tab
+      window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true', '_blank');
+    }
+  </script>
+
+
 
 </body>
 

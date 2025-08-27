@@ -1,0 +1,36 @@
+# Website Summary for Language Models
+
+## Company Information
+- **Name:** AiVirex Innovations LLP
+- **Location:** Chennai, Tamil Nadu, India
+- **Description:** A tech-driven startup providing custom software solutions globally. Specializes in innovation and technology to address common issues. Values creativity, attention to detail, and achieving optimal harmony between concept and execution.
+- **Mission:** Meeting clients' needs and making the world a better place through innovation.
+
+## Services Offered
+1.  **Beautiful Websites:** Development of professional websites for businesses.
+2.  **Awesome Mobile Apps:** Creation of powerful mobile applications to enhance customer experiences.
+3.  **Graphic Design:** Design services focused on creating simple, elegant, and valuable designs.
+4.  **Data Analytics & ML:** Development of custom machine learning models and analytics for actionable business insights.
+
+## Product: Attendify
+- **Name:** Attendify (by AiVirex)
+- **Type:** All-in-One Membership Management Software and Mobile App (B2B Freemium)
+- **Purpose:** Designed to digitize and simplify membership management for various facilities.
+- **Target Audience:** Gyms, badminton courts, swimming pools, tuition centers, coaching centers, sports facilities, academies, studios, and small businesses.
+- **Key Features:**
+    - Membership management (digitize records, add, view, and manage member info)
+    - Attendance Tracking (QR-based check-in/check-out, robust admin filters)
+    - Tailored Data Collection with Custom Forms (flexible and editable forms with custom fields)
+    - Integrated Communication Channels (send bulk or personal reminders via SMS, Email, WhatsApp; use ready-made or custom templates)
+    - Budgeting and Errand Tracking (monitor spending and income for better budgeting decisions)
+    - Comprehensive Value (affordable pricing, user-friendly interface, robust data security)
+- **Availability:** Downloadable on Android devices (Google Play Store).
+- **Pricing:** Offers a free trial period, with a subscription fee required for continued access after the trial. Pricing plans available (e.g., Monthly, Quarterly, Half-yearly, Yearly).
+
+## Additional Information
+- **Process:** Streamlined approach including booking a meeting, requirement analysis, proposal & quotation, and project execution.
+- **Projects:** Showcases innovative solutions and performance (details loaded dynamically).
+- **Testimonials:** Includes feedback from satisfied clients.
+- **Contact:** Provides contact information including email and phone number, and an option to book a consultation.
+- **Policies:** Includes Privacy Policy and Terms and Conditions pages.
+- **Blog:** Offers insights, tips, and advice on membership management, business efficiency, and technology.

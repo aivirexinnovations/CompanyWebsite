@@ -107,6 +107,79 @@
     margin-top: -125px;
     margin-bottom: -170px;
   }
+  
+  /* Fix for projects section mobile scrolling */
+  .enhanced-projects-section {
+    overflow-x: hidden;
+    overflow-y: visible;
+    min-height: auto;
+  }
+  
+  .enhanced-projects-section .container {
+    overflow: visible;
+  }
+  
+  #projects-carousel {
+    overflow: visible;
+  }
+  
+  .owl-carousel .owl-stage-outer {
+    overflow: visible;
+  }
+  
+  .enhanced-project-card {
+    overflow: visible !important;
+    min-height: 650px !important;
+    height: 650px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin-bottom: 50px !important;
+  }
+  
+  .project-content {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 550px !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  
+  .project-info {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+  
+  .project-metrics {
+    margin-top: auto !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .project-image {
+    order: -1 !important;
+    flex-shrink: 0 !important;
+  }
+  
+  /* Ensure proper scrolling on mobile */
+  .enhanced-projects-section {
+    padding-bottom: 100px !important;
+  }
+  
+  /* Add scroll indicator for mobile */
+  .enhanced-project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.1));
+    pointer-events: none;
+    border-radius: 0 0 20px 20px;
+  }
   .section-title {
     font-size: 22px;
     margin-bottom: 30px;

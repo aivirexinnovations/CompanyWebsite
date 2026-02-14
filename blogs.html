@@ -8,6 +8,12 @@
   <title>Attendify by AiVirex Blog</title>
   <meta name="description" content="Explore the latest insights, tips, and expert advice on membership management, business efficiency, and technology on the Attendify by AiVirex blog, how to, use, attendify, app, start a business, run a gym, management, solutions .">
 <meta name="author" content="Attendify by Aivirex innovations">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://aivirex.in/blogs.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aivirex.in/blogs.html">
+  <meta property="og:title" content="AiVirex Blogs | Web Development & AI Insights">
+  <meta property="og:description" content="Read AiVirex Medium articles on web development, SEO, AI search optimization, and growth-focused digital strategy.">
 
   <link rel="shortcut icon" type="image/ico" href="./assets/img/favicon/favicon.ico">
   <link rel="shortcut icon" href="./assets/img/favicon/favicon.ico" type="image/x-icon">
@@ -35,6 +41,19 @@
   <!-- Responsive Style -->
   <link rel="stylesheet" href="assets/css/responsive.css">
   <meta name="keywords" content="blog, articles, insights, tips, membership management, business efficiency, technology, Attendify, AiVirex">
+  <style>
+    .seo-hidden {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-199268142-1">
@@ -45,6 +64,14 @@
     gtag('js', new Date());
 
     gtag('config', 'UA-199268142-1');
+  </script>
+  <script type="application/ld+json" id="blogs-structured-data">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "AiVirex Medium Blogs",
+  "itemListElement": []
+}
   </script>
 
 </head>
@@ -98,6 +125,11 @@
                 Contact
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://medium.com/@aivirexinnovations">
+                Medium
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -115,12 +147,82 @@
         <h2 class="section-title wow fadeInDown" data-wow-delay="0.4s">Blogs</h2>
         <div class="shape wow fadeInDown" data-wow-delay="0.4s"></div>
       </div>
+      <div class="text-center mb-4">
+        <a href="https://medium.com/@aivirexinnovations" target="_blank" rel="noopener noreferrer" class="btn btn-common">Follow All Posts on Medium</a>
+      </div>
       <div id="blog-container" class="row"></div>
+      <div class="seo-hidden" aria-label="Crawlable Medium links for SEO">
+        <ul id="blog-fallback-links"></ul>
+      </div>
     </div>
   </section>
   <!-- Blogs Section End -->
   
   <script>
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // This parser is resilient to commas in description values:
+    // title = first column, image/link = last two columns, description = middle.
+    function parseBlogRow(row) {
+      const columns = row.split(',');
+      if (columns.length < 4) {
+        return null;
+      }
+      const title = columns[0].trim();
+      const image = columns[columns.length - 1].trim();
+      const link = columns[columns.length - 2].trim();
+      const description = columns.slice(1, columns.length - 2).join(',').trim();
+
+      if (!title || !description || !link || !image) {
+        return null;
+      }
+
+      return { title, description, link, image };
+    }
+
+    function updateStructuredData(posts) {
+      const script = document.getElementById('blogs-structured-data');
+      if (!script) return;
+
+      const itemListElement = posts.map((post, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: post.link,
+        name: post.title
+      }));
+
+      script.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'AiVirex Medium Blogs',
+        itemListElement: itemListElement
+      });
+    }
+
+    function renderFallbackLinks(posts) {
+      const fallbackList = document.getElementById('blog-fallback-links');
+      if (!fallbackList) return;
+
+      fallbackList.innerHTML = '';
+      posts.forEach(post => {
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = post.link;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = post.title;
+        item.appendChild(link);
+        fallbackList.appendChild(item);
+      });
+    }
+
     // Function to fetch and parse CSV data
     function fetchCSV() {
       fetch('data.csv')
@@ -128,14 +230,16 @@
         .then(data => {
           const rows = data.split('\n').slice(1); // Skip header row
           const blogContainer = document.getElementById('blog-container');
+          const posts = [];
   
           rows.forEach(row => {
-            const columns = row.split(',');
-            if (columns.length === 4) { // Ensure there are four columns
-              const title = columns[0].trim();
-              const description = columns[1].trim();
-              const link = columns[2].trim();
-              const image = columns[3].trim();
+            const parsed = parseBlogRow(row.trim());
+            if (parsed) {
+              const title = parsed.title;
+              const description = parsed.description;
+              const link = parsed.link;
+              const image = parsed.image;
+              posts.push(parsed);
   
               // Create a column for the card
               const col = document.createElement('div');
@@ -148,13 +252,13 @@
   
               // Card content
               card.innerHTML = `
-                <img src="${image}" alt="${title}" style="max-width: 100%; height: auto;" class="card-img" loading="lazy">
+                <img src="${escapeHtml(image)}" alt="${escapeHtml(title)}" style="max-width: 100%; height: auto;" class="card-img" loading="lazy">
                 <br><br>
                 <div class="text">
-                  <h4>${title}</h4>
-                  <p>${description}</p>
+                  <h4>${escapeHtml(title)}</h4>
+                  <p>${escapeHtml(description)}</p>
                   <br>
-                  <a href="${link}" target="_blank" class="btn btn-primary">Read More</a>
+                  <a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Read More</a>
                 </div>
               `;
   
@@ -163,6 +267,9 @@
               blogContainer.appendChild(col);
             }
           });
+
+          updateStructuredData(posts);
+          renderFallbackLinks(posts);
         })
         .catch(error => console.error('Error fetching CSV:', error));
     }
@@ -199,6 +306,7 @@
               <li><a href="#services">About</a></li>
               <li><a href="#testimonials">Testimonials</a></li>
               <li><a href="#team">Projects</a></li>
+              <li><a href="/blogs.html">Blog</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
@@ -215,6 +323,7 @@
             <ul class="address">
               <li><a target="_blank" href="/privacypolicy">Privacy Policy</a></li>
 <li><a target="_blank" href="/terms">Terms and Conditions</a></li>
+              <li><a target="_blank" rel="noopener noreferrer" href="https://medium.com/@aivirexinnovations">Read Our Medium Blogs</a></li>
 
 
               <li>

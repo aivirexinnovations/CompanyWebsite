@@ -1,0 +1,55 @@
+---
+/**
+ * Card.astro
+ * Base card surface — used as a wrapper for all card-style content.
+ *
+ * Props
+ * ─────
+ * variant : 'glass' | 'solid' | 'brand' | 'outline'
+ * padding : 'none' | 'sm' | 'md' | 'lg'
+ * hover   : boolean — adds card-hover transition (default true)
+ * as      : HTML tag to render (default 'div')
+ * class   : string?
+ */
+interface Props {
+  variant?: 'glass' | 'solid' | 'brand' | 'outline';
+  padding?: 'none' | 'sm' | 'md' | 'lg';
+  hover?:   boolean;
+  as?:      string;
+  class?:   string;
+}
+
+const {
+  variant = 'glass',
+  padding = 'md',
+  hover   = true,
+  as: Tag = 'div',
+  class: className = '',
+} = Astro.props;
+
+const variantMap: Record<string, string> = {
+  glass:   'glass',
+  solid:   'bg-surface-800 border border-white/5',
+  brand:   'glass-brand',
+  outline: 'border border-brand-500/30 bg-brand-500/5',
+};
+
+const paddingMap: Record<string, string> = {
+  none: '',
+  sm:   'p-4',
+  md:   'p-6',
+  lg:   'p-8 sm:p-10',
+};
+---
+
+<Tag
+  class:list={[
+    'rounded-2xl',
+    variantMap[variant],
+    paddingMap[padding],
+    hover && 'card-hover',
+    className,
+  ]}
+>
+  <slot />
+</Tag>

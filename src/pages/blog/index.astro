@@ -1,0 +1,163 @@
+---
+// src/pages/blog/index.astro
+// Blog listing page
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import BlogCard from '../../components/ui/BlogCard.astro';
+import Button from '../../components/ui/Button.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+
+// Schema definitions moved to BaseLayout props
+
+const posts = [
+  {
+    title: 'How to Streamline Membership Management with Attendify',
+    description: 'Imagine having one tool that handles all of this for you. Attendify is your new assistant when it comes to membership management.',
+    date: 'Recent',
+    tag: 'Management',
+    tagColor: 'from-brand-400 to-brand-600',
+    href: 'https://medium.com/p/3f278152db41',
+    image: 'https://miro.medium.com/v2/resize:fit:828/format:webp/1*yKIKPzHyfx9iF_xoxJ3kuQ.png'
+  },
+  {
+    title: 'Attendify — Membership Management',
+    description: 'Let’s talk about the membership management struggle. Paper forms messy spreadsheets chasing payments — exhausting isn’t it?',
+    date: 'Recent',
+    tag: 'SaaS',
+    tagColor: 'from-accent-400 to-accent-600',
+    href: 'https://medium.com/@hrithikaroy.r/attendify-membership-management-212fd9b109c7',
+    image: 'https://miro.medium.com/v2/resize:fit:828/format:webp/0*0COlDgVxmNLvjZ1t'
+  },
+  {
+    title: 'Smarter Membership Management for Sustainable Businesses',
+    description: 'In todays fast-moving world businesses need practical solutions to stay efficient and sustainable.',
+    date: 'Recent',
+    tag: 'Growth',
+    tagColor: 'from-brand-300 to-brand-500',
+    href: 'https://medium.com/@aivirexinnovations/attendify-smarter-membership-management-for-sustainable-businesses-d03913f4a681',
+    image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/1*EOsbNg9SpSUtsNvDuWUcjQ.png'
+  },
+  {
+    title: 'Why Is My Business Website Getting Traffic But No Leads?',
+    description: 'Your website might be getting visitors but if it’s not converting them into leads you’re leaving money on the table.',
+    date: 'Recent',
+    tag: 'CRO',
+    tagColor: 'from-sky-400 to-blue-500',
+    href: 'https://medium.com/@aivirexinnovations/why-is-my-business-website-getting-traffic-but-no-leads-4c6f026058d8',
+    image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/0*ceq0E4B8FXJkRzih'
+  },
+  {
+    title: 'How Do I Make My Business Discoverable in ChatGPT and AI Search?',
+    description: 'Millions of people use ChatGPT, Claude, and Perplexity instead of Google to find businesses. If your business isn’t optimized...',
+    date: 'Recent',
+    tag: 'SEO & AI',
+    tagColor: 'from-brand-400 to-brand-600',
+    href: 'https://medium.com/@aivirexinnovations/how-do-i-make-my-business-discoverable-in-chatgpt-and-ai-search-tools-84699acf11bc',
+    image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/0*Y4mt_UoijCzmAIkN'
+  },
+  {
+    title: 'Why Did My Template Website Stop Working After 6 Months?',
+    description: 'Template websites seem like the smart affordable choice — until they’re not. After 6–12 months most businesses hit a wall.',
+    date: 'Recent',
+    tag: 'Web Dev',
+    tagColor: 'from-amber-400 to-orange-500',
+    href: 'https://medium.com/@aivirexinnovations/why-did-my-template-website-stop-working-after-6-months-ca5d3355da26',
+    image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/0*DDhf3dYfqQlxled7'
+  },
+  {
+    title: 'Should I Use an AI Website Builder or Hire a Professional?',
+    description: 'AI website builders are great for getting something live fast but they create generic sites that struggle to convert visitors.',
+    date: 'Recent',
+    tag: 'Business',
+    tagColor: 'from-indigo-400 to-blue-500',
+    href: 'https://medium.com/@aivirexinnovations/should-i-use-an-ai-website-builder-or-hire-a-professional-for-my-business-11dc5d0da984',
+    image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/0*TfjvO-4D-uO5disp'
+  },
+  {
+    title: 'Why Do Cheap Websites Always End Up Costing More?',
+    description: 'Hiring a cheap freelancer for your business website often leads to hidden costs, endless revisions, and poor performance.',
+    date: 'Recent',
+    tag: 'Advice',
+    tagColor: 'from-rose-400 to-red-500',
+    href: 'https://medium.com/@aivirexinnovations/why-do-cheap-websites-always-end-up-costing-more-72faa1cb9ea1',
+    image: 'https://miro.medium.com/v2/resize:fit:1100/format:webp/0*_EDdnRxdC4XUxc7-'
+  }
+];
+---
+
+<BaseLayout
+  title="AiVirex Blog | Web Development & Agency Growth"
+  description="Expert articles on custom web development, AI search optimization (LLMO), SaaS products, and business growth strategies."
+  keywords="web development blog, SEO tips, AI search optimization guide, SaaS development, business growth, AiVirex blog"
+  canonicalUrl="https://aivirex.in/blog"
+  schemas={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      name: 'AiVirex Blog',
+      url: 'https://aivirex.in/blog',
+      description: 'Expert articles on custom web development, AI search optimization (LLMO), SaaS products, and business growth strategies.',
+      publisher: {
+        '@type': 'Organization',
+        name: 'AiVirex Innovations LLP',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://aivirex.in/assets/img/logo.png'
+        }
+      }
+    }
+  ]}
+>
+  <Navbar />
+
+  <main id="main-content" class="pt-16">
+
+    <!-- Page Hero -->
+    <div class="py-20 lg:py-28 text-center relative overflow-hidden">
+      <div class="absolute inset-0 -z-10" aria-hidden="true">
+        <div class="blob-brand absolute top-1/3 left-1/4 -translate-x-1/2 w-[800px] h-[500px] rounded-full blur-[100px] mix-blend-screen opacity-50 animate-pulse"></div>
+        <div class="absolute inset-0 bg-grain opacity-50 mix-blend-overlay"></div>
+      </div>
+      <div class="max-w-3xl mx-auto px-4 sm:px-6" data-reveal="blur">
+        <SectionHeader
+          heading={`Insights &amp; <span class="text-brand-500">Articles</span>`}
+          subheading="Latest updates, guides, and thoughts from our team."
+        />
+        <Button
+          id="blog-medium-cta"
+          href="https://medium.com/@aivirexinnovations"
+          target="_blank"
+          variant="secondary"
+          arrow={false}
+        >
+          Follow on Medium
+          <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </Button>
+      </div>
+    </div>
+
+    <!-- Blog Grid -->
+    <section class="section pt-0" aria-label="Blog posts">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map((post, i) => (
+            <div data-reveal="blur" class={`stagger-${(i % 5) + 1}`}>
+              <BlogCard
+                title={post.title}
+                description={post.description}
+                date={post.date}
+                tag={post.tag}
+                tagColor={post.tagColor}
+                href={post.href}
+                image={post.image}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>

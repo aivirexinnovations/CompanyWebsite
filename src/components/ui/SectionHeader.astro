@@ -1,0 +1,67 @@
+---
+/**
+ * SectionHeader.astro
+ * Consistent section title block: eyebrow → heading → subheading.
+ * The `heading` prop accepts HTML strings so you can embed
+ * <span class="text-gradient">…</span> for the coloured word.
+ *
+ * Props
+ * ─────
+ * eyebrow    : string?  — small all-caps label above heading
+ * heading    : string   — main title (HTML allowed)
+ * subheading : string?  — body copy below
+ * align      : 'left' | 'center'   (default 'center')
+ * mb         : 'sm' | 'md' | 'lg'  (default 'lg') — bottom margin
+ * class      : string?
+ * id         : string?  — id applied to the <h2>
+ * laserGlow  : boolean? — make this header (heading + subheading) a scroll-laser illumination target
+ */
+interface Props {
+  heading:     string;
+  subheading?: string;
+  align?:      'left' | 'center';
+  mb?:         'sm' | 'md' | 'lg';
+  class?:      string;
+  id?:         string;
+  laserGlow?:  boolean;
+}
+
+const {
+  heading,
+  subheading,
+  align = 'center',
+  mb    = 'lg',
+  class: className = '',
+  id,
+  laserGlow = false,
+} = Astro.props;
+
+const mbMap = { sm: 'mb-8', md: 'mb-10', lg: 'mb-14' };
+---
+
+<div
+  class:list={[
+    mbMap[mb],
+    align === 'center' && 'text-center',
+    className,
+  ]}
+  data-laser-glow-target={laserGlow ? 'title' : undefined}
+>
+
+  <h2
+    id={id}
+    class="text-4xl sm:text-5xl font-display font-700 text-white leading-tight"
+    set:html={heading}
+  />
+
+  {subheading && (
+    <p
+      class:list={[
+        'text-slate-400 mt-4 leading-relaxed',
+        align === 'center' && 'max-w-2xl mx-auto',
+      ]}
+    >
+      {subheading}
+    </p>
+  )}
+</div>

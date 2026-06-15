@@ -1,0 +1,61 @@
+---
+/**
+ * ServiceCard.astro
+ * Used in the Services section (4-column grid on homepage).
+ *
+ * Props
+ * ─────
+ * icon     : string  — emoji or short text icon
+ * title    : string
+ * body     : string
+ * href     : string? — CTA link  (default '#contact')
+ * ctaLabel : string? — CTA text  (default 'Get Estimate')
+ */
+interface Props {
+  icon:      string;
+  title:     string;
+  body:      string;
+  href?:     string;
+  ctaLabel?: string;
+}
+
+const {
+  icon,
+  title,
+  body,
+  href     = '#contact',
+  ctaLabel = 'Get Estimate',
+} = Astro.props;
+---
+
+<div class="pt-6 border-t border-brand-500/10 hover:border-brand-500/50 transition-colors duration-300 flex flex-col gap-4 group">
+  <!-- Icon -->
+  <div
+    class="w-12 h-12 rounded-xl bg-brand-500/12 border border-brand-500/20 flex items-center justify-center text-2xl flex-shrink-0"
+    aria-hidden="true"
+  >
+    {icon}
+  </div>
+
+  <!-- Content -->
+  <h3 class="text-white font-display font-600 text-lg group-hover:text-brand-300 transition-colors duration-200">
+    {title}
+  </h3>
+  <p class="text-slate-400 text-sm leading-relaxed flex-1">{body}</p>
+
+  <!-- CTA -->
+  <a
+    href={href}
+    class="inline-flex items-center gap-1.5 text-brand-400 hover:text-brand-300 text-xs font-semibold transition-colors duration-200 mt-auto group/link"
+    aria-label={`${ctaLabel} for ${title}`}
+  >
+    {ctaLabel}
+    <svg
+      class="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5"
+      fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  </a>
+</div>

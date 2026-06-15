@@ -1,0 +1,32 @@
+---
+/**
+ * ContactFeature.astro
+ * Small icon + title + body row used in the Contact section trust signals.
+ *
+ * Props
+ * ─────
+ * icon  : string  — emoji
+ * title : string
+ * body  : string
+ */
+interface Props {
+  icon:  string;
+  title: string;
+  body:  string;
+}
+
+const { icon, title, body } = Astro.props;
+---
+
+<div class="flex items-start gap-4 glass rounded-xl p-5 card-hover">
+  <div
+    class="w-10 h-10 rounded-xl bg-brand-500/12 border border-brand-500/20 flex items-center justify-center text-xl flex-shrink-0"
+    aria-hidden="true"
+  >
+    {icon}
+  </div>
+  <div>
+    <h3 class="text-white font-semibold text-sm mb-1">{title}</h3>
+    <p class="text-slate-400 text-sm">{body}</p>
+  </div>
+</div>

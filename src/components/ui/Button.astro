@@ -1,0 +1,92 @@
+---
+/**
+ * Button.astro
+ * Universal button / link component.
+ *
+ * Props
+ * ─────
+ * variant  : 'primary' | 'secondary' | 'ghost'  — visual style
+ * size     : 'sm' | 'md' | 'lg'                 — padding / font size
+ * href     : string?                             — renders <a> when set
+ * id       : string?
+ * type     : 'button' | 'submit' | 'reset'       — only for <button>
+ * target   : string?                             — e.g. '_blank'
+ * rel      : string?                             — auto noopener for _blank
+ * arrow    : boolean (default true)              — trailing arrow icon
+ * class    : string?                             — extra Tailwind classes
+ */
+interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?:    'sm' | 'md' | 'lg';
+  href?:    string;
+  id?:      string;
+  type?:    'button' | 'submit' | 'reset';
+  target?:  string;
+  rel?:     string;
+  arrow?:   boolean;
+  class?:   string;
+}
+
+const {
+  variant = 'primary',
+  size    = 'md',
+  href,
+  id,
+  type    = 'button',
+  target,
+  rel,
+  arrow   = true,
+  class: className = '',
+} = Astro.props;
+
+/* ─ Size tokens ─ */
+const sizes: Record<string, string> = {
+  sm: 'px-4  py-2   text-xs  gap-1.5 rounded-lg',
+  md: 'px-6  py-3   text-sm  gap-2   rounded-xl',
+  lg: 'px-8  py-3.5 text-sm  gap-2.5 rounded-xl',
+};
+
+/* ─ Variant tokens ─ */
+const variants: Record<string, string> = {
+  primary:   'bg-brand-500 hover:bg-brand-400 text-white glow hover:shadow-2xl hover:shadow-brand-500/30',
+  secondary: 'glass text-white hover:bg-white/10 border border-white/10 hover:border-white/20',
+  ghost:     'text-brand-400 hover:text-brand-300 hover:bg-brand-500/10',
+};
+
+const base = 'inline-flex items-center justify-center font-semibold select-none transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent';
+
+const cls = [base, sizes[size], variants[variant], className].join(' ');
+
+const Tag = href ? 'a' : 'button';
+const computedRel = rel ?? (target === '_blank' ? 'noopener noreferrer' : undefined);
+
+/* Arrow icon sizes */
+const arrowSize = size === 'sm' ? '14' : size === 'lg' ? '18' : '16';
+---
+
+<Tag
+  id={id}
+  href={href}
+  type={href ? undefined : type}
+  target={target}
+  rel={computedRel}
+  class={cls}
+>
+  <slot />
+  {arrow && (
+    <svg
+      width={arrowSize}
+      height={arrowSize}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      class="flex-shrink-0 transition-transform duration-200 group-hover:translate-x-0.5"
+    >
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  )}
+</Tag>

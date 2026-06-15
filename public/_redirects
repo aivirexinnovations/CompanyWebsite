@@ -1,0 +1,15 @@
+# ── Legacy URL migration: old .html site → Astro clean URLs ──
+# Real HTTP 301s so existing Google rankings and backlinks transfer cleanly.
+# Forced (!) so they win even if a same-named asset ever appears.
+
+/blogs.html            /blog               301!
+/Attendify.html        /attendify          301!
+/attendify-us          /attendify          301!
+/attendify-us.html     /attendify          301!
+/Privacypolicy.html    /privacy            301!
+/terms.html            /terms              301!
+/cancellation.html     /cancellation       301!
+/download.html         /download           301!
+
+# Old sitemap location → new Astro sitemap index (was submitted in Search Console).
+/sitemap.xml           /sitemap-index.xml  301!

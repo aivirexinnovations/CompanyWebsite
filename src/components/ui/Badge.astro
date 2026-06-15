@@ -1,0 +1,81 @@
+---
+/**
+ * Badge.astro
+ * Small pill label — used for eyebrow tags, status chips, category tags.
+ *
+ * Props
+ * ─────
+ * text    : string        — label text
+ * color   : 'brand' | 'emerald' | 'violet' | 'amber' | 'rose'
+ * variant : 'subtle' | 'solid'
+ * dot     : boolean       — prepend animated dot (default false)
+ * class   : string?
+ */
+interface Props {
+  text:     string;
+  color?:   'brand' | 'emerald' | 'violet' | 'amber' | 'rose' | 'slate';
+  variant?: 'subtle' | 'solid';
+  dot?:     boolean;
+  class?:   string;
+}
+
+const {
+  text,
+  color   = 'brand',
+  variant = 'subtle',
+  dot     = false,
+  class: className = '',
+} = Astro.props;
+
+const colorMap: Record<string, Record<string, string>> = {
+  brand:   {
+    subtle: 'text-brand-300   bg-brand-500/12  border border-brand-500/25',
+    solid:  'text-white        bg-brand-500',
+  },
+  emerald: {
+    subtle: 'text-emerald-300 bg-emerald-500/12 border border-emerald-500/25',
+    solid:  'text-white        bg-emerald-500',
+  },
+  violet:  {
+    subtle: 'text-violet-300  bg-violet-500/12  border border-violet-500/25',
+    solid:  'text-white        bg-violet-500',
+  },
+  amber:   {
+    subtle: 'text-amber-300   bg-amber-500/12   border border-amber-500/25',
+    solid:  'text-white        bg-amber-500',
+  },
+  rose:    {
+    subtle: 'text-rose-300    bg-rose-500/12    border border-rose-500/25',
+    solid:  'text-white        bg-rose-500',
+  },
+  slate:   {
+    subtle: 'text-slate-300   bg-white/6        border border-white/10',
+    solid:  'text-white        bg-slate-600',
+  },
+};
+
+const dotColorMap: Record<string, string> = {
+  brand:   'bg-brand-400',
+  emerald: 'bg-emerald-400',
+  violet:  'bg-violet-400',
+  amber:   'bg-amber-400',
+  rose:    'bg-rose-400',
+  slate:   'bg-slate-400',
+};
+---
+
+<span
+  class:list={[
+    'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold',
+    colorMap[color][variant],
+    className,
+  ]}
+>
+  {dot && (
+    <span
+      class:list={['w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0', dotColorMap[color]]}
+      aria-hidden="true"
+    />
+  )}
+  {text}
+</span>

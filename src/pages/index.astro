@@ -1,0 +1,1332 @@
+---
+// src/pages/index.astro
+import BaseLayout      from '../layouts/BaseLayout.astro';
+import Navbar          from '../components/Navbar.astro';
+import Footer          from '../components/Footer.astro';
+
+// UI primitives
+import Button          from '../components/ui/Button.astro';
+import Badge           from '../components/ui/Badge.astro';
+import Card            from '../components/ui/Card.astro';
+import SectionHeader   from '../components/ui/SectionHeader.astro';
+import Stat            from '../components/ui/Stat.astro';
+
+// Section components
+import ServiceCard     from '../components/ui/ServiceCard.astro';
+import TestimonialCard from '../components/ui/TestimonialCard.astro';
+import ProjectCard     from '../components/ui/ProjectCard.astro';
+import ProcessStep     from '../components/ui/ProcessStep.astro';
+import FAQList         from '../components/ui/FAQList.astro';
+import ContactFeature  from '../components/ui/ContactFeature.astro';
+import WhatsAppFloat   from '../components/ui/WhatsAppFloat.astro';
+
+/* ── Data ─────────────────────────────────────────────────── */
+
+const stats = [
+  { value: '170+', label: 'Projects Delivered' },
+  { value: '100+', label: 'Happy Clients'       },
+  { value: '10+',  label: 'Countries Served'    },
+  { value: '14',   label: 'Avg. Delivery Days'  },
+];
+
+const services = [
+  {
+    icon: '🌐',
+    title: 'Beautiful Websites',
+    body:  'Custom-built, research-backed websites that load fast, rank well, and turn visitors into customers — delivered in 14 days.',
+  },
+  {
+    icon: '📱',
+    title: 'Mobile Apps',
+    body:  'An app is a powerful tool for improving customer experience. Bring your idea to life with our expert cross-platform team.',
+  },
+  {
+    icon: '🎨',
+    title: 'Graphic Design',
+    body:  'Design adds value faster than it adds cost. We craft elegant, effective brand visuals that communicate and convert.',
+  },
+  {
+    icon: '🤖',
+    title: 'AI & ML Solutions',
+    body:  'Custom ML models and data analytics pipelines. Transform your data into actionable insights that drive measurable growth.',
+  },
+];
+
+const whyUs = [
+  { title: 'Tailor-Made Support',   body: 'Every service is customised with care for the exact outcomes each client needs — no one-size-fits-all.' },
+  { title: 'Customer-First Always', body: 'Every good business understands the customer is in charge. We make that our operating standard.' },
+  { title: 'Modern Design',         body: 'We believe innovation and design go hand in hand — every pixel crafted for clarity and conversion.' },
+  { title: 'Pocket Friendly',       body: "Agency-quality work at a fraction of US/UK rates. Innovation shouldn't come with an eye-watering price tag." },
+];
+
+const steps = [
+  { n: '01', title: 'Book a Meeting',       body: 'Schedule a short consultation to discuss requirements, goals, and what success looks like for you.' },
+  { n: '02', title: 'Requirement Analysis', body: 'We evaluate your needs and craft a comprehensive plan tailored to your business objectives and budget.' },
+  { n: '03', title: 'Proposal & Quotation', body: 'Receive a detailed proposal with timeline, deliverables, and transparent pricing — no hidden surprises.' },
+  { n: '04', title: 'Project Execution',    body: 'Our full team works diligently through clear milestones, keeping you informed at every stage until launch.' },
+];
+
+const projects = [
+  { title: 'Attendify',                 tag: 'Mobile App', desc: 'Privacy-first membership management app designed for gyms and sports academies. Sub-1-second load time.', image: '/assets/img/Project Mockups/Project_Attendify.png', href: '/attendify' },
+  { title: 'Author Portfolio',          tag: 'Web App',    desc: 'Visually captivating author portfolio website built with Next.js and Tailwind CSS. 100% Lighthouse SEO.', image: '/assets/img/Project Mockups/Project_Author.png', href: 'https://booksbyanirudh.netlify.app' },
+  { title: 'Avittam Homes Website',     tag: 'Web App',    desc: 'Modernized UI, improved performance, and SEO optimization for a real estate developer.', image: '/assets/img/Project Mockups/Project_Avittam.png', href: 'https://avittamhomes.in' },
+  { title: 'KMJ & Co. Landing Page',    tag: 'Web App',    desc: 'Professional online presence for a CA firm featuring WhatsApp integration and Google Sheets automation.', image: '/assets/img/Project Mockups/Project_CA.png', href: 'https://kmjco.in' },
+  { title: 'MedicalData Project',       tag: 'AI / ML',    desc: 'Confidential healthcare AI initiative involving predictive analytics on sensitive medical datasets.', image: '/assets/img/Project Mockups/Project_MedicalData.png' },
+  { title: 'Hazlo Project',             tag: 'Mobile App', desc: 'Cross-platform MVP built with React Native and Firebase to validate market fit for a sports industry solution.', image: '/assets/img/Project Mockups/Project_Hazlo.png' },
+];
+
+const reviewUrl = 'https://g.page/r/Cfnfxgt2nKD4EAI/review';
+
+const testimonials = [
+  { initial: 'M', name: 'Mounika R.',         company: 'Google Review', stars: 5, body: 'Wonderful team which is so flexible in meeting your needs. Highly skilled at understanding customer requirements and delivering flawlessly.', href: reviewUrl },
+  { initial: 'P', name: 'Priya S.',           company: 'Google Review', stars: 5, body: 'Outstanding job! They understand customer needs and deliver a flawless result every time. Definitely will work with them again.', href: reviewUrl },
+  { initial: 'A', name: 'Arthi R.',           company: 'Google Review', stars: 5, body: 'Amazing team. Very accepting and flexible and provide a good working environment. Customer-oriented and never disappoint.', href: reviewUrl },
+  { initial: 'B', name: 'Brinda P.',          company: 'Google Review', stars: 5, body: 'Fresh minds working in sync with requirements. Excellent product output and follow-ups. Keep rocking, guys!', href: reviewUrl },
+  { initial: 'S', name: 'Santosh K.',         company: 'Google Review', stars: 5, body: 'Inspiring story of young, passionate builders. Met them at umagine Chennai — 100% clever and dedicated.', href: reviewUrl },
+  { initial: 'N', name: 'Nikarika Raje',      company: 'Google Review', stars: 5, body: 'Very friendly group to work with. They know exactly what they are doing and deliver consistently.', href: reviewUrl },
+];
+
+const faqs = [
+  { q: 'How much does a custom website cost?',                a: 'Full-stack, research-backed builds start at $200 USD and scale to $20,000 USD based on scope. We size each proposal to the outcomes you want — more leads, faster speed, or better conversion.' },
+  { q: 'Why might my current site not be generating leads?',  a: 'Most underperforming sites hide their value: unclear calls to action, slow pages, weak messaging. We rebuild around your buyers with clear offers, fast performance, trust signals, and forms placed where intent is highest.' },
+  { q: "What's the difference between custom and template?",  a: 'Templates are rigid and shared — quick but often slow, generic, and hard to scale. Custom builds start with your goals so we control speed, UX, SEO, and analytics from day one.' },
+  { q: 'How long does it take to build?',                     a: 'Typical delivery is 14 days from kickoff. We map discovery, design, build, QA, and launch into clear milestones with updates throughout.' },
+  { q: 'Do you work with clients in USA, UK, Canada & AU?',  a: 'Yes. We regularly work with businesses across the USA, UK, Canada, Australia, UAE, and Europe. Fully remote-friendly with async updates and timezone-flexible calls.' },
+  { q: "What's included in your website projects?",           a: 'Strategy, custom UX/UI, responsive build, on-page SEO, analytics, conversion tracking, AI search optimisation, lead forms, and post-launch support.' },
+  { q: 'How do you optimise for Google and AI search?',       a: 'We pair technical SEO (speed, structure, schema) with clear answers to buyer questions. For AI search we use structured content so ChatGPT, Claude, and Perplexity surface your business accurately.' },
+  { q: 'What is AI search optimisation (LLMO)?',              a: 'LLMO makes your business easy for AI assistants to understand and recommend. We structure offers, location, proof, and services so large language models return you as a trusted option.' },
+  { q: 'Do you build SaaS platforms and mobile apps?',        a: 'Yes. Beyond marketing websites we build web applications, SaaS platforms (MVP to full-scale), and mobile apps for iOS and Android — architecture to deployment, end-to-end.' },
+  { q: 'Is this better value than a local agency?',           a: 'We deliver agency-quality work — researcher, designer, developer, and SEO specialist — at a fraction of US/UK agency rates. Fixed price. 14 days. Done.' },
+];
+
+const contactFeatures = [
+  { icon: '⏱', title: 'Quick Response',       body: "We'll get back to you within 24 hours." },
+  { icon: '✅', title: 'No Obligation',        body: 'Free consultation with absolutely no strings attached.' },
+  { icon: '🔒', title: 'Secure & Confidential', body: 'Your information is always protected and never shared.' },
+];
+
+import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
+
+---
+
+<BaseLayout
+  title="Custom Website Development Agency | Websites That Convert"
+  description="Research-backed custom websites built to generate leads — delivered in 14 days. 100% Google Lighthouse score guaranteed. AI search optimized for ChatGPT, Claude & Perplexity. Serving USA, UK, Canada, Australia & Europe."
+  keywords="custom website development agency, high-converting website design, lead generation website, conversion rate optimization agency, custom web development USA, SaaS development company, mobile app development agency, AI development agency, AI search optimization, GEO optimization, LLMO, get found in ChatGPT, Perplexity optimization, offshore web development, affordable web development agency, custom web application, MVP development, research-backed web design, website that generates leads, AiVirex, AiVirex Innovations"
+  ogImage="https://aivirex.in/assets/img/logo.png"
+  includeHreflang={true}
+  schemas={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'AiVirex Innovations LLP',
+      url: 'https://aivirex.in',
+      logo: 'https://aivirex.in/assets/img/logo.png',
+      description: 'AiVirex is a custom website development agency delivering research-backed, high-converting websites in 14 days. Trusted by 100+ businesses across USA, UK, Canada, Australia, UAE, and Europe.',
+      founder: { '@type': 'Person', name: 'K Sai Anirudh' },
+      areaServed: [
+        { '@type': 'Country', name: 'United States' },
+        { '@type': 'Country', name: 'United Kingdom' },
+        { '@type': 'Country', name: 'Canada' },
+        { '@type': 'Country', name: 'Australia' },
+        { '@type': 'Country', name: 'United Arab Emirates' },
+        { '@type': 'Country', name: 'India' },
+        { '@type': 'Country', name: 'Germany' },
+        { '@type': 'Country', name: 'Netherlands' },
+      ],
+      sameAs: [
+        'https://www.linkedin.com/company/aandvinnovations',
+        'https://www.instagram.com/aivirex.in/',
+        'https://www.facebook.com/AiVirex-Innovations-108689034703627/',
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'sales',
+        email: 'contactaivirex@gmail.com',
+        availableLanguage: 'English',
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: 'Custom Website Development',
+      provider: {
+        '@type': 'Organization',
+        name: 'AiVirex Innovations LLP',
+        url: 'https://aivirex.in',
+      },
+      description: 'Research-backed, conversion-focused custom website development. Every site is built from scratch — no templates — with on-page SEO, AI search optimization (LLMO), Google Analytics, lead generation forms, and 1 year free hosting included. 14-day delivery guaranteed.',
+      areaServed: [
+        { '@type': 'Country', name: 'United States' },
+        { '@type': 'Country', name: 'United Kingdom' },
+        { '@type': 'Country', name: 'Canada' },
+        { '@type': 'Country', name: 'Australia' },
+      ],
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'USD',
+        price: '200',
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          minPrice: '200',
+          maxPrice: '20000',
+          priceCurrency: 'USD',
+        },
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'AiVirex Services',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Custom Website Development' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'SaaS Platform Development' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Mobile App Development' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI & Machine Learning Solutions' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Web Application Development' } },
+        ],
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How much does a custom website cost in the USA?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'AiVirex custom websites start at $200 USD and scale to $20,000 depending on scope. Every project includes research, UX design, development, on-page SEO, AI search optimization, Google Analytics setup, and 1 year of free hosting. Pricing is fixed and transparent — no hourly surprises.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How long does it take to build a custom website?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Standard delivery is 14 days from kickoff, including market research, UX design, development, QA testing, SEO setup, and launch. Clients receive milestone updates throughout the process.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Why isn\'t my current website generating leads?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Most websites fail to convert because they use generic templates not built around user psychology, have slow load speeds, unclear calls to action, and weak trust signals. AiVirex builds custom from scratch with conversion-focused architecture — every element is designed to turn visitors into customers.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is the difference between a custom website and a template website?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Template websites (Wix, Squarespace) are shared designs that can\'t be tailored to your specific audience or brand. Custom websites are built from scratch after researching your market, competitors, and buyers — giving you full control over speed, SEO, conversion architecture, and branding. Custom sites consistently outperform templates in lead generation.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Do you work with clients in the USA, UK, Canada, and Australia?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. We work with businesses across the USA, UK, Canada, Australia, UAE, and Europe. Our process is fully remote-friendly with async milestone updates, timezone-flexible calls, and clear deliverables at every stage.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is AI search optimization (LLMO / GEO)?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'LLM Optimization (LLMO) — also called Generative Engine Optimization (GEO) — makes your business discoverable when people ask AI assistants like ChatGPT, Claude, or Perplexity for recommendations. We structure your content, schema markup, and entity data so AI systems can confidently recommend your business. This is included in every website we build.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Do you build SaaS platforms and web applications?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. Beyond marketing websites, AiVirex builds custom web applications, SaaS platforms (from MVP to full-scale), and mobile apps for iOS and Android. We handle architecture, development, and deployment end-to-end.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Is AiVirex better than hiring a freelancer or local agency?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'AiVirex offers the quality of an agency at a fraction of the cost. Unlike freelancers, we provide a full team (researcher, designer, developer, SEO specialist) under one roof with guaranteed 14-day delivery, transparent pricing, and post-launch support. Unlike traditional agencies, there are no hidden hourly fees or 3-month timelines.',
+          },
+        },
+      ],
+    },
+  ]}
+>
+  <Navbar />
+
+  <main id="main-content" class="relative">
+
+    <!-- Global Scroll-Tracking Laser Background -->
+    <div id="scroll-track-container" class="absolute inset-0 pointer-events-none -z-50 overflow-hidden" aria-hidden="true">
+      <!-- The bending track line + the laser that travels along it -->
+      <svg id="scroll-track-svg" class="absolute top-0 left-0 w-full h-full" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="track-gradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#21a5ed" stop-opacity="0" />
+            <stop offset="12%"  stop-color="#21a5ed" stop-opacity="0.35" />
+            <stop offset="88%"  stop-color="#21a5ed" stop-opacity="0.35" />
+            <stop offset="100%" stop-color="#21a5ed" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+
+        <!-- Ambient track -->
+        <path id="scroll-track-path" d="" fill="none" stroke="url(#track-gradient)" stroke-width="1.5" />
+
+        <!-- Laser glow: stacked translucent strokes fake a soft blur without an
+             SVG filter — feGaussianBlur is expensive to rasterize on weak/old
+             devices, especially recomputed every frame. Widest+faintest first,
+             brightest+narrowest last. -->
+        <path id="scroll-laser-glow-3" d="" fill="none" stroke="#21a5ed" stroke-width="22" stroke-linecap="round" stroke-opacity="0.05" />
+        <path id="scroll-laser-glow-2" d="" fill="none" stroke="#21a5ed" stroke-width="14" stroke-linecap="round" stroke-opacity="0.09" />
+        <path id="scroll-laser-glow-1" d="" fill="none" stroke="#21a5ed" stroke-width="8"  stroke-linecap="round" stroke-opacity="0.18" />
+        <path id="scroll-laser-halo"   d="" fill="none" stroke="#5fc7ff" stroke-width="5"  stroke-linecap="round" stroke-opacity="0.35" />
+        <path id="scroll-laser-core"   d="" fill="none" stroke="#5fc7ff" stroke-width="2.5" stroke-linecap="round" />
+      </svg>
+    </div>
+
+    <!-- Floating "illumination" patches for title-only laser-glow targets.
+         Sits above the track (-z-50) but below section-local decoratives
+         (-z-10, e.g. dot-grid backgrounds), so it can occlude the track
+         behind a heading without covering that decoration. -->
+    <div id="laser-glow-patches" class="absolute inset-0 pointer-events-none -z-[15] overflow-hidden" aria-hidden="true"></div>
+
+    <!-- ═══════════════════════════════════════════
+         1 · CLARITY HERO — lens of clarity
+         Aurora base + flow-field currents that clarify and spiral toward the
+         cursor, hidden customer-nodes that light up when found, a decode
+         headline (chaos→clarity), and a prism chromatic lens rim.
+    ═══════════════════════════════════════════ -->
+    <section
+      id="hero"
+      class="relative min-h-screen flex flex-col overflow-hidden bg-[#03060f]"
+      aria-label="Hero"
+    >
+      <HeroClarityCanvas />
+      <!-- Left legibility wash -->
+      <div class="absolute inset-0 bg-gradient-to-r from-[#03060f] via-[#03060f]/70 to-transparent pointer-events-none" aria-hidden="true"></div>
+      <!-- Film grain -->
+      <div class="absolute inset-0 bg-grain opacity-40 mix-blend-overlay pointer-events-none" aria-hidden="true"></div>
+      <!-- Bottom fade into next section -->
+      <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-surface-base to-transparent pointer-events-none" aria-hidden="true"></div>
+
+      <!-- Clarity content (matches /herotrials concept 21) -->
+      <div class="flex-1 flex items-center w-full">
+        <div class="max-w-7xl mx-auto px-6 sm:px-10 w-full relative z-10 pt-28" data-reveal="blur">
+          <div class="max-w-2xl">
+            <span class="inline-flex items-center gap-2 mb-7 text-xs font-medium tracking-[0.18em] uppercase text-brand-300">
+              <span class="w-6 h-px bg-brand-400"></span> Clarity from chaos
+            </span>
+
+            <Badge text="⭐ Trusted by 100+ clients across 10+ countries" color="brand" class="mb-5" />
+
+            <!-- Decode headline (resolves on load; data-final uses | for the line break) -->
+            <h1 data-scramble data-final="Get found|in the noise." class="font-display font-800 text-white leading-[0.98] tracking-[-0.03em] text-[clamp(2.7rem,6.4vw,5.4rem)] min-h-[1.95em]">
+              Get found<br />in the noise.
+            </h1>
+
+            <p class="mt-7 max-w-lg text-lg sm:text-xl text-slate-300/85 leading-relaxed">
+              Your next customers are out there — buried in a sea of sameness. We bring the clarity that makes them stop, look, and choose you.
+            </p>
+
+            <div class="mt-10 flex flex-wrap gap-4">
+              <a href="#services" class="px-7 py-3.5 rounded-full bg-brand-500 hover:bg-brand-400 text-white font-semibold transition-colors shadow-[0_0_40px_-6px_rgba(33,165,237,0.6)]">Make us findable</a>
+              <a href="#projects" class="px-7 py-3.5 rounded-full border border-white/15 hover:border-white/35 text-white font-semibold transition-colors">See the work</a>
+            </div>
+
+            <p data-clarity-hint class="mt-8 text-xs tracking-[0.2em] uppercase text-white/35">move your cursor — bring them into focus</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating glass stats dashboard, pinned to the bottom of the hero -->
+      <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 w-full">
+        <div id="hero-dashboard" class="relative w-full max-w-5xl mx-auto [perspective:1400px] group">
+          <div class="w-full h-[180px] sm:h-[260px] bg-surface-900/40 backdrop-blur-3xl border-t border-x border-white/10 rounded-t-[3rem] shadow-[0_-20px_100px_rgba(0,0,0,0.5)] transform rotate-x-12 translate-y-12 group-hover:rotate-x-0 group-hover:translate-y-0 transition-transform duration-1000 ease-out-expo overflow-hidden flex items-end justify-center pb-10 sm:pb-14 relative">
+
+            <!-- Scanning light sweep along the top edge -->
+            <div class="absolute top-0 inset-x-0 h-px overflow-hidden">
+              <div class="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-brand-400 to-transparent animate-scan-x"></div>
+            </div>
+
+            <!-- Fade to base color at bottom so it blends into the next section -->
+            <div class="absolute inset-0 bg-gradient-to-t from-surface-base via-transparent to-transparent z-10 pointer-events-none"></div>
+
+            <div class="relative z-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 w-full px-8">
+              {stats.map(s => (
+                <div class="text-center group-hover:-translate-y-2 transition-transform duration-700 delay-100">
+                  <div class="text-4xl sm:text-5xl lg:text-6xl font-display font-800 text-white mb-2" data-count-to={s.value}>0</div>
+                  <div class="text-xs sm:text-sm font-medium tracking-wider text-slate-400">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         2 · SERVICES (Cinematic Focus)
+    ═══════════════════════════════════════════ -->
+    <section id="services" class="section relative overflow-hidden" aria-labelledby="services-heading">
+      <div class="divider-x mb-0 absolute top-0 inset-x-0" aria-hidden="true"></div>
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 text-center" data-reveal="blur">
+        <SectionHeader
+          id="services-heading"
+          heading={`Our <span class="text-brand-500">Services</span>`}
+          subheading="Precision-engineered solutions for modern businesses."
+        />
+      </div>
+
+      <!-- Scroll Focus Container -->
+      <div class="max-w-5xl mx-auto space-y-[30vh] px-4 sm:px-6 pb-[20vh]" id="services-focus-list">
+        {services.map((s, i) => (
+          <div class="service-focus-card group relative bg-surface-900/10 border border-transparent rounded-[2rem] p-10 md:p-16 transition-[opacity,transform,filter,box-shadow,border-color,background-color] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] opacity-20 scale-75 blur-lg" data-index={i}>
+            
+            <!-- Background glow that activates on focus -->
+            <div class="absolute inset-0 bg-gradient-to-br from-brand-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-[2rem]"></div>
+            
+            <!-- Massive Watermark Icon -->
+            <div class="absolute -right-12 -bottom-20 text-[20rem] opacity-5 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-1000 pointer-events-none select-none">
+              {s.icon}
+            </div>
+
+            <div class="relative z-10 flex flex-col md:flex-row gap-12 items-center">
+              <div class="w-32 h-32 flex-shrink-0 rounded-[2rem] bg-surface-base border border-brand-500/20 flex items-center justify-center text-6xl shadow-inner shadow-brand-500/10 group-hover:scale-110 transition-transform duration-700">
+                {s.icon}
+              </div>
+              <div>
+                <h3 class="text-4xl sm:text-5xl font-display font-800 text-white mb-6 group-hover:text-brand-400 transition-colors duration-500">{s.title}</h3>
+                <p class="text-slate-400 text-xl leading-relaxed mb-8">{s.body}</p>
+                
+                <a
+                  href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 font-bold uppercase tracking-widest text-sm transition-colors duration-300"
+                >
+                  Start Project
+                  <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         3 · ABOUT
+    ═══════════════════════════════════════════ -->
+    <section id="about" class="section relative" style="background: linear-gradient(to bottom, var(--color-surface-base) 90%, transparent 90%);" aria-labelledby="about-heading" data-laser-glow-target>
+      <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+        <div class="divider-x absolute top-0 inset-x-0"></div>
+        <div class="blob-brand absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[400px] rounded-full opacity-60"></div>
+      </div>
+      <div class="laser-glow-layer" aria-hidden="true">
+        <div class="laser-glow-spot" data-laser-glow-spot></div>
+      </div>
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-reveal="blur">
+        <h2 id="about-heading" class="heading-lg text-white mb-6">
+          Who Are <span class="text-brand-500">We?</span>
+        </h2>
+        <p class="text-slate-400 leading-relaxed mb-4 text-lg">
+          We started with a simple belief: quality technology should be accessible to everyone.
+          We build websites and digital solutions that deliver measurable results — more leads,
+          more customers, more growth.
+        </p>
+        <p class="text-slate-400 leading-relaxed mb-8 text-lg">
+          Every project is custom-built, conversion-optimised, and delivered with attention
+          to detail your business deserves. With 100+ clients across 10+ countries, your
+          success is how we measure ours.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <Button href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true" target="_blank" rel="noopener noreferrer" variant="primary" id="about-cta">Work With Us</Button>
+          <Button href="https://g.page/r/Cfnfxgt2nKD4EAI/review" target="_blank" rel="noopener noreferrer" variant="secondary" id="about-review-cta" arrow={false}>Drop us a Review</Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         4 · WHY CHOOSE US (Sticky Scroll-Spy)
+    ═══════════════════════════════════════════ -->
+    <section id="why-choose-us" aria-labelledby="why-heading" class="relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid lg:grid-cols-2 gap-16 items-start relative">
+          
+          <!-- Sticky Left Side -->
+          <div class="lg:sticky lg:top-32 pt-24 pb-12 lg:pb-24 z-10">
+            <h2 id="why-heading" class="text-4xl sm:text-5xl lg:text-6xl font-display font-800 text-white leading-tight mb-6">
+              Why Choose <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-brand-500 to-brand-600">Us?</span>
+            </h2>
+            <p class="text-slate-400 text-lg sm:text-xl leading-relaxed max-w-md mb-8">
+              We do not build templates. We build high-performance systems designed to scale your operations and drive revenue.
+            </p>
+            <Button href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Start Building</Button>
+          </div>
+
+          <!-- Scrolling Right Side -->
+          <div class="lg:pt-[30vh] lg:pb-[30vh] space-y-32" id="why-scroll-items">
+            {whyUs.map((w, i) => (
+              <div class="relative group opacity-30 blur-sm scale-95 transition-all duration-700 ease-out why-item" data-index={i}>
+                <div class="w-16 h-16 rounded-2xl bg-surface-900 border border-brand-500/20 flex items-center justify-center text-2xl font-display font-800 text-brand-500 mb-6 group-hover:border-brand-500/50 group-hover:bg-brand-500/10 transition-colors duration-300">
+                  0{i + 1}
+                </div>
+                <h3 class="text-3xl text-white font-display font-700 mb-4">{w.title}</h3>
+                <p class="text-slate-400 text-lg leading-relaxed">{w.body}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         5 · PROCESS
+    ═══════════════════════════════════════════ -->
+    <section id="process" class="section relative" aria-labelledby="process-heading">
+      <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+        <div class="divider-x absolute top-0 inset-x-0"></div>
+        <div class="bg-dots absolute inset-0 opacity-40"></div>
+      </div>
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <SectionHeader
+          id="process-heading"
+          heading={`Our <span class="text-brand-500">Process</span>`}
+          subheading="Four clear steps from first call to live launch."
+          laserGlow
+        />
+
+        <!-- 2026 Sticky Stack -->
+        <div class="relative pb-32" data-reveal="blur">
+          {steps.map((s, i) => (
+            <div 
+              class="sticky w-full mb-24" 
+              style={`top: ${120 + i * 40}px; z-index: ${i};`}
+            >
+              <div class="bg-surface-900/80 backdrop-blur-3xl border border-white/5 rounded-3xl p-8 sm:p-12 shadow-[0_-20px_40px_rgba(0,0,0,0.6)] transform transition-transform duration-500 hover:scale-[1.02] hover:border-brand-500/30 group">
+                <div class="flex flex-col md:flex-row md:items-center gap-8">
+                  <!-- Large abstract number -->
+                  <div class="text-8xl sm:text-9xl font-display font-800 text-transparent bg-clip-text bg-gradient-to-b from-brand-500/50 to-brand-500/0 group-hover:from-brand-400/80 transition-colors duration-500">{s.n}</div>
+                  
+                  <!-- Content -->
+                  <div>
+                    <h3 class="text-2xl sm:text-4xl font-display font-700 text-white mb-4">{s.title}</h3>
+                    <p class="text-slate-400 text-lg leading-relaxed max-w-2xl">{s.body}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-12">
+          <Button href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true" target="_blank" rel="noopener noreferrer" variant="primary" size="lg" id="process-cta">
+            Take the First Step — Book a Call
+          </Button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         6 · PROJECTS (Horizontal Sticky Scroll)
+    ═══════════════════════════════════════════ -->
+    <section id="projects" aria-labelledby="projects-heading" class="relative bg-surface-base" data-laser-glow-target>
+      <div class="laser-glow-layer" aria-hidden="true">
+        <div class="laser-glow-spot" data-laser-glow-spot></div>
+      </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 pb-0">
+        <SectionHeader
+          id="projects-heading"
+          heading={`Our <span class="text-brand-500">Work</span>`}
+          subheading="Showcasing innovative solutions and exceptional performance."
+        />
+      </div>
+
+      <!-- Scroll container dictates how long the user scrolls vertically -->
+      <div id="projects-scroll-container" class="relative h-[300vh]">
+        <!-- Sticky viewport -->
+        <div class="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+          
+          <!-- The horizontal track -->
+          <div id="projects-track" class="flex gap-8 px-4 sm:px-12 w-max will-change-transform">
+            {projects.map((p, i) => (
+              <div class="w-[85vw] md:w-[60vw] lg:w-[45vw] flex-shrink-0 group">
+                <div class="relative rounded-3xl overflow-hidden aspect-[4/3] lg:aspect-video bg-surface-800 border border-white/10 group-hover:border-brand-500/50 transition-colors duration-500">
+                  <div class="absolute inset-0 bg-gradient-to-t from-surface-900 via-surface-900/40 to-transparent z-10"></div>
+                  <!-- Image Placeholder (if image fails) or actual image -->
+                  <img src={p.image} alt={p.title} class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out-expo" loading="lazy" />
+
+                  <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-8 lg:p-12 z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <Badge text={p.tag} class="mb-3 lg:mb-4" />
+                    <h3 class="text-2xl sm:text-3xl lg:text-5xl font-display font-700 text-white mb-2 lg:mb-4 leading-tight">{p.title}</h3>
+                    <p class="hidden lg:block text-slate-300 text-lg sm:text-xl max-w-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{p.desc}</p>
+
+                    {p.href && (
+                      <a href={p.href} target="_blank" rel="noopener noreferrer" class="hidden lg:inline-flex items-center gap-2 mt-6 text-brand-400 hover:text-brand-300 font-bold uppercase tracking-wider text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                        View Live Site
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         7 · TESTIMONIALS (Bi-directional Marquee)
+    ═══════════════════════════════════════════ -->
+    <section id="testimonials" class="section relative overflow-hidden" style="background: linear-gradient(to bottom, var(--color-surface-base) 90%, transparent 90%);" aria-labelledby="testimonials-heading" data-laser-glow-target>
+      <div class="divider-x absolute top-0 inset-x-0" aria-hidden="true"></div>
+
+      <div class="laser-glow-layer" aria-hidden="true">
+        <div class="laser-glow-spot" data-laser-glow-spot></div>
+      </div>
+
+      <!-- Blurred edge masks for marquees -->
+      <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-surface-base to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-surface-base to-transparent z-10 pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <SectionHeader
+          id="testimonials-heading"
+          heading={`What Clients <span class="text-brand-500">Say</span>`}
+        />
+      </div>
+
+      <!-- Marquee Row 1 (Left) -->
+      <div class="flex w-max animate-marquee space-x-8 hover:[animation-play-state:paused] mb-12">
+        {testimonials.slice(0, 3).map(t => (
+          <div class="w-[500px] flex-shrink-0">
+            <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
+          </div>
+        ))}
+        {testimonials.slice(0, 3).map(t => (
+          <div class="w-[500px] flex-shrink-0">
+            <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
+          </div>
+        ))}
+        {testimonials.slice(0, 3).map(t => (
+          <div class="w-[500px] flex-shrink-0">
+            <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
+          </div>
+        ))}
+      </div>
+
+      <!-- Marquee Row 2 (Right) -->
+      <div class="flex w-max animate-marquee-reverse space-x-8 hover:[animation-play-state:paused] ml-[-500px]">
+        {testimonials.slice(3, 6).map(t => (
+          <div class="w-[500px] flex-shrink-0">
+            <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
+          </div>
+        ))}
+        {testimonials.slice(3, 6).map(t => (
+          <div class="w-[400px] flex-shrink-0">
+            <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
+          </div>
+        ))}
+        {testimonials.slice(3, 6).map(t => (
+          <div class="w-[400px] flex-shrink-0">
+            <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
+          </div>
+        ))}
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         8 · FAQ
+    ═══════════════════════════════════════════ -->
+    <section id="faq" class="section relative" aria-labelledby="faq-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Sticky Left Side -->
+          <div class="lg:col-span-5 lg:sticky lg:top-32" data-reveal="blur">
+            <h2 id="faq-heading" class="text-4xl sm:text-5xl lg:text-6xl font-display font-800 text-white leading-tight mb-6">
+              Frequently Asked <br/><span class="text-brand-500">Questions</span>
+            </h2>
+            <p class="text-slate-400 text-lg leading-relaxed">
+              Straight answers about how we work and what to expect.
+            </p>
+          </div>
+
+          <!-- Scrolling Right Side FAQ List -->
+          <div class="lg:col-span-7">
+            <FAQList items={faqs} id="home-faq" />
+          </div>
+
+        </div>
+        
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════
+         9 · CONTACT
+    ═══════════════════════════════════════════ -->
+    <section id="contact" class="section relative" aria-labelledby="contact-heading">
+      <div class="divider-x absolute top-0 inset-x-0" aria-hidden="true"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div data-reveal="blur" class="stagger-1 mb-12">
+          <SectionHeader
+            id="contact-heading"
+            heading={`Let's Talk About <span class="text-brand-500">Your Project</span>`}
+            subheading="Book a Free 30-Minute Consultation"
+            laserGlow
+          />
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-10 items-stretch lg:min-h-[480px]">
+          <!-- Left: trust signals -->
+          <div class="h-full flex flex-col justify-center gap-6 stagger-1" data-reveal="blur">
+            {contactFeatures.map((cf) => (
+              <ContactFeature icon={cf.icon} title={cf.title} body={cf.body} />
+            ))}
+
+            <div class="glass-brand rounded-2xl p-6">
+              <h3 class="text-white font-display font-700 text-lg mb-2">Ready to transform your business?</h3>
+              <p class="text-slate-400 text-sm mb-4">Schedule a free 30-minute call to discuss your project needs and goals.</p>
+              <Button href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true" target="_blank" rel="noopener noreferrer" variant="primary" size="md">
+                Book an Appointment
+              </Button>
+            </div>
+          </div>
+
+          <!-- Right: Calendar Iframe -->
+          <div data-reveal="blur" class="h-full w-full bg-black rounded-3xl overflow-hidden shadow-2xl relative border border-white/10">
+            <!-- Pure Grayscale Inverted Calendar -->
+            <iframe
+              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true"
+              style="border: 0; background-color: white; filter: invert(1) grayscale(1) contrast(1.2);" frameborder="0" loading="lazy" title="Book a meeting with AiVirex"
+              class="w-full h-[580px] lg:h-full relative z-0"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+  <WhatsAppFloat phone="916382729213" message="Hi! I'd like to discuss a project." />
+</BaseLayout>
+
+<!-- Clarity hero — global so the dynamically-injected .sc scramble glyphs are styled -->
+<style is:global>
+  .clarity-aura {
+    background: #03060f;
+  }
+  [data-scramble] .sc { color: #5fc7ff; opacity: .75; }
+  [data-clarity-hint] { animation: clarity-pulse 2.4s ease-in-out infinite; }
+  @keyframes clarity-pulse { 0%,100% { opacity: .35 } 50% { opacity: .7 } }
+</style>
+
+
+
+<script>
+  // ════════════ CLARITY HERO — lens of clarity ════════════
+  (() => {
+    const hero = document.getElementById('hero');
+    if (!hero) return;
+
+    // — decode headline: chaos → clarity (re-runs on hover) —
+    const h1 = hero.querySelector('[data-scramble]');
+    if (h1) {
+      const lines = (h1.dataset.final || h1.textContent || '').split('|');
+      const glyphs = '!<>-_\\/[]{}=+*^?#§$%&';
+      let timer = 0;
+      const run = () => {
+        window.clearInterval(timer);
+        const settle = lines.map((l) => l.split('').map(() => 6 + Math.floor(Math.random() * 28)));
+        let f = 0;
+        timer = window.setInterval(() => {
+          h1.innerHTML = lines.map((l, li) => l.split('').map((ch, ci) => {
+            if (ch === ' ') return '&nbsp;';
+            if (f >= settle[li][ci]) return ch;
+            return `<span class="sc">${glyphs[(Math.random() * glyphs.length) | 0]}</span>`;
+          }).join('')).join('<br>');
+          if (++f > 42) window.clearInterval(timer);
+        }, 42);
+      };
+      run();
+      h1.addEventListener('mouseenter', run);
+    }
+  })();
+</script>
+
+<script>
+  // Hero Background Cursor-Tracking Spotlight
+  const heroBg = document.getElementById('hero-bg');
+  if (heroBg) {
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      heroBg.style.setProperty('--mouse-x', `${x}%`);
+      heroBg.style.setProperty('--mouse-y', `${y}%`);
+    });
+  }
+
+  // Hero Dashboard: animated count-up for stat numbers
+  const statEls = document.querySelectorAll('#hero-dashboard [data-count-to]');
+  if (statEls.length) {
+    const animateCount = (el) => {
+      const raw = el.dataset.countTo || '';
+      const match = raw.match(/^(\d+)(.*)$/);
+      if (!match) { el.textContent = raw; return; }
+      const target = parseInt(match[1], 10);
+      const suffix = match[2];
+      const duration = 1400;
+      const start = performance.now();
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      statEls.forEach((el) => { el.textContent = el.dataset.countTo || ''; });
+    } else {
+      const statObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      statEls.forEach((el) => statObserver.observe(el));
+    }
+  }
+
+  // Bending Scroll Track + Laser
+  const trackContainer = document.getElementById('scroll-track-container');
+  const trackSvg       = document.getElementById('scroll-track-svg');
+  const trackPath      = document.getElementById('scroll-track-path');
+  const laserCore      = document.getElementById('scroll-laser-core');
+  const laserLayers    = [
+    document.getElementById('scroll-laser-glow-3'),
+    document.getElementById('scroll-laser-glow-2'),
+    document.getElementById('scroll-laser-glow-1'),
+    document.getElementById('scroll-laser-halo'),
+    laserCore,
+  ].filter(Boolean);
+  const servicesList   = document.getElementById('services-focus-list');
+  const aboutSection   = document.getElementById('about');
+  const whySection     = document.getElementById('why-choose-us');
+  const whyHeading     = document.getElementById('why-heading');
+  const faqSection     = document.getElementById('faq');
+  const faqHeading     = document.getElementById('faq-heading');
+
+  const CORNER_RADIUS = 36;
+  const BEND_HEIGHT   = 80; // vertical run on each side of a left/right bend
+  const LASER_LENGTH  = 200;
+  const SAMPLE_STEP   = 8; // px spacing for the precomputed geometry table
+
+  // Precomputed [{ len, x, y }] along the whole track, built once in
+  // buildScrollPath(). Lets scroll updates do plain array math instead of
+  // calling the (surprisingly expensive) native getPointAtLength() every
+  // frame, which was the cause of the scroll-smoothness regression.
+  let pathSamples = [];
+
+  // Sections/headings that get a "laser illumination" glow as the beam
+  // passes behind them, with bounds (relative to trackContainer's top-left)
+  // recomputed on layout changes.
+  //
+  // - "section" targets (#about, #projects, #testimonials) already have an
+  //   opaque background + `.laser-glow-spot` child of their own.
+  // - "title" targets (SectionHeader with `laserGlow`) have no background of
+  //   their own — a floating patch (opaque + glow) is created for them in
+  //   #laser-glow-patches, sized to the heading's box. That patch sits at
+  //   -z-[15] — above the track (-z-50) but below section-local decoratives
+  //   like dot-grid backgrounds (-z-10) — so it occludes the track without
+  //   covering those decorations.
+  const laserGlowPatches = document.getElementById('laser-glow-patches');
+  const laserGlowTargets = Array.from(document.querySelectorAll('[data-laser-glow-target]')).map((el) => {
+    if (el.dataset.laserGlowTarget === 'title' && laserGlowPatches) {
+      // Soft elliptical vignette instead of a flat fill — occludes the
+      // track through the heading's core but fades to transparent on
+      // every side, so there's no straight edge anywhere (just a rounded
+      // glow blob) against the section's own background/texture.
+      const patch = document.createElement('div');
+      patch.className = 'absolute';
+      patch.style.background = 'radial-gradient(ellipse 50% 50% at center, var(--color-surface-base), var(--color-surface-base) 45%, transparent 75%)';
+      const layer = document.createElement('div');
+      layer.className = 'laser-glow-layer';
+      const spot = document.createElement('div');
+      spot.className = 'laser-glow-spot--title';
+      layer.appendChild(spot);
+      patch.appendChild(layer);
+      laserGlowPatches.appendChild(patch);
+      return { el, spot, patch, top: 0, left: 0, bottom: 0, spotW: 0, spotH: 0, isTitle: true };
+    }
+    return { el, spot: el.querySelector('[data-laser-glow-spot]'), patch: null, top: 0, left: 0, bottom: 0, spotW: 700, spotH: 700, isTitle: false };
+  });
+
+  function linePoints(x1, y1, x2, y2) {
+    const dist = Math.hypot(x2 - x1, y2 - y1);
+    const steps = Math.max(1, Math.round(dist / SAMPLE_STEP));
+    const pts = [];
+    for (let i = 1; i <= steps; i++) {
+      const t = i / steps;
+      pts.push({ x: x1 + (x2 - x1) * t, y: y1 + (y2 - y1) * t });
+    }
+    return pts;
+  }
+
+  function quadPoints(x1, y1, cx, cy, x2, y2) {
+    const steps = 8;
+    const pts = [];
+    for (let i = 1; i <= steps; i++) {
+      const t = i / steps;
+      const mt = 1 - t;
+      pts.push({
+        x: mt * mt * x1 + 2 * mt * t * cx + t * t * x2,
+        y: mt * mt * y1 + 2 * mt * t * cy + t * t * y2,
+      });
+    }
+    return pts;
+  }
+
+  // Rounded "circuit trace" connector: straight down, rounded corner into a
+  // horizontal run, then a rounded corner back to straight down — mirrors the
+  // rounded-corner cards instead of a sharp diagonal cut. Returns both the
+  // `d` fragment (for the visible path) and sampled points (for the LUT).
+  function roundedConnector(x1, y1, x2, y2) {
+    if (Math.abs(x2 - x1) < 1) {
+      return { d: ` L ${x2} ${y2}`, points: linePoints(x1, y1, x2, y2) };
+    }
+
+    const dir  = x2 > x1 ? 1 : -1;
+    const midY = (y1 + y2) / 2;
+    const r1   = Math.min(CORNER_RADIUS, Math.abs(midY - y1));
+    const r2   = Math.min(CORNER_RADIUS, Math.abs(y2 - midY));
+
+    const b = { x: x1, y: midY - r1 };
+    const c = { x: x1 + dir * r1, y: midY };
+    const e = { x: x2 - dir * r2, y: midY };
+    const f = { x: x2, y: midY + r2 };
+    const g = { x: x2, y: y2 };
+
+    const d =
+      ` L ${b.x} ${b.y}` +
+      ` Q ${x1} ${midY}, ${c.x} ${c.y}` +
+      ` L ${e.x} ${e.y}` +
+      ` Q ${x2} ${midY}, ${f.x} ${f.y}` +
+      ` L ${g.x} ${g.y}`;
+
+    const points = [
+      ...linePoints(x1, y1, b.x, b.y),
+      ...quadPoints(b.x, b.y, x1, midY, c.x, c.y),
+      ...linePoints(c.x, c.y, e.x, e.y),
+      ...quadPoints(e.x, e.y, x2, midY, f.x, f.y),
+      ...linePoints(f.x, f.y, g.x, g.y),
+    ];
+
+    return { d, points };
+  }
+
+  function buildScrollPath() {
+    if (!trackContainer || !trackPath || !servicesList || !aboutSection) return;
+
+    const containerRect = trackContainer.getBoundingClientRect();
+    const W = containerRect.width;
+    const H = containerRect.height;
+    if (!W || !H) return;
+
+    const centerX = W / 2;
+    const INSET = 24;
+
+    const cards = Array.from(servicesList.querySelectorAll('.service-focus-card'));
+    let d = `M ${centerX} 0`;
+    let curX = centerX;
+    let curY = 0;
+    const points = [{ x: centerX, y: 0 }];
+
+    const addConnector = (x2, y2) => {
+      const seg = roundedConnector(curX, curY, x2, y2);
+      d += seg.d;
+      points.push(...seg.points);
+      curX = x2; curY = y2;
+    };
+
+    cards.forEach((card) => {
+      // Cards are scaled in/out of focus (scale-75 <-> scale-100, animated
+      // over 1s) by the Cinematic Focus observer, so getBoundingClientRect()
+      // returns a box whose size depends on which animation frame we sample —
+      // anchoring bends to that would make them swim during the transition.
+      // transform: scale() keeps the element's center fixed (default
+      // transform-origin: center), so the rect's center is scale-independent;
+      // combine it with offsetWidth/offsetHeight (the untransformed layout
+      // box) to get a stable "at rest, in focus" box for the bend anchors.
+      const r = card.getBoundingClientRect();
+      const cx = (r.left + r.right) / 2;
+      const cy = (r.top + r.bottom) / 2;
+      const natW = card.offsetWidth;
+      const natH = card.offsetHeight;
+      const top    = cy - natH / 2 - containerRect.top;
+      const bottom = cy + natH / 2 - containerRect.top;
+      const left   = cx - natW / 2 - containerRect.left + INSET;
+      const right  = cx + natW / 2 - containerRect.left - INSET;
+
+      // bend in to touch the left edge of the card
+      addConnector(left, top);
+
+      // sweep across to the right edge of the same card
+      addConnector(right, bottom);
+    });
+
+    // bend back to center for the "Who Are We" section — fixed offset from
+    // the section's top (not a fraction of its height) so shortening the
+    // section via padding doesn't drag this bend point along with it.
+    const aboutRect = aboutSection.getBoundingClientRect();
+    const aboutY = aboutRect.top - containerRect.top + 230;
+    addConnector(centerX, aboutY);
+
+    laserGlowTargets.forEach((g) => {
+      const r = g.el.getBoundingClientRect();
+      g.top = r.top - containerRect.top;
+      g.left = r.left - containerRect.left;
+      g.bottom = r.bottom - containerRect.top;
+      if (g.patch) {
+        // Half-width, 1.3x height — centered on the heading's own box.
+        const patchWidth  = r.width / 2;
+        const patchHeight = r.height * 1.3;
+        g.patch.style.left   = `${g.left + (r.width - patchWidth) / 2}px`;
+        g.patch.style.top    = `${g.top - (patchHeight - r.height) / 2}px`;
+        g.patch.style.width  = `${patchWidth}px`;
+        g.patch.style.height = `${patchHeight}px`;
+
+        // Size the glow ellipse so its gradient reaches `transparent` right
+        // at the patch's own edge (70% of the gradient's radius == half the
+        // patch's width/height) — `.laser-glow-layer`'s clip then never cuts
+        // across a still-visible part of the glow.
+        g.spotW = patchWidth / 0.7;
+        g.spotH = patchHeight / 0.7;
+        g.spot.style.width  = `${g.spotW}px`;
+        g.spot.style.height = `${g.spotH}px`;
+      }
+    });
+
+    const clampX = (x) => Math.min(Math.max(x, 8), W - 8);
+
+    // "Why Choose Us": stay straight through "Who Are We", then bend left to
+    // run alongside the sticky heading for the section, then bend back to
+    // center to connect into "Our Process".
+    if (whySection && whyHeading) {
+      const whyRect     = whySection.getBoundingClientRect();
+      const whyHeadRect = whyHeading.getBoundingClientRect();
+      // Shift the bend at the #about/#why-choose-us boundary up slightly so
+      // the track's horizontal run sits inside #about rather than right on
+      // the seam between the two sections' backgrounds.
+      const whyTop      = whyRect.top - containerRect.top - window.innerHeight * 0.01;
+      const whyBottom   = whyRect.bottom - containerRect.top;
+      const whyLeftX    = clampX(whyHeadRect.left - containerRect.left - INSET);
+
+      addConnector(centerX, Math.max(curY, whyTop - BEND_HEIGHT));
+      addConnector(whyLeftX, Math.max(curY, whyTop + BEND_HEIGHT));
+      addConnector(whyLeftX, Math.max(curY, whyBottom - BEND_HEIGHT));
+      addConnector(centerX, Math.max(curY, whyBottom + BEND_HEIGHT));
+    }
+
+    // "FAQ": stay straight through "Our Process", then repeat the same left
+    // excursion alongside the FAQ heading, then return to center to finish.
+    if (faqSection && faqHeading) {
+      const faqRect     = faqSection.getBoundingClientRect();
+      const faqHeadRect = faqHeading.getBoundingClientRect();
+      // Same nudge as the #why-choose-us bend above: keep the horizontal run
+      // inside #testimonials rather than on the seam with #faq.
+      const faqTop      = faqRect.top - containerRect.top - window.innerHeight * 0.01;
+      const faqBottom   = faqRect.bottom - containerRect.top;
+      const faqLeftX    = clampX(faqHeadRect.left - containerRect.left - INSET);
+
+      addConnector(centerX, Math.max(curY, faqTop - BEND_HEIGHT));
+      addConnector(faqLeftX, Math.max(curY, faqTop + BEND_HEIGHT));
+      addConnector(faqLeftX, Math.max(curY, faqBottom - BEND_HEIGHT));
+      addConnector(centerX, Math.max(curY, faqBottom + BEND_HEIGHT));
+    }
+
+    // straight run for the rest of the page
+    d += ` L ${centerX} ${H}`;
+    points.push(...linePoints(curX, curY, centerX, H));
+
+    trackPath.setAttribute('d', d);
+    if (trackSvg) trackSvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+    // Rebuild the lookup table used by computeTargetLen()/renderLaserAt().
+    let cumLen = 0;
+    pathSamples = [{ len: 0, x: points[0].x, y: points[0].y }];
+    for (let i = 1; i < points.length; i++) {
+      const prev = points[i - 1];
+      const cur = points[i];
+      cumLen += Math.hypot(cur.x - prev.x, cur.y - prev.y);
+      pathSamples.push({ len: cumLen, x: cur.x, y: cur.y });
+    }
+
+    // Y has flat plateaus along each bend's horizontal run (every sample in
+    // that run shares the same Y), which makes len(Y) a step function — a
+    // tiny scroll across the plateau's Y used to snap `len` across the whole
+    // run. Spread each plateau's samples over a small Y band (`ys`) so len(Y)
+    // becomes continuous everywhere: steep through bends, ~1:1 elsewhere.
+    // The position-easing loop then turns that steep stretch into a smooth
+    // glide instead of chasing a teleport.
+    const n = pathSamples.length;
+    let i = 0;
+    while (i < n) {
+      let j = i;
+      while (j + 1 < n && pathSamples[j + 1].y === pathSamples[i].y) j++;
+      const Yp = pathSamples[i].y;
+      if (j > i) {
+        let eps = 24;
+        if (i > 0) eps = Math.min(eps, (Yp - pathSamples[i - 1].y) / 2 - 0.01);
+        if (j < n - 1) eps = Math.min(eps, (pathSamples[j + 1].y - Yp) / 2 - 0.01);
+        eps = Math.max(eps, 0.01);
+        const count = j - i + 1;
+        for (let k = 0; k < count; k++) {
+          pathSamples[i + k].ys = Yp - eps + (2 * eps) * (k / (count - 1));
+        }
+      } else {
+        pathSamples[i].ys = Yp;
+      }
+      i = j + 1;
+    }
+  }
+
+  // Where along the track the laser *should* be, based on scroll position.
+  // Binary-search the precomputed table (by the smoothed `ys`) for the sample
+  // matching the target scroll position — pure array math, no SVG geometry
+  // queries on the hot path. renderLaserAt() is driven by an eased value that
+  // chases this target, smoothing out the steep stretches around bends into a
+  // gentle glide.
+  function computeTargetLen() {
+    if (pathSamples.length < 2) return 0;
+    const startY = pathSamples[0].ys;
+    const endY = pathSamples[pathSamples.length - 1].ys;
+    const targetY = Math.min(Math.max(window.scrollY + window.innerHeight * 0.4, startY), endY);
+
+    let lo = 0, hi = pathSamples.length - 1;
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1;
+      if (pathSamples[mid].ys < targetY) lo = mid + 1; else hi = mid;
+    }
+    return pathSamples[lo].len;
+  }
+
+  function renderLaserAt(L) {
+    if (!laserLayers.length || pathSamples.length < 2) return;
+
+    const totalLength = pathSamples[pathSamples.length - 1].len;
+    const segStart = Math.max(0, L - LASER_LENGTH / 2);
+    const segEnd   = Math.min(totalLength, L + LASER_LENGTH / 2);
+
+    let i0 = 0, i1 = pathSamples.length - 1;
+    while (i0 < i1) {
+      const mid = (i0 + i1) >> 1;
+      if (pathSamples[mid].len < segStart) i0 = mid + 1; else i1 = mid;
+    }
+    let j0 = 0, j1 = pathSamples.length - 1;
+    while (j0 < j1) {
+      const mid = (j0 + j1 + 1) >> 1;
+      if (pathSamples[mid].len > segEnd) j1 = mid - 1; else j0 = mid;
+    }
+
+    let d = '';
+    for (let i = i0; i <= j1; i++) {
+      const p = pathSamples[i];
+      d += i === i0 ? `M ${p.x} ${p.y}` : ` L ${p.x} ${p.y}`;
+    }
+    if (d) {
+      for (const layer of laserLayers) layer.setAttribute('d', d);
+    }
+  }
+
+  // Interpolated point on the track at arc-length L — used to position the
+  // "illumination" glow on sections the laser passes behind.
+  function getPointAtLen(L) {
+    const n = pathSamples.length;
+    if (n < 2) return { x: 0, y: 0 };
+    let lo = 0, hi = n - 1;
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1;
+      if (pathSamples[mid].len < L) lo = mid + 1; else hi = mid;
+    }
+    if (lo === 0) return { x: pathSamples[0].x, y: pathSamples[0].y };
+    const a = pathSamples[lo - 1], b = pathSamples[lo];
+    const t = b.len > a.len ? (L - a.len) / (b.len - a.len) : 0;
+    return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t };
+  }
+
+  // Fades each glow target in/out as the laser's current point enters and
+  // leaves its vertical range, and keeps the glow centred under the laser
+  // while it's inside.
+  const LASER_GLOW_FADE = 200; // px ramp at a target's top/bottom edges
+  function updateLaserGlows(point) {
+    laserGlowTargets.forEach(({ spot, top, left, bottom, spotW, spotH, isTitle }) => {
+      if (!spot) return;
+
+      let intensity = 0;
+      if (point.y < top) {
+        intensity = 1 - (top - point.y) / LASER_GLOW_FADE;
+      } else if (point.y > bottom) {
+        intensity = 1 - (point.y - bottom) / LASER_GLOW_FADE;
+      } else {
+        intensity = 1;
+      }
+      intensity = Math.max(0, Math.min(1, intensity));
+
+      spot.style.opacity = String(intensity * 0.8);
+      // Title spots stay centred on the heading (see .laser-glow-spot--title)
+      // so the glow never travels onto the track's bend above/below it.
+      if (!isTitle && intensity > 0) {
+        const relX = point.x - left;
+        const relY = point.y - top;
+        spot.style.transform = `translate(${relX - spotW / 2}px, ${relY - spotH / 2}px)`;
+      }
+    });
+  }
+
+  // Eased "current" position chases the scroll-driven target every frame —
+  // decouples the laser from scroll-event frequency (smoother on trackpads)
+  // and turns the bend-plateau jumps into quick smooth slides.
+  // Two cascaded exponential filters (a fast one chasing the raw target, a
+  // slower one chasing that) approximate a critically-damped spring: the
+  // result eases in AND out, so a sudden change in scroll direction curves
+  // smoothly instead of reversing velocity instantly — no "stuck then snap"
+  // feeling. Rates are expressed per-1000ms so the glide feels the same
+  // regardless of display refresh rate (60Hz vs 120/144Hz).
+  const LASER_EASE_FAST_PER_SEC = 9;
+  const LASER_EASE_SLOW_PER_SEC = 4.5;
+  let midLen = 0;
+  let currentLen = 0;
+  let targetLen = 0;
+  let lastFrameTime = 0;
+
+  function refreshScrollTrack() {
+    buildScrollPath();
+    currentLen = midLen = targetLen = computeTargetLen();
+    renderLaserAt(currentLen);
+    updateLaserGlows(getPointAtLen(currentLen));
+  }
+
+  function laserLoop(now) {
+    if (!lastFrameTime) lastFrameTime = now;
+    const dt = (now - lastFrameTime) / 1000;
+    lastFrameTime = now;
+
+    targetLen = computeTargetLen();
+    const fastFactor = 1 - Math.exp(-LASER_EASE_FAST_PER_SEC * dt);
+    const slowFactor = 1 - Math.exp(-LASER_EASE_SLOW_PER_SEC * dt);
+    midLen += (targetLen - midLen) * fastFactor;
+    currentLen += (midLen - currentLen) * slowFactor;
+
+    if (Math.abs(targetLen - currentLen) < 0.05 && Math.abs(midLen - currentLen) < 0.05) {
+      midLen = currentLen = targetLen;
+    }
+    renderLaserAt(currentLen);
+    updateLaserGlows(getPointAtLen(currentLen));
+    requestAnimationFrame(laserLoop);
+  }
+
+  let trackResizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(trackResizeTimer);
+    trackResizeTimer = setTimeout(refreshScrollTrack, 150);
+  });
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(refreshScrollTrack);
+  }
+  window.addEventListener('load', refreshScrollTrack);
+  refreshScrollTrack();
+  requestAnimationFrame(laserLoop);
+
+  // Scroll Animations Logic
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (scrollTicking) return;
+    scrollTicking = true;
+
+    requestAnimationFrame(() => {
+      // 1. Horizontal Scroll (Projects Section)
+      const projectsContainer = document.getElementById('projects-scroll-container');
+      const projectsTrack = document.getElementById('projects-track');
+
+      if (projectsContainer && projectsTrack) {
+        const rect = projectsContainer.getBoundingClientRect();
+        if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+          const scrollProgress = Math.abs(rect.top) / (rect.height - window.innerHeight);
+          const maxScroll = projectsTrack.scrollWidth - window.innerWidth;
+          projectsTrack.style.transform = `translateX(-${scrollProgress * maxScroll}px)`;
+        } else if (rect.top > 0) {
+          projectsTrack.style.transform = `translateX(0px)`;
+        } else if (rect.bottom < window.innerHeight) {
+          const maxScroll = projectsTrack.scrollWidth - window.innerWidth;
+          projectsTrack.style.transform = `translateX(-${maxScroll}px)`;
+        }
+      }
+
+      scrollTicking = false;
+    });
+  });
+
+  // 2. Scroll Spy (Why Choose Us)
+  const whyItems = document.querySelectorAll('.why-item');
+  if (whyItems.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-30', 'blur-sm', 'scale-95');
+          entry.target.classList.add('opacity-100', 'blur-0', 'scale-100');
+        } else {
+          entry.target.classList.add('opacity-30', 'blur-sm', 'scale-95');
+          entry.target.classList.remove('opacity-100', 'blur-0', 'scale-100');
+        }
+      });
+    }, { rootMargin: '-40% 0px -40% 0px' });
+
+    whyItems.forEach(item => observer.observe(item));
+  }
+
+  // 3. Cinematic Focus (Services)
+  const serviceCards = document.querySelectorAll('.service-focus-card');
+  if (serviceCards.length > 0) {
+    const focusObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-20', 'scale-75', 'blur-lg', 'bg-surface-900/10');
+          entry.target.classList.add('opacity-100', 'scale-100', 'blur-0', 'bg-surface-900/85', 'shadow-[0_0_40px_rgba(33,165,237,0.15)]', 'border-brand-500/30');
+        } else {
+          entry.target.classList.add('opacity-20', 'scale-75', 'blur-lg', 'bg-surface-900/10');
+          entry.target.classList.remove('opacity-100', 'scale-100', 'blur-0', 'bg-surface-900/85', 'shadow-[0_0_40px_rgba(33,165,237,0.15)]', 'border-brand-500/30');
+        }
+      });
+    }, { rootMargin: '-35% 0px -35% 0px' });
+
+    serviceCards.forEach(card => focusObserver.observe(card));
+  }
+</script>
+
+
+

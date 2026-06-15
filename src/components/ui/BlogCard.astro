@@ -1,0 +1,65 @@
+---
+/**
+ * BlogCard.astro
+ * Card for blog posts in the grid.
+ *
+ * Props
+ * ─────
+ * title       : string
+ * description : string
+ * date        : string
+ * tag         : string
+ * tagColor    : string (Tailwind classes for gradient)
+ * image       : string?
+ * href        : string? (default '#')
+ */
+interface Props {
+  title:       string;
+  description: string;
+  date:        string;
+  tag:         string;
+  tagColor:    string;
+  image?:      string;
+  href?:       string;
+}
+
+const { title, description, date, tag, tagColor, image, href = '#' } = Astro.props;
+---
+
+<article class="bg-surface-800/20 border border-brand-500/10 hover:border-brand-500/30 transition-colors duration-300 rounded-lg overflow-hidden group flex flex-col h-full">
+
+  <!-- Thumbnail placeholder or image -->
+  <a href={href} class="block bg-surface-800/70 h-48 relative border-b border-white/5 overflow-hidden" aria-label={`Read article: ${title}`} tabindex="-1">
+    {image ? (
+      <img src={image} alt="" class="w-full h-full object-cover" loading="lazy" />
+    ) : (
+      <div class="absolute inset-0 bg-gradient-to-br from-surface-800 to-surface-900">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
+      </div>
+    )}
+  </a>
+
+  <div class="p-6 flex flex-col flex-1">
+    <!-- Tag + Date -->
+    <div class="flex items-center justify-between mb-4">
+      <span class={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-white bg-gradient-to-r ${tagColor}`}>
+        {tag}
+      </span>
+      <time class="text-slate-500 text-xs font-medium">{date}</time>
+    </div>
+
+    <h2 class="text-white font-display font-600 text-lg leading-snug mb-3 group-hover:text-brand-300 transition-colors duration-200">
+      {title}
+    </h2>
+    <p class="text-slate-400 text-sm leading-relaxed flex-1">{description}</p>
+
+    <a
+      href={href}
+      class="inline-flex items-center gap-1.5 text-brand-400 hover:text-brand-300 text-sm font-semibold mt-6 transition-colors duration-200 group/link"
+      aria-label={`Read more about ${title}`}
+    >
+      Read article
+      <svg class="w-4 h-4 transition-transform duration-200 group-hover/link:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</article>

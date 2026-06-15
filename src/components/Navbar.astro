@@ -1,0 +1,235 @@
+---
+// Navbar.astro – sticky top navigation
+import Button from './ui/Button.astro';
+
+const pathname = Astro.url.pathname;
+const isHome = pathname === '/' || pathname === '';
+const isAttendify = pathname.includes('/attendify');
+const logoSrc = isAttendify ? '/assets/img/black bg.png' : '/assets/img/logo.png';
+const logoAlt = isAttendify ? 'Attendify Logo' : 'AiVirex Logo';
+
+interface NavLink {
+  label: string;
+  href: string;
+  dropdown?: { label: string; href: string }[];
+}
+
+const aboutDropdown = [
+  { label: 'Process',      href: isHome ? '#process' : '/#process' },
+  { label: 'Testimonials', href: isHome ? '#testimonials' : '/#testimonials' },
+  { label: 'FAQ',          href: isHome ? '#faq' : '/#faq' },
+  { label: 'Blog',          href: '/blog' },
+];
+
+const mainNavLinks: NavLink[] = [
+  { label: 'Home',     href: '/' },
+  { label: 'Services', href: isHome ? '#services' : '/#services' },
+  { label: 'About',    href: isHome ? '#about' : '/#about', dropdown: aboutDropdown },
+  { label: 'Projects', href: isHome ? '#projects' : '/#projects' },
+  { label: 'Contact',  href: isHome ? '#contact' : '/#contact' },
+];
+
+const attendifyNavLinks: NavLink[] = [
+  { label: 'Home',      href: '/' },
+  { label: 'Features',  href: '#features' },
+  { label: 'Pricing',   href: '#pricing' },
+  { label: 'Contact',   href: '/#contact' },
+  { label: 'Blog',      href: '/blog' },
+];
+
+const navLinks = isAttendify ? attendifyNavLinks : mainNavLinks;
+
+// Products dropdown
+const products = [
+  { label: 'Sportios', href: 'https://sportios.in', external: true },
+  { label: 'Attendify',  href: '/attendify' },
+  { label: 'AdTown', href: 'https://adtown.space', external: true },
+];
+
+// Internships dropdown
+const internships = [
+  { label: 'Technical Internship', href: 'https://forms.gle/BBn1C5nLkHhQ6rhaA', external: true },
+  { label: 'Marketing Internship', href: 'https://forms.gle/Bs7UbBayTzwA9wUN6', external: true },
+];
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-300"
+>
+  <div id="site-header-bg" class="bg-transparent border-b border-transparent transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2 group" aria-label="Home">
+          <img src={logoSrc} alt={logoAlt} class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav aria-label="Primary navigation" class="hidden md:flex items-center gap-1">
+          <!-- Products dropdown -->
+          <div class="relative group">
+            <button type="button" class="text-sm text-slate-400 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all duration-200 font-medium flex items-center gap-1" aria-haspopup="true">
+              Products
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-44 bg-surface-800/90 backdrop-blur-xl rounded-xl border border-brand-500/20 py-1.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl z-50">
+              {products.map(p => (
+                <a href={p.href} class="block px-4 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors duration-150 font-medium" {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{p.label}</a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Internships dropdown -->
+          <div class="relative group">
+            <button type="button" class="text-sm text-slate-400 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all duration-200 font-medium flex items-center gap-1" aria-haspopup="true">
+              Internships
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-48 bg-surface-800/90 backdrop-blur-xl rounded-xl border border-brand-500/20 py-1.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl z-50">
+              {internships.map(i => (
+                <a href={i.href} class="block px-4 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors duration-150 font-medium" target="_blank" rel="noopener noreferrer">{i.label}</a>
+              ))}
+            </div>
+          </div>
+          {navLinks.map(link => (
+            link.dropdown ? (
+              <div class="relative group">
+                <a href={link.href} class="text-sm text-slate-400 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all duration-200 font-medium flex items-center gap-1">
+                  {link.label}
+                  <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </a>
+                <div class="absolute top-full left-0 mt-1 w-44 bg-surface-800/90 backdrop-blur-xl rounded-xl border border-brand-500/20 py-1.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl z-50">
+                  {link.dropdown.map(item => (
+                    <a href={item.href} class="block px-4 py-2 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors duration-150 font-medium">{item.label}</a>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <a
+                href={link.href}
+                class="text-sm text-slate-400 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all duration-200 font-medium"
+              >
+                {link.label}
+              </a>
+            )
+          ))}
+        </nav>
+
+        <!-- CTA -->
+        <div class="flex items-center gap-3">
+          <!-- Removed login -->
+          <Button
+            id="nav-cta"
+            href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="primary"
+            size="sm"
+            class="hidden sm:inline-flex"
+            arrow={false}
+          >
+            Get Started
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </Button>
+
+          <!-- Mobile menu button -->
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            aria-label="Toggle mobile menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors duration-200"
+          >
+            <svg id="icon-menu"   xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="md:hidden hidden border-t border-white/5 px-4 pb-4 pt-2 bg-surface-base"
+    >
+      <nav aria-label="Mobile navigation" class="flex flex-col gap-1">
+        <p class="text-xs text-slate-600 font-semibold uppercase tracking-wider px-3 pt-2 pb-1">Products</p>
+        {products.map(p => (
+          <a href={p.href} class="text-sm text-slate-400 hover:text-white px-3 py-2.5 rounded-lg hover:bg-white/5 transition-all duration-200 font-medium pl-5" {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{p.label}</a>
+        ))}
+        <p class="text-xs text-slate-600 font-semibold uppercase tracking-wider px-3 pt-3 pb-1">Internships</p>
+        {internships.map(i => (
+          <a href={i.href} class="text-sm text-slate-400 hover:text-white px-3 py-2.5 rounded-lg hover:bg-white/5 transition-all duration-200 font-medium pl-5" target="_blank" rel="noopener noreferrer">{i.label}</a>
+        ))}
+        <div class="h-px bg-white/5 my-2"></div>
+        {navLinks.map(link => (
+          link.dropdown ? (
+            <>
+              <a
+                href={link.href}
+                class="text-sm text-slate-400 hover:text-white px-3 py-2.5 rounded-lg hover:bg-white/5 transition-all duration-200 font-medium"
+              >
+                {link.label}
+              </a>
+              {link.dropdown.map(item => (
+                <a href={item.href} class="text-sm text-slate-400 hover:text-white px-3 py-2.5 rounded-lg hover:bg-white/5 transition-all duration-200 font-medium pl-5">{item.label}</a>
+              ))}
+            </>
+          ) : (
+            <a
+              href={link.href}
+              class="text-sm text-slate-400 hover:text-white px-3 py-2.5 rounded-lg hover:bg-white/5 transition-all duration-200 font-medium"
+            >
+              {link.label}
+            </a>
+          )
+        ))}
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn    = document.getElementById('mobile-menu-btn')!;
+  const menu   = document.getElementById('mobile-menu')!;
+  const iconMenu  = document.getElementById('icon-menu')!;
+  const iconClose = document.getElementById('icon-close')!;
+
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!open));
+    iconMenu.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+  });
+
+  // Close mobile menu when a link is clicked
+  menu.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      iconMenu.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    })
+  );
+
+  // Fade navbar background from transparent (over the hero) to solid
+  // black once the page is scrolled.
+  const headerBg = document.getElementById('site-header-bg')!;
+  const SCROLL_THRESHOLD = 60;
+
+  const updateHeaderBg = () => {
+    if (window.scrollY > SCROLL_THRESHOLD) {
+      headerBg.classList.remove('bg-transparent', 'border-transparent');
+      headerBg.classList.add('bg-surface-base/80', 'backdrop-blur-md', 'border-brand-500/10');
+    } else {
+      headerBg.classList.remove('bg-surface-base/80', 'backdrop-blur-md', 'border-brand-500/10');
+      headerBg.classList.add('bg-transparent', 'border-transparent');
+    }
+  };
+
+  updateHeaderBg();
+  window.addEventListener('scroll', updateHeaderBg, { passive: true });
+</script>

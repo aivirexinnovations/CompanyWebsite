@@ -1,0 +1,16 @@
+# Netlify build & serving config for the Astro static site.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Astro 6 + package.json engines require Node >= 22.12. Pin it so the Netlify
+# build doesn't fall back to an older default Node and fail.
+[build.environment]
+  NODE_VERSION = "22"
+
+# Canonical URL form: strip .html extensions and trailing slashes.
+# This matches the <link rel="canonical"> and sitemap URLs emitted by the build,
+# so crawlers always land on the non-redirecting form.
+[build.processing.html]
+  pretty_urls = true

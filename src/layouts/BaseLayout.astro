@@ -1,0 +1,238 @@
+---
+// BaseLayout.astro – shared layout for all pages
+// Import global styles (Tailwind v4 + design tokens)
+import '../styles/global.css';
+
+export interface Props {
+  /** Page title – appended with site name */
+  title: string;
+  /** Meta description for SEO & GEO */
+  description: string;
+  /** Canonical URL override (defaults to Astro.url) */
+  canonicalUrl?: string;
+  /** OG image absolute URL */
+  ogImage?: string;
+  /** Page type for OG (default: website) */
+  ogType?: 'website' | 'article';
+  /** Per-page keywords for SEO */
+  keywords?: string;
+  /** Array of JSON-LD structured data objects */
+  schemas?: Record<string, unknown>[];
+  /** Include hreflang tags (default: false) */
+  includeHreflang?: boolean;
+  /** geo.region meta value (default: US) */
+  geoRegion?: string;
+  /** geo.placename meta value (default: United States) */
+  geoPlacename?: string;
+}
+
+const {
+  title,
+  description,
+  canonicalUrl,
+  ogImage = 'https://aivirex.in/assets/img/logo.png',
+  ogType = 'website',
+  keywords,
+  schemas,
+  includeHreflang = false,
+  geoRegion = 'US',
+  geoPlacename = 'United States',
+} = Astro.props;
+
+const siteName  = 'AiVirex Innovations';
+const siteUrl   = Astro.site?.toString().replace(/\/$/, '') ?? 'https://aivirex.in';
+// Canonical: strip trailing slash (except root) so canonical, OG url, hreflang and the
+// sitemap all agree on one URL form (matches Netlify pretty_urls). No split signals.
+const rawCanonical = canonicalUrl ?? Astro.url.href;
+const canonical = (() => {
+  try {
+    const u = new URL(rawCanonical);
+    if (u.pathname !== '/' && u.pathname.endsWith('/')) {
+      u.pathname = u.pathname.replace(/\/+$/, '');
+    }
+    return u.href;
+  } catch {
+    return rawCanonical;
+  }
+})();
+const fullTitle = `${title} | ${siteName}`;
+const ogImageAbs = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+// Default Organization schema injected when no schemas are provided
+const defaultSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'AiVirex Innovations LLP',
+  url: 'https://aivirex.in',
+  logo: 'https://aivirex.in/assets/img/logo.png',
+  description: 'AiVirex is a custom website development agency delivering research-backed, high-converting websites in 14 days. Trusted by 100+ businesses across USA, UK, Canada, Australia, UAE, and Europe.',
+  founder: { '@type': 'Person', name: 'K Sai Anirudh' },
+  areaServed: [
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'Canada' },
+    { '@type': 'Country', name: 'Australia' },
+    { '@type': 'Country', name: 'United Arab Emirates' },
+    { '@type': 'Country', name: 'India' },
+    { '@type': 'Country', name: 'Germany' },
+    { '@type': 'Country', name: 'Netherlands' },
+  ],
+  sameAs: [
+    'https://www.linkedin.com/company/aandvinnovations',
+    'https://www.instagram.com/aivirex.in/',
+    'https://www.facebook.com/AiVirex-Innovations-108689034703627/',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    email: 'contactaivirex@gmail.com',
+    availableLanguage: 'English',
+  },
+};
+
+const schemaList = schemas && schemas.length > 0 ? schemas : [defaultSchema];
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <!-- Charset & Viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Primary SEO -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="author" content="Aivirex innovations" />
+    {keywords && <meta name="keywords" content={keywords} />}
+
+    <!-- GEO / AI discoverability -->
+    <meta name="ai-content-type" content="website" />
+    <link rel="alternate" type="text/plain" href="/llm.txt" title="LLM-readable site summary" />
+    <meta name="geo.region" content={geoRegion} />
+    <meta name="geo.placename" content={geoPlacename} />
+
+    <!-- Facebook Domain Verification -->
+    <meta name="facebook-domain-verification" content="zljhod2hxxzcycha6zgo915rsggcm8" />
+
+    <!-- Hreflang tags (for international SEO) -->
+    {includeHreflang && (
+      <>
+        <link rel="alternate" hreflang="en" href={canonical} />
+        <link rel="alternate" hreflang="en-US" href={canonical} />
+        <link rel="alternate" hreflang="en-GB" href={canonical} />
+        <link rel="alternate" hreflang="en-AU" href={canonical} />
+        <link rel="alternate" hreflang="en-CA" href={canonical} />
+        <link rel="alternate" hreflang="x-default" href={canonical} />
+      </>
+    )}
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content={ogType} />
+    <meta property="og:url"         content={canonical} />
+    <meta property="og:title"       content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={ogImageAbs} />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name"   content={siteName} />
+    <meta property="og:locale"      content="en_US" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:site"        content="@aivirex" />
+    <meta name="twitter:title"       content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={ogImageAbs} />
+
+    <!-- Favicons -->
+    <link rel="icon"             href="/favicon.ico" sizes="any" />
+    <link rel="icon"             href="/favicon.svg"  type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest"         href="/site.webmanifest" />
+    <meta name="theme-color" content="#0e90e2" />
+
+    <!-- Preconnect for external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://calendar.google.com" />
+
+    <!-- Structured Data (JSON-LD) -->
+    {schemaList.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SXFYBHZGCB"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-SXFYBHZGCB');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script is:inline>
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "vh3ne3of93");
+    </script>
+
+    <!-- Apollo Tracker -->
+    <script is:inline>
+      function initApollo(){
+        var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+        o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n;
+        o.async=true;o.defer=true;
+        o.onload=function(){window.trackingFunctions.onLoad({appId:"692fcc6d82a1260015e75b10"})};
+        document.head.appendChild(o);
+      }
+      initApollo();
+    </script>
+
+    <!-- Generator tag (Astro default) -->
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Impeccable Motion: Add js-enabled class to prevent FOUC -->
+    <script>
+      document.documentElement.classList.add('js-enabled');
+    </script>
+  </head>
+
+  <body class="min-h-screen antialiased bg-grain">
+    <slot />
+
+    <!-- Google Calendar Scheduling -->
+    <script is:inline>
+      function openGoogleCalendarDirect(event) {
+        if (event) event.preventDefault();
+        window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true', '_blank');
+      }
+    </script>
+
+    <!-- Impeccable Motion Observer -->
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

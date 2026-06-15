@@ -1,0 +1,33 @@
+---
+/**
+ * ProcessStep.astro
+ * Single numbered step in the process timeline section.
+ *
+ * Props
+ * ─────
+ * number : string  — e.g. '01', '02'
+ * title  : string
+ * body   : string
+ */
+interface Props {
+  number: string;
+  title:  string;
+  body:   string;
+}
+
+const { number, title, body } = Astro.props;
+---
+
+<div class="relative flex gap-5 sm:gap-7 items-start group">
+
+  <!-- Step number disc -->
+  <div class="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-brand-500/10 border border-brand-500/22 flex items-center justify-center z-10 transition-all duration-250 group-hover:bg-brand-500/20 group-hover:border-brand-500/40 group-hover:scale-105">
+    <span class="text-brand-300 font-display font-800 text-base sm:text-lg">{number}</span>
+  </div>
+
+  <!-- Content card -->
+  <div class="glass rounded-2xl p-5 sm:p-6 flex-1 card-hover">
+    <h3 class="text-white font-display font-600 text-lg mb-2">{title}</h3>
+    <p class="text-slate-400 text-sm leading-relaxed">{body}</p>
+  </div>
+</div>

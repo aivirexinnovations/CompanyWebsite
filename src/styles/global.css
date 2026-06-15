@@ -1,0 +1,399 @@
+/* ╔══════════════════════════════════════════════╗
+   ║  AiVirex Revamp — Global Design System       ║
+   ╚══════════════════════════════════════════════╝ */
+
+/* ── Fonts ──────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "tailwindcss";
+
+/* ── Design Tokens (@theme → CSS vars + Tailwind utilities) ── */
+@theme {
+
+  /* Fonts */
+  --font-sans:    'Inter',  system-ui, -apple-system, sans-serif;
+  --font-display: 'Arvo',   Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ─ Brand Cyan (Original: rgb(33, 165, 237) / #21A5ED) ─ */
+  --color-brand-50:  #eef9ff;
+  --color-brand-100: #dcf4ff;
+  --color-brand-200: #b2eaff;
+  --color-brand-300: #6cd7ff;
+  --color-brand-400: #33c3ff;   /* icons, hover tints */
+  --color-brand-500: #21a5ed;   /* ← primary CTA (Original Brand) */
+  --color-brand-600: #1283cd;   /* pressed states    */
+  --color-brand-700: #0f68a5;   /* deep accent       */
+  --color-brand-800: #125785;
+  --color-brand-900: #13496f;
+  --color-brand-950: #0c2f4a;
+
+  /* ─ Accent Teal (gradient partner) ─ */
+  --color-accent-300: #99f6e4;
+  --color-accent-400: #5eead4;
+  --color-accent-500: #14b8a6;
+  --color-accent-600: #0d9488;
+
+  /* ─ Surface (deep midnight navy) ─ */
+  --color-surface-base: #000000;   /* html/body bg   */
+  --color-surface-900:  #050919;   /* section alt bg */
+  --color-surface-800:  #070e1f;   /* card bg        */
+  --color-surface-700:  #101e3e;   /* hover bg       */
+  --color-surface-600:  #162650;   /* active/focus   */
+  --color-surface-50:   #eef2ff;   /* light (unused) */
+
+  /* ─ Status ─ */
+  --color-success-400: #4ade80;
+  --color-success-500: #22c55e;
+  --color-warning-400: #fbbf24;
+  --color-warning-500: #f59e0b;
+  --color-error-400:   #f87171;
+  --color-error-500:   #ef4444;
+
+  /* ─ Radius scale ─ */
+  --radius-sm:   0.5rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.25rem;
+  --radius-2xl:  1.5rem;
+  --radius-3xl:  2rem;
+  --radius-full: 9999px;
+}
+
+/* ── Base Layer ─────────────────────────────────── */
+@layer base {
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing:  antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family:      var(--font-sans);
+    background-color: var(--color-surface-base);
+    color: #d8e4f8;   /* slightly blue-tinted near-white */
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family:     var(--font-display);
+    font-weight:     700;
+    line-height:     1.15;
+    letter-spacing: -0.02em; /* Arvo doesn't need huge negative tracking */
+    color: #eef2ff;
+    text-wrap: balance; /* Impeccable typography rule */
+  }
+
+  p {
+    text-wrap: pretty; /* Impeccable typography rule */
+  }
+
+  a { color: inherit; }
+
+  /* ─ Purposeful Motion (Insane 2026 3D Fold-In) ─ */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-enabled [data-reveal="blur"]:not(.is-revealed) {
+      opacity: 0;
+      filter: blur(20px);
+      transform: perspective(1000px) translateY(80px) scale(0.9) rotateX(-15deg);
+    }
+    .js-enabled [data-reveal="blur"] {
+      transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: bottom center;
+      will-change: transform, opacity, filter;
+    }
+    
+    .stagger-1 { transition-delay: 100ms; }
+    .stagger-2 { transition-delay: 200ms; }
+    .stagger-3 { transition-delay: 300ms; }
+    .stagger-4 { transition-delay: 400ms; }
+    .stagger-5 { transition-delay: 500ms; }
+  }
+
+  /* ─ Delight Pass: Texture ─ */
+  .bg-grain {
+    position: relative;
+  }
+  .bg-grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    mix-blend-mode: overlay;
+  }
+
+  /* ─ Infinite Marquee ─ */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes marqueeReverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+  .animate-marquee-reverse {
+    animation: marqueeReverse 40s linear infinite;
+  }
+
+  /* ─ Cinematic Hero Motion ─ */
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes aurora-a {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50%      { transform: translate3d(60px, -40px, 0) scale(1.12); }
+    }
+    @keyframes aurora-b {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50%      { transform: translate3d(-60px, 50px, 0) scale(1.18); }
+    }
+    .animate-aurora-a { animation: aurora-a 18s ease-in-out infinite; }
+    .animate-aurora-b { animation: aurora-b 22s ease-in-out infinite; }
+
+    @keyframes scroll-cue {
+      0%   { transform: translateY(0);    opacity: 1; }
+      75%  { transform: translateY(10px); opacity: 0; }
+      100% { transform: translateY(0);    opacity: 0; }
+    }
+    .animate-scroll-cue { animation: scroll-cue 1.8s ease-in-out infinite; }
+
+    /* Hero headline accent: hand-drawn underline stroke */
+    .hero-underline path {
+      animation: hero-underline-draw 1.1s 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+    @keyframes hero-underline-draw {
+      from { stroke-dashoffset: 100; }
+      to   { stroke-dashoffset: 0; }
+    }
+
+    /* Hero dashboard: light sweep along the top edge */
+    @keyframes scan-x {
+      0%   { transform: translateX(-100%); }
+      100% { transform: translateX(400%); }
+    }
+    .animate-scan-x { animation: scan-x 3.5s ease-in-out infinite; }
+
+    /* Hero background: flowing data-trace dashes */
+    @keyframes dash-flow {
+      to { stroke-dashoffset: -32; }
+    }
+    .animate-dash-flow { animation: dash-flow 1.6s linear infinite; }
+  }
+
+  /* Hero headline accent underline: complete by default (reduced-motion safe) */
+  .hero-underline path {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+  }
+
+  /* ─ Advanced 2026 Hero Grid ─ */
+  .perspective-grid {
+    background-size: 60px 60px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    transform: perspective(1000px) rotateX(60deg) translateY(-100px) scale(2.5);
+    transform-origin: top;
+    animation: gridMove 10s linear infinite;
+    mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
+    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
+  }
+
+  @keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 60px; }
+  }
+
+  img, video { max-width: 100%; display: block; }
+
+  ::selection {
+    background-color: var(--color-brand-500);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline:        2px solid var(--color-brand-400);
+    outline-offset: 3px;
+    border-radius:  4px;
+  }
+
+  /* Slim custom scrollbar */
+  ::-webkit-scrollbar              { width: 5px; }
+  ::-webkit-scrollbar-track        { background: var(--color-surface-base); }
+  ::-webkit-scrollbar-thumb        { background: var(--color-surface-700); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover  { background: var(--color-surface-600); }
+}
+
+/* ── Utilities ──────────────────────────────────── */
+@layer utilities {
+
+  /* ─ Gradient Text (Removed per Impeccable guidelines) ─ */
+  /* Use solid brand colors instead of decorative gradients */
+
+  /* ─ Minimal Surfaces (Replacing Glassmorphism) ─ */
+  .glass {
+    background:              rgba(33, 165, 237, 0.02);
+    border:                  1px solid rgba(33, 165, 237, 0.08);
+  }
+
+  .glass-strong {
+    background:              rgba(33, 165, 237, 0.05);
+    border:                  1px solid rgba(33, 165, 237, 0.15);
+  }
+
+  .glass-brand {
+    background:              rgba(33, 165, 237, 0.10);
+    border:                  1px solid rgba(33, 165, 237, 0.25);
+  }
+
+  /* ─ Glows (Removed per Impeccable guidelines) ─ */
+  /* Replaced with subtle depth or removed entirely */
+  .glow, .glow-sm, .glow-accent, .glow-hover:hover {
+    box-shadow: none;
+  }
+
+  /* ─ Dividers ─ */
+  .divider-x {
+    height:     1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+  }
+
+  .divider-y {
+    width:      1px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.08), transparent);
+  }
+
+  /* ─ Dot-grid Background ─ */
+  .bg-dots {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px);
+    background-size:  40px 40px;
+  }
+
+  /* ─ Ambient Blobs (position + size via inline style) ─ */
+  .blob-brand {
+    background: radial-gradient(ellipse at center, rgba(33, 165, 237, 0.16), transparent 70%);
+    pointer-events: none;
+  }
+
+  .blob-accent {
+    background: radial-gradient(ellipse at center, rgba(20, 184, 166, 0.16), transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ─ Scroll-laser "illumination" glow ─
+     Sits behind a section's (or a single heading's) content, lit up in the
+     laser's blue tones as the beam passes behind it. Position/opacity are
+     driven per-frame by the scroll-track script in index.astro. */
+  .laser-glow-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .laser-glow-spot {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 9999px;
+    opacity: 0;
+    background: radial-gradient(circle, rgba(95, 199, 255, 0.35), rgba(33, 165, 237, 0.12) 45%, transparent 70%);
+    mix-blend-mode: screen;
+    transition: opacity 0.4s ease-out;
+  }
+
+  /* Title-glow patches size this spot per-target (in JS) to match the
+     heading's own box — an ellipse whose gradient reaches `transparent`
+     right at the patch's edge, so `.laser-glow-layer`'s clip never cuts
+     across a still-bright part of the glow (no hard-edged "lines").
+     Stays centred on the heading (only opacity is animated) so it never
+     spills onto the track's bend above/below the title. */
+  .laser-glow-spot--title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 9999px;
+    opacity: 0;
+    background: radial-gradient(ellipse 50% 50% at center, rgba(95, 199, 255, 0.35), rgba(33, 165, 237, 0.12) 45%, transparent 70%);
+    mix-blend-mode: screen;
+    transition: opacity 0.4s ease-out;
+  }
+
+  /* ─ Typography helpers ─ */
+  .heading-xl {
+    font-family:    var(--font-display);
+    font-size:      clamp(2.5rem, 5vw, 4.5rem);
+    font-weight:    800;
+    line-height:    1.08;
+    letter-spacing: -0.03em;
+  }
+
+  .heading-lg {
+    font-family:    var(--font-display);
+    font-size:      clamp(2rem, 4vw, 3.5rem);
+    font-weight:    700;
+    line-height:    1.13;
+    letter-spacing: -0.025em;
+  }
+
+  .heading-md {
+    font-family:    var(--font-display);
+    font-size:      clamp(1.5rem, 3vw, 2.25rem);
+    font-weight:    700;
+    line-height:    1.2;
+    letter-spacing: -0.02em;
+  }
+
+  /* eyebrow label */
+  .eyebrow {
+    font-size:      0.7rem;
+    font-weight:    700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color:          var(--color-brand-400);
+  }
+
+  /* ─ Section spacing ─ */
+  .section {
+    padding-block: 5rem;
+  }
+  @media (min-width: 1024px) {
+    .section { padding-block: 7rem; }
+  }
+
+  /* ─ Card hover interaction ─ */
+  .card-hover {
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card-hover:hover {
+    transform:        translateY(-4px);
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+
+  /* ─ Animated underline link ─ */
+  .link-underline {
+    position: relative;
+    display:  inline-block;
+  }
+  .link-underline::after {
+    content:    '';
+    position:   absolute;
+    bottom:     -1px;
+    left:       0;
+    width:      0;
+    height:     1px;
+    background: var(--color-brand-400);
+    transition: width 0.25s ease;
+  }
+  .link-underline:hover::after { width: 100%; }
+}

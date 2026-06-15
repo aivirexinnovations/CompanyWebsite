@@ -120,19 +120,20 @@ const internships = [
         <!-- CTA -->
         <div class="flex items-center gap-3">
           <!-- Removed login -->
-          <Button
-            id="nav-cta"
-            href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true"
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="primary"
-            size="sm"
-            class="hidden sm:inline-flex"
-            arrow={false}
-          >
-            Get Started
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </Button>
+          <div class="hidden sm:block">
+            <Button
+              id="nav-cta"
+              href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="primary"
+              size="sm"
+              arrow={false}
+            >
+              Get Started
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Button>
+          </div>
 
           <!-- Mobile menu button -->
           <button

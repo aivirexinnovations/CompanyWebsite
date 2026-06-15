@@ -69,6 +69,7 @@
     -webkit-font-smoothing:  antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
 
   body {
@@ -76,6 +77,7 @@
     background-color: var(--color-surface-base);
     color: #d8e4f8;   /* slightly blue-tinted near-white */
     line-height: 1.65;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {

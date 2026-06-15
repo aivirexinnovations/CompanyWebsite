@@ -160,6 +160,10 @@ const schemaList = schemas && schemas.length > 0 ? schemas : [defaultSchema];
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://calendar.google.com" />
 
+    <!-- Google Fonts (linked directly so the browser discovers it from the HTML,
+         not via a CSS @import hop) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+
     <!-- Structured Data (JSON-LD) -->
     {schemaList.map((s) => (
       <script type="application/ld+json" set:html={JSON.stringify(s)} />

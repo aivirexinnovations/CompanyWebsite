@@ -7,6 +7,7 @@ const isHome = pathname === '/' || pathname === '';
 const isAttendify = pathname.includes('/attendify');
 const logoSrc = isAttendify ? '/assets/img/black bg.png' : '/assets/img/logo.png';
 const logoAlt = isAttendify ? 'Attendify Logo' : 'AiVirex Logo';
+const logoWidth = isAttendify ? 184 : 122;
 
 interface NavLink {
   label: string;
@@ -63,7 +64,7 @@ const internships = [
 
         <!-- Logo -->
         <a href="/" class="flex items-center gap-2 group" aria-label="Home">
-          <img src={logoSrc} alt={logoAlt} class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+          <img src={logoSrc} alt={logoAlt} width={logoWidth} height="48" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
         </a>
 
         <!-- Desktop Nav -->

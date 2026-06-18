@@ -23,47 +23,47 @@ import WhatsAppFloat   from '../components/ui/WhatsAppFloat.astro';
 /* ── Data ─────────────────────────────────────────────────── */
 
 const stats = [
-  { value: '170+', label: 'Projects Delivered' },
-  { value: '100+', label: 'Happy Clients'       },
-  { value: '10+',  label: 'Countries Served'    },
-  { value: '14',   label: 'Avg. Delivery Days'  },
+  { value: '4.8★', label: 'Google Rating' },
+  { value: '80%',  label: 'Less Manual Work' },
+  { value: '83%',  label: 'Repeat Clients' },
+  { value: '99%',  label: 'Uptime' },
 ];
 
 const services = [
   {
     icon: '🌐',
-    title: 'Beautiful Websites',
-    body:  'Custom-built, research-backed websites that load fast, rank well, and turn visitors into customers — delivered in 14 days.',
-  },
-  {
-    icon: '📱',
-    title: 'Mobile Apps',
-    body:  'An app is a powerful tool for improving customer experience. Bring your idea to life with our expert cross-platform team.',
-  },
-  {
-    icon: '🎨',
-    title: 'Graphic Design',
-    body:  'Design adds value faster than it adds cost. We craft elegant, effective brand visuals that communicate and convert.',
+    title: 'AI Visible Websites',
+    body:  'Not another pretty page. We research your buyers, build a site engineered to convert, and wire in tracking so you know exactly what is happening on your site, and see the results. Google and AI assistants recommend it too.',
   },
   {
     icon: '🤖',
-    title: 'AI & ML Solutions',
-    body:  'Custom ML models and data analytics pipelines. Transform your data into actionable insights that drive measurable growth.',
+    title: 'AI Agents & Automations',
+    body:  'Put the busywork on autopilot. Custom AI agents and automations that handle leads, support, and ops, built securely with real guardrails.',
+  },
+  {
+    icon: '🚀',
+    title: '0→1 Product Studio',
+    body:  'From idea to launched MVP, with senior product leadership built in. We shape the product, ship it, and get it in front of real users.',
+  },
+  {
+    icon: '🛠️',
+    title: 'Custom Software',
+    body:  'CRMs, internal tools, dashboards, web and mobile apps. Whatever your business actually needs, designed and built to last.',
   },
 ];
 
 const whyUs = [
-  { title: 'Tailor-Made Support',   body: 'Every service is customised with care for the exact outcomes each client needs — no one-size-fits-all.' },
-  { title: 'Customer-First Always', body: 'Every good business understands the customer is in charge. We make that our operating standard.' },
-  { title: 'Modern Design',         body: 'We believe innovation and design go hand in hand — every pixel crafted for clarity and conversion.' },
-  { title: 'Pocket Friendly',       body: "Agency-quality work at a fraction of US/UK rates. Innovation shouldn't come with an eye-watering price tag." },
+  { title: 'Research Led, Always',     body: "We study your market and buyers before we build. It's why the work tends to convert, and why clients are often surprised to find it ranking on Google too." },
+  { title: 'Real Engineering',         body: 'Led by a founder with a tech background and a Master\'s in AI and Data Science. We use AI to build better, not to cut corners. Secure, tested, and made to last.' },
+  { title: 'Tailored To What You Need', body: 'Need a redesign only? Done. Need everything from research to launch? Also done. You get the scope that fits, nothing forced on top.' },
+  { title: 'Hand It Over, Relax',       body: "Not sure exactly what you need? That's fine. We turn it into a clear plan and one less thing on your plate." },
 ];
 
 const steps = [
-  { n: '01', title: 'Book a Meeting',       body: 'Schedule a short consultation to discuss requirements, goals, and what success looks like for you.' },
-  { n: '02', title: 'Requirement Analysis', body: 'We evaluate your needs and craft a comprehensive plan tailored to your business objectives and budget.' },
-  { n: '03', title: 'Proposal & Quotation', body: 'Receive a detailed proposal with timeline, deliverables, and transparent pricing — no hidden surprises.' },
-  { n: '04', title: 'Project Execution',    body: 'Our full team works diligently through clear milestones, keeping you informed at every stage until launch.' },
+  { n: '01', title: 'Book a Call',        body: "A free strategy call. Tell us where you're stuck, we'll tell you what's actually possible." },
+  { n: '02', title: 'Research & Scope',   body: 'We study your market, users, and goals, then scope the right solution, not the biggest invoice.' },
+  { n: '03', title: 'Proposal & Quote',   body: "A clear, custom proposal: what we'll build, the timeline, and a tailored quote. No hidden fees." },
+  { n: '04', title: 'Build & Hand Over',  body: 'We build in clear milestones, keep you updated, and hand over something that works, with the proof to back it up.' },
 ];
 
 const projects = [
@@ -322,20 +322,20 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
               <span class="w-6 h-px bg-brand-400"></span> Clarity from chaos
             </span>
 
-            <Badge text="⭐ Trusted by 100+ clients across 10+ countries" color="brand" class="mb-5" />
+            <Badge text="⭐ Rated 4.8/5 on Google" color="brand" class="mb-5" />
 
             <!-- Decode headline (resolves on load; data-final uses | for the line break) -->
-            <h1 data-scramble data-final="Get found|in the noise." class="font-display font-800 text-white leading-[0.98] tracking-[-0.03em] text-[clamp(2.7rem,6.4vw,5.4rem)] min-h-[1.95em]">
-              Get found<br />in the noise.
+            <h1 data-scramble data-final="Get found|by AI." class="font-display font-800 text-white leading-[0.98] tracking-[-0.03em] text-[clamp(2.7rem,6.4vw,5.4rem)] min-h-[1.95em]">
+              Get found<br />by AI.
             </h1>
 
             <p class="mt-7 max-w-lg text-lg sm:text-xl text-slate-300/85 leading-relaxed">
-              Your next customers are out there — buried in a sea of sameness. We bring the clarity that makes them stop, look, and choose you.
+              We research it, build it, and make sure both Google and AI assistants put you in front of buyers, websites, automations, software, or a product from scratch. You focus on the business. We handle the rest.
             </p>
 
             <div class="mt-10 flex flex-wrap gap-4">
-              <a href="#services" class="px-7 py-3.5 rounded-full bg-brand-500 hover:bg-brand-400 text-white font-semibold transition-colors shadow-[0_0_40px_-6px_rgba(33,165,237,0.6)]">Make us findable</a>
-              <a href="#projects" class="px-7 py-3.5 rounded-full border border-white/15 hover:border-white/35 text-white font-semibold transition-colors">See the work</a>
+              <a href="#services" class="px-7 py-3.5 rounded-full bg-brand-500 hover:bg-brand-400 text-white font-semibold transition-colors shadow-[0_0_40px_-6px_rgba(33,165,237,0.6)]">Book a call</a>
+              <a href="#projects" class="px-7 py-3.5 rounded-full border border-white/15 hover:border-white/35 text-white font-semibold transition-colors">See our work</a>
             </div>
 
             <p data-clarity-hint class="mt-8 text-xs tracking-[0.2em] uppercase text-white/35">move your cursor — bring them into focus</p>
@@ -378,8 +378,8 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-32 text-center" data-reveal="blur">
         <SectionHeader
           id="services-heading"
-          heading={`Our <span class="text-brand-500">Services</span>`}
-          subheading="Precision-engineered solutions for modern businesses."
+          heading={`What We <span class="text-brand-500">Build</span>`}
+          subheading="Four ways we take work off your plate. Researched, built right, and made to get found."
         />
       </div>
 
@@ -390,19 +390,193 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
             
             <!-- Background glow that activates on focus -->
             <div class="absolute inset-0 bg-gradient-to-br from-brand-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 rounded-[2rem]"></div>
-            
-            <!-- Massive Watermark Icon -->
-            <div class="absolute -right-12 -bottom-20 text-[20rem] opacity-5 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-1000 pointer-events-none select-none">
-              {s.icon}
-            </div>
 
-            <div class="relative z-10 flex flex-col md:flex-row gap-12 items-center">
-              <div class="w-32 h-32 flex-shrink-0 rounded-[2rem] bg-surface-base border border-brand-500/20 flex items-center justify-center text-6xl shadow-inner shadow-brand-500/10 group-hover:scale-110 transition-transform duration-700">
+            {i > 3 && (
+              <!-- Massive Watermark Icon -->
+              <div class="absolute -right-12 -bottom-20 text-[20rem] opacity-5 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-1000 pointer-events-none select-none">
                 {s.icon}
               </div>
+            )}
+
+            <div class={`relative z-10 flex flex-col gap-12 items-center ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+              {i === 0 ? (
+                <!-- Mini browser-window mockup: AI Visible Websites -->
+                <div class="relative w-full max-w-[270px] flex-shrink-0 mx-auto md:mx-0">
+                  <div class="absolute -top-3 -right-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-900/90 border border-brand-400/30 backdrop-blur-sm shadow-lg shadow-black/40 group-hover:-translate-y-1 transition-transform duration-500">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-[10px] font-semibold tracking-wide text-white/90 whitespace-nowrap">Ranked #1</span>
+                  </div>
+
+                  <div class="relative rounded-2xl border border-white/10 bg-surface-900/60 backdrop-blur-xl shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] overflow-hidden group-hover:-translate-y-1 group-hover:shadow-brand-500/20 transition-all duration-700">
+                    <div class="relative flex items-center gap-2 px-3 py-2.5 border-b border-white/10 bg-surface-base/60 overflow-hidden">
+                      <span class="w-2 h-2 rounded-full bg-rose-400/70"></span>
+                      <span class="w-2 h-2 rounded-full bg-amber-400/70"></span>
+                      <span class="w-2 h-2 rounded-full bg-emerald-400/70"></span>
+                      <div class="ml-2 flex-1 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 min-w-0">
+                        <svg class="w-2.5 h-2.5 text-slate-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                        <span class="text-[9px] text-slate-500 truncate">yourbusiness.com</span>
+                      </div>
+                      <div class="absolute top-0 inset-x-0 h-px overflow-hidden">
+                        <div class="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-brand-400 to-transparent animate-scan-x"></div>
+                      </div>
+                    </div>
+
+                    <div class="p-4 space-y-2.5">
+                      <div class="h-2.5 w-3/4 rounded-full bg-white/15"></div>
+                      <div class="h-2 w-1/2 rounded-full bg-white/10"></div>
+                      <div class="h-6 w-20 rounded-full bg-brand-500/70 mt-2.5"></div>
+                      <div class="grid grid-cols-3 gap-1.5 pt-2.5">
+                        <div class="h-10 rounded-lg bg-white/5 border border-white/10"></div>
+                        <div class="h-10 rounded-lg bg-white/5 border border-white/10"></div>
+                        <div class="h-10 rounded-lg bg-white/5 border border-white/10"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="absolute -bottom-3 -left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-900/90 border border-brand-400/30 backdrop-blur-sm shadow-lg shadow-black/40 group-hover:translate-y-1 transition-transform duration-500">
+                    <svg class="w-2.5 h-2.5 text-brand-300 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+                    <span class="text-[10px] font-semibold tracking-wide text-white/90 whitespace-nowrap">Cited by AI</span>
+                  </div>
+                </div>
+              ) : i === 1 ? (
+                <!-- Mini chat-agent mockup: AI Agents & Automations -->
+                <div class="relative w-full max-w-[270px] flex-shrink-0 mx-auto md:mx-0">
+                  <div class="absolute -top-3 -right-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-900/90 border border-brand-400/30 backdrop-blur-sm shadow-lg shadow-black/40 group-hover:-translate-y-1 transition-transform duration-500">
+                    <svg class="w-2.5 h-2.5 text-amber-300 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 11-13h-7l0-7z"/></svg>
+                    <span class="text-[10px] font-semibold tracking-wide text-white/90 whitespace-nowrap">Automated</span>
+                  </div>
+
+                  <div class="relative rounded-2xl border border-white/10 bg-surface-900/60 backdrop-blur-xl shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] overflow-hidden group-hover:-translate-y-1 group-hover:shadow-brand-500/20 transition-all duration-700">
+                    <div class="relative flex items-center gap-2 px-3 py-2.5 border-b border-white/10 bg-surface-base/60 overflow-hidden">
+                      <div class="relative w-5 h-5 rounded-full bg-brand-500/30 border border-brand-400/40 flex items-center justify-center flex-shrink-0">
+                        <svg class="w-3 h-3 text-brand-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="9" width="14" height="9" rx="3"/><path d="M12 9V6"/><circle cx="9" cy="13" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="13" r="1" fill="currentColor" stroke="none"/></svg>
+                        <span class="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 border border-surface-900"></span>
+                      </div>
+                      <div class="h-2 w-16 rounded-full bg-white/15"></div>
+                      <div class="absolute top-0 inset-x-0 h-px overflow-hidden">
+                        <div class="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-brand-400 to-transparent animate-scan-x"></div>
+                      </div>
+                    </div>
+
+                    <div class="p-4 space-y-2">
+                      <div class="flex justify-end">
+                        <div class="max-w-[70%] rounded-xl rounded-tr-sm bg-brand-500/70 px-2.5 py-1.5 space-y-1">
+                          <div class="h-1.5 w-16 rounded-full bg-white/40"></div>
+                          <div class="h-1.5 w-10 rounded-full bg-white/40"></div>
+                        </div>
+                      </div>
+                      <div class="flex justify-start">
+                        <div class="max-w-[75%] rounded-xl rounded-tl-sm bg-white/5 border border-white/10 px-2.5 py-1.5 space-y-1">
+                          <div class="h-1.5 w-20 rounded-full bg-white/15"></div>
+                          <div class="h-1.5 w-12 rounded-full bg-white/10"></div>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-1 pl-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-400/70 animate-pulse"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-400/50 animate-pulse"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-400/30 animate-pulse"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="absolute -bottom-3 -left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-900/90 border border-brand-400/30 backdrop-blur-sm shadow-lg shadow-black/40 group-hover:translate-y-1 transition-transform duration-500">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-[10px] font-semibold tracking-wide text-white/90 whitespace-nowrap">24/7 Active</span>
+                  </div>
+                </div>
+              ) : i === 2 ? (
+                <!-- Mini app-launch mockup: 0→1 Product Studio -->
+                <div class="relative w-full max-w-[270px] flex-shrink-0 mx-auto md:mx-0">
+                  <div class="absolute -top-3 -right-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-900/90 border border-brand-400/30 backdrop-blur-sm shadow-lg shadow-black/40 group-hover:-translate-y-1 transition-transform duration-500">
+                    <svg class="w-2.5 h-2.5 text-emerald-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                    <span class="text-[10px] font-semibold tracking-wide text-white/90 whitespace-nowrap">MVP Live</span>
+                  </div>
+
+                  <div class="relative rounded-2xl border border-white/10 bg-surface-900/60 backdrop-blur-xl shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] overflow-hidden group-hover:-translate-y-1 group-hover:shadow-brand-500/20 transition-all duration-700">
+                    <div class="relative flex items-center gap-2 px-3 py-2.5 border-b border-white/10 bg-surface-base/60 overflow-hidden">
+                      <div class="w-5 h-5 rounded-md bg-gradient-to-br from-brand-400 to-brand-600 flex-shrink-0"></div>
+                      <div class="h-2 w-16 rounded-full bg-white/15"></div>
+                      <span class="ml-auto text-[8px] font-semibold text-brand-300 tracking-wide">v1.0</span>
+                      <div class="absolute top-0 inset-x-0 h-px overflow-hidden">
+                        <div class="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-brand-400 to-transparent animate-scan-x"></div>
+                      </div>
+                    </div>
+
+                    <div class="p-4 space-y-2.5">
+                      <div class="flex items-end gap-1 h-10">
+                        <div class="w-full rounded-sm bg-brand-500/30" style="height:35%"></div>
+                        <div class="w-full rounded-sm bg-brand-500/40" style="height:50%"></div>
+                        <div class="w-full rounded-sm bg-brand-500/50" style="height:40%"></div>
+                        <div class="w-full rounded-sm bg-brand-500/70" style="height:70%"></div>
+                        <div class="w-full rounded-sm bg-brand-500/90" style="height:95%"></div>
+                      </div>
+                      <div class="space-y-1.5 pt-1.5">
+                        <div class="flex items-center gap-2">
+                          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                          <div class="h-2 w-28 rounded-full bg-white/10"></div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                          <div class="h-2 w-20 rounded-full bg-white/10"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="absolute -bottom-3 -left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-900/90 border border-brand-400/30 backdrop-blur-sm shadow-lg shadow-black/40 group-hover:translate-y-1 transition-transform duration-500">
+                    <svg class="w-2.5 h-2.5 text-brand-300 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+                    <span class="text-[10px] font-semibold tracking-wide text-white/90 whitespace-nowrap">First Users</span>
+                  </div>
+                </div>
+              ) : i === 3 ? (
+                <!-- Mini dashboard mockup: Custom Software -->
+                <div class="relative w-full max-w-[270px] flex-shrink-0 mx-auto md:mx-0">
+                  <div class="absolute -top-3 -right-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-900/90 border border-brand-400/30 backdrop-blur-sm shadow-lg shadow-black/40 group-hover:-translate-y-1 transition-transform duration-500">
+                    <svg class="w-2.5 h-2.5 text-sky-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 4v5h-5"/></svg>
+                    <span class="text-[10px] font-semibold tracking-wide text-white/90 whitespace-nowrap">Live Data</span>
+                  </div>
+
+                  <div class="relative rounded-2xl border border-white/10 bg-surface-900/60 backdrop-blur-xl shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] overflow-hidden group-hover:-translate-y-1 group-hover:shadow-brand-500/20 transition-all duration-700">
+                    <div class="relative flex items-center gap-2 px-3 py-2.5 border-b border-white/10 bg-surface-base/60 overflow-hidden">
+                      <svg class="w-3.5 h-3.5 text-brand-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+                      <div class="h-2 w-16 rounded-full bg-white/15"></div>
+                      <div class="absolute top-0 inset-x-0 h-px overflow-hidden">
+                        <div class="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-brand-400 to-transparent animate-scan-x"></div>
+                      </div>
+                    </div>
+
+                    <div class="p-4 space-y-2">
+                      <div class="space-y-1.5">
+                        <div class="h-2 w-full rounded-full bg-brand-500/60"></div>
+                        <div class="h-2 w-4/5 rounded-full bg-brand-500/40"></div>
+                        <div class="h-2 w-3/5 rounded-full bg-brand-500/25"></div>
+                      </div>
+                      <div class="grid grid-cols-2 gap-2 pt-2">
+                        <div class="rounded-lg bg-white/5 border border-white/10 p-2 space-y-1">
+                          <div class="h-2.5 w-8 rounded-full bg-white/30"></div>
+                          <div class="h-1.5 w-12 rounded-full bg-white/10"></div>
+                        </div>
+                        <div class="rounded-lg bg-white/5 border border-white/10 p-2 space-y-1">
+                          <div class="h-2.5 w-8 rounded-full bg-white/30"></div>
+                          <div class="h-1.5 w-12 rounded-full bg-white/10"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="absolute -bottom-3 -left-3 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-900/90 border border-brand-400/30 backdrop-blur-sm shadow-lg shadow-black/40 group-hover:translate-y-1 transition-transform duration-500">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-[10px] font-semibold tracking-wide text-white/90 whitespace-nowrap">Synced</span>
+                  </div>
+                </div>
+              ) : (
+                <div class="w-32 h-32 flex-shrink-0 rounded-[2rem] bg-surface-base border border-brand-500/20 flex items-center justify-center text-6xl shadow-inner shadow-brand-500/10 group-hover:scale-110 transition-transform duration-700">
+                  {s.icon}
+                </div>
+              )}
               <div>
-                <h3 class="text-4xl sm:text-5xl font-display font-800 text-white mb-6 group-hover:text-brand-400 transition-colors duration-500">{s.title}</h3>
-                <p class="text-slate-400 text-xl leading-relaxed mb-8">{s.body}</p>
+                <h3 class="text-3xl sm:text-4xl font-display font-800 text-white mb-6 group-hover:text-brand-400 transition-colors duration-500">{s.title}</h3>
+                <p class="text-slate-400 text-lg leading-relaxed mb-8">{s.body}</p>
                 
                 <a
                   href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true"
@@ -439,14 +613,16 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
           Who Are <span class="text-brand-500">We?</span>
         </h2>
         <p class="text-slate-400 leading-relaxed mb-4 text-lg">
-          We started with a simple belief: quality technology should be accessible to everyone.
-          We build websites and digital solutions that deliver measurable results — more leads,
-          more customers, more growth.
+          AiVirex is a research driven technology studio. We build AI visible websites, AI
+          agents and automations, custom software, and products from idea to launch. Real
+          results for businesses and brands, not just deliverables.
         </p>
         <p class="text-slate-400 leading-relaxed mb-8 text-lg">
-          Every project is custom-built, conversion-optimised, and delivered with attention
-          to detail your business deserves. With 100+ clients across 10+ countries, your
-          success is how we measure ours.
+          It started with one belief. Technology should be accessible to everyone, and every
+          business owner without a tech background deserves the same quality access to good
+          tech as anyone else. Five years in, led by a founder with a tech background and a
+          Master's in AI and Data Science, we still build to solve real problems, not just to
+          ship something new, for established businesses and founders just starting out.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4">
           <Button href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true" target="_blank" rel="noopener noreferrer" variant="primary" id="about-cta">Work With Us</Button>
@@ -469,15 +645,15 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
               Why Choose <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 via-brand-500 to-brand-600">Us?</span>
             </h2>
             <p class="text-slate-400 text-lg sm:text-xl leading-relaxed max-w-md mb-8">
-              We do not build templates. We build high-performance systems designed to scale your operations and drive revenue.
+              We do not build templates. We build systems designed to scale your operations and drive revenue.
             </p>
             <Button href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true" target="_blank" rel="noopener noreferrer" variant="primary" size="lg">Start Building</Button>
           </div>
 
           <!-- Scrolling Right Side -->
-          <div class="lg:pt-[30vh] lg:pb-[30vh] space-y-32" id="why-scroll-items">
+          <div class="lg:pt-[30vh] lg:pb-[30vh] space-y-16 lg:space-y-32" id="why-scroll-items">
             {whyUs.map((w, i) => (
-              <div class="relative group opacity-30 blur-sm scale-95 transition-all duration-700 ease-out why-item" data-index={i}>
+              <div class={`relative group opacity-30 blur-sm scale-95 transition-all duration-700 ease-out why-item ${i === whyUs.length - 1 ? 'pb-16 lg:pb-0' : ''}`} data-index={i}>
                 <div class="w-16 h-16 rounded-2xl bg-surface-900 border border-brand-500/20 flex items-center justify-center text-2xl font-display font-800 text-brand-500 mb-6 group-hover:border-brand-500/50 group-hover:bg-brand-500/10 transition-colors duration-300">
                   0{i + 1}
                 </div>
@@ -505,7 +681,7 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
         <SectionHeader
           id="process-heading"
           heading={`Our <span class="text-brand-500">Process</span>`}
-          subheading="Four clear steps from first call to live launch."
+          subheading="Four steps from 'I just want this handled' to handled."
           laserGlow
         />
 
@@ -535,7 +711,7 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
         <!-- CTA -->
         <div class="text-center mt-12">
           <Button href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true" target="_blank" rel="noopener noreferrer" variant="primary" size="lg" id="process-cta">
-            Take the First Step — Book a Call
+            Book a Call
           </Button>
         </div>
       </div>
@@ -1304,7 +1480,7 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
           entry.target.classList.remove('opacity-100', 'blur-0', 'scale-100');
         }
       });
-    }, { rootMargin: '-40% 0px -40% 0px' });
+    }, { rootMargin: '-25% 0px -55% 0px' });
 
     whyItems.forEach(item => observer.observe(item));
   }

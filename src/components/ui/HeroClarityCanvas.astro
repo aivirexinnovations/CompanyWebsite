@@ -95,10 +95,12 @@
     let W = 0, H = 0, R = 200;
     const clarity = ['#21a5ed', '#4cc4ff', '#5fc7ff', '#2f80ed'];
     let parts = [];
-    const COUNT = window.innerWidth < 640 ? 260 : 560;
+    const isMobile = window.innerWidth < 640;
+    const COUNT = isMobile ? 260 : 560;
+    const labelFont = isMobile ? '600 12px "JetBrains Mono", ui-monospace, monospace' : '600 16px "JetBrains Mono", ui-monospace, monospace';
     const spawn = () => { const x = Math.random() * W, y = Math.random() * H; return { x, y, px: x, py: y, life: 0, max: 50 + Math.random() * 120, c: clarity[(Math.random() * clarity.length) | 0] }; };
 
-    const labels = ['new lead', 'client', 'your buyer', '+ revenue', 'a fan', 'referral', 'warm lead', '+1 signup', 'customer', 'advocate'];
+    const labels = ['cited by ChatGPT', 'recommended by AI', 'found on Perplexity', 'ranked #1', 'answered, not skipped', 'shipped', 'automated', 'first user', 'time saved', 'MVP live'];
     let nodes = [];
 
     const resize = () => {
@@ -106,7 +108,7 @@
       fieldC.width = W * dpr; fieldC.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       R = Math.max(150, Math.min(W, H) * 0.22);
       parts = Array.from({ length: COUNT }, spawn);
-      const n = Math.max(6, Math.round(W / 220));
+      const n = isMobile ? Math.max(5, Math.round(W / 260)) : Math.max(14, Math.round(W / 130));
       nodes = Array.from({ length: n }, () => ({ x: W * (0.34 + Math.random() * 0.6), y: H * (0.12 + Math.random() * 0.76), label: labels[(Math.random() * labels.length) | 0], phase: Math.random() * 6.28, found: 0 }));
     };
     resize(); window.addEventListener('resize', resize);
@@ -151,13 +153,13 @@
           const pulse = 0.6 + 0.4 * Math.sin(performance.now() * 0.004 + nd.phase);
           ctx.globalAlpha = 0.05 + nd.found * 0.9 * pulse;
           ctx.strokeStyle = '#bfe6ff'; ctx.lineWidth = 1.2;
-          ctx.beginPath(); ctx.arc(nd.x, nd.y, 7 + nd.found * 4, 0, 6.2832); ctx.stroke();
+          ctx.beginPath(); ctx.arc(nd.x, nd.y, (isMobile ? 7 : 8) + nd.found * 4, 0, 6.2832); ctx.stroke();
           ctx.globalAlpha = 0.04 + nd.found * 0.7;
           ctx.fillStyle = '#5fc7ff'; ctx.beginPath(); ctx.arc(nd.x, nd.y, 2.2, 0, 6.2832); ctx.fill();
           if (nd.found > 0.15) {
             ctx.globalAlpha = nd.found * 0.5; ctx.strokeStyle = 'rgba(95,199,255,0.6)'; ctx.lineWidth = 0.8;
             ctx.beginPath(); ctx.moveTo(nd.x, nd.y); ctx.lineTo(mx, my); ctx.stroke();
-            ctx.globalAlpha = nd.found; ctx.fillStyle = '#dff1ff'; ctx.font = '600 12px "JetBrains Mono", ui-monospace, monospace'; ctx.textAlign = 'left';
+            ctx.globalAlpha = nd.found; ctx.fillStyle = '#dff1ff'; ctx.font = labelFont; ctx.textAlign = 'left';
             ctx.fillText(nd.label, nd.x + 12, nd.y - 9);
           }
         }

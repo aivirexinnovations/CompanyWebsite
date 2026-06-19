@@ -20,6 +20,8 @@ import FAQList         from '../components/ui/FAQList.astro';
 import ContactFeature  from '../components/ui/ContactFeature.astro';
 import WhatsAppFloat   from '../components/ui/WhatsAppFloat.astro';
 
+import { featuredProjects } from '../data/projects.js';
+
 /* ── Data ─────────────────────────────────────────────────── */
 
 const stats = [
@@ -66,37 +68,34 @@ const steps = [
   { n: '04', title: 'Build & Hand Over',  body: 'We build in clear milestones, keep you updated, and hand over something that works, with the proof to back it up.' },
 ];
 
-const projects = [
-  { title: 'Attendify',                 tag: 'Mobile App', desc: 'Privacy-first membership management app designed for gyms and sports academies. Sub-1-second load time.', image: '/assets/img/Project Mockups/Project_Attendify.png', href: '/attendify' },
-  { title: 'Author Portfolio',          tag: 'Web App',    desc: 'Visually captivating author portfolio website built with Next.js and Tailwind CSS. 100% Lighthouse SEO.', image: '/assets/img/Project Mockups/Project_Author.png', href: 'https://booksbyanirudh.netlify.app' },
-  { title: 'Avittam Homes Website',     tag: 'Web App',    desc: 'Modernized UI, improved performance, and SEO optimization for a real estate developer.', image: '/assets/img/Project Mockups/Project_Avittam.png', href: 'https://avittamhomes.in' },
-  { title: 'KMJ & Co. Landing Page',    tag: 'Web App',    desc: 'Professional online presence for a CA firm featuring WhatsApp integration and Google Sheets automation.', image: '/assets/img/Project Mockups/Project_CA.png', href: 'https://kmjco.in' },
-  { title: 'MedicalData Project',       tag: 'AI / ML',    desc: 'Confidential healthcare AI initiative involving predictive analytics on sensitive medical datasets.', image: '/assets/img/Project Mockups/Project_MedicalData.png' },
-  { title: 'Hazlo Project',             tag: 'Mobile App', desc: 'Cross-platform MVP built with React Native and Firebase to validate market fit for a sports industry solution.', image: '/assets/img/Project Mockups/Project_Hazlo.png' },
-];
-
 const reviewUrl = 'https://g.page/r/Cfnfxgt2nKD4EAI/review';
 
 const testimonials = [
-  { initial: 'M', name: 'Mounika R.',         company: 'Google Review', stars: 5, body: 'Wonderful team which is so flexible in meeting your needs. Highly skilled at understanding customer requirements and delivering flawlessly.', href: reviewUrl },
-  { initial: 'P', name: 'Priya S.',           company: 'Google Review', stars: 5, body: 'Outstanding job! They understand customer needs and deliver a flawless result every time. Definitely will work with them again.', href: reviewUrl },
-  { initial: 'A', name: 'Arthi R.',           company: 'Google Review', stars: 5, body: 'Amazing team. Very accepting and flexible and provide a good working environment. Customer-oriented and never disappoint.', href: reviewUrl },
-  { initial: 'B', name: 'Brinda P.',          company: 'Google Review', stars: 5, body: 'Fresh minds working in sync with requirements. Excellent product output and follow-ups. Keep rocking, guys!', href: reviewUrl },
-  { initial: 'S', name: 'Santosh K.',         company: 'Google Review', stars: 5, body: 'Inspiring story of young, passionate builders. Met them at umagine Chennai — 100% clever and dedicated.', href: reviewUrl },
-  { initial: 'N', name: 'Nikarika Raje',      company: 'Google Review', stars: 5, body: 'Very friendly group to work with. They know exactly what they are doing and deliver consistently.', href: reviewUrl },
+  { initial: 'M', name: 'Mounika R.',         company: 'Google Review',    stars: 5, body: 'Wonderful team which is so flexible in meeting your needs. Highly skilled at understanding customer requirements and delivering flawlessly.', href: reviewUrl },
+  { initial: 'P', name: 'Priya S.',           company: 'Google Review',    stars: 5, body: 'Outstanding job! They understand customer needs and deliver a flawless result every time. Definitely will work with them again.', href: reviewUrl },
+  { initial: 'A', name: 'Arthi R.',           company: 'Google Review',    stars: 5, body: 'Amazing team. Very accepting and flexible and provide a good working environment. Genuinely customer focused and never disappoint.', href: reviewUrl },
+  { initial: 'B', name: 'Brinda P.',          company: 'Google Review',    stars: 5, body: 'Fresh minds working in sync with requirements. Excellent product output and follow ups. Keep rocking, guys!', href: reviewUrl },
+  { initial: 'S', name: 'Santosh K.',         company: 'Google Review',    stars: 5, body: 'Inspiring story of young, passionate builders. Met them at umagine Chennai, 100% clever and dedicated.', href: reviewUrl },
+  { initial: 'N', name: 'Nikarika Raje',      company: 'Google Review',    stars: 5, body: 'Very friendly group to work with. They know exactly what they are doing and deliver consistently.', href: reviewUrl },
+  { initial: 'M', name: 'Manikandan M.',      company: 'Google Review',    stars: 5, body: 'Wonderful team, which is so flexible in meeting your needs, and of course on time.', href: reviewUrl },
+  { initial: 'P', name: 'Pradeep B.',         company: 'Instagram Review', stars: 4.5, body: 'AiVirex did an outstanding job. They were skilled at understanding the customer needs and delivering a flawless result. I intend to continue doing business with AiVirex in the future.', href: reviewUrl },
+  { initial: 'S', name: 'Srividhya C.',       company: 'Google Review',    stars: 5, body: 'A very good team. They take their time to build the software, but it is worth the wait. They know what they are doing.', href: reviewUrl },
 ];
 
 const faqs = [
-  { q: 'How much does a custom website cost?',                a: 'Full-stack, research-backed builds start at $200 USD and scale to $20,000 USD based on scope. We size each proposal to the outcomes you want — more leads, faster speed, or better conversion.' },
-  { q: 'Why might my current site not be generating leads?',  a: 'Most underperforming sites hide their value: unclear calls to action, slow pages, weak messaging. We rebuild around your buyers with clear offers, fast performance, trust signals, and forms placed where intent is highest.' },
-  { q: "What's the difference between custom and template?",  a: 'Templates are rigid and shared — quick but often slow, generic, and hard to scale. Custom builds start with your goals so we control speed, UX, SEO, and analytics from day one.' },
-  { q: 'How long does it take to build?',                     a: 'Typical delivery is 14 days from kickoff. We map discovery, design, build, QA, and launch into clear milestones with updates throughout.' },
-  { q: 'Do you work with clients in USA, UK, Canada & AU?',  a: 'Yes. We regularly work with businesses across the USA, UK, Canada, Australia, UAE, and Europe. Fully remote-friendly with async updates and timezone-flexible calls.' },
-  { q: "What's included in your website projects?",           a: 'Strategy, custom UX/UI, responsive build, on-page SEO, analytics, conversion tracking, AI search optimisation, lead forms, and post-launch support.' },
-  { q: 'How do you optimise for Google and AI search?',       a: 'We pair technical SEO (speed, structure, schema) with clear answers to buyer questions. For AI search we use structured content so ChatGPT, Claude, and Perplexity surface your business accurately.' },
-  { q: 'What is AI search optimisation (LLMO)?',              a: 'LLMO makes your business easy for AI assistants to understand and recommend. We structure offers, location, proof, and services so large language models return you as a trusted option.' },
-  { q: 'Do you build SaaS platforms and mobile apps?',        a: 'Yes. Beyond marketing websites we build web applications, SaaS platforms (MVP to full-scale), and mobile apps for iOS and Android — architecture to deployment, end-to-end.' },
-  { q: 'Is this better value than a local agency?',           a: 'We deliver agency-quality work — researcher, designer, developer, and SEO specialist — at a fraction of US/UK agency rates. Fixed price. 14 days. Done.' },
+  { q: 'Do I even need a custom website, or can I just use AI?', a: "AI builders are great for a quick placeholder, but they're not great at converting visitors, ranking on Google, or holding up as you grow. We research your buyers and build a site engineered to convert, then make sure both Google and AI assistants recommend it." },
+  { q: 'How do I get my business to show up in ChatGPT and Perplexity?', a: "That's GEO, Generative Engine Optimization. We structure your content, schema, and entity data so AI assistants can confidently recommend you, and pair it with technical SEO so Google does too. Built into every site, or offered standalone." },
+  { q: 'What problem can you actually help me with?', a: "Every business's problem looks different. Some don't have a website at all. Some have one that gets traffic but doesn't convert. Some are invisible to Google and AI search tools. Others need custom software, automations, or a product built from scratch. We diagnose what's actually going on first, then build the right fix for that specific problem, not a generic package." },
+  { q: 'What does it cost?', a: "There's no one size fits all price, because there's no one size fits all problem. What it takes depends entirely on the issue at hand and the work it takes to fix it properly. Book a call, tell us what's going on, and we'll scope it and give you a clear, tailored quote." },
+  { q: 'Do you work with businesses outside India?', a: 'Yes. Most of our clients are in the US, UK, Canada, Australia, UAE, and Europe. We work in your timezone with async updates and clear milestones.' },
+  { q: 'How do you decide if you can actually help me?', a: "We start by understanding your specific problem, not by pitching a package. If we're confident we can genuinely move the needle for you, we'll say so and explain how. If we don't think we're the right fit, or that the problem doesn't need what we offer, we'll tell you that too. We'd rather turn down work than take on a client we can't actually help." },
+  { q: 'Can you take my product from idea to launch?', a: 'Yes. Our 0→1 Product Studio pairs senior product leadership with engineering to go from idea to a launched MVP, and we help you ship what users actually want.' },
+  { q: "I'm not technical, is that a problem?", a: "Not at all. Most of our clients aren't technical. You tell us the goal, we handle the how, and explain everything in plain language." },
+  { q: 'Who will actually be working on my project?', a: "You work directly with the people actually building your project, not a rep who disappears after signing. We're a small, senior team, so you always know who's doing the work." },
+  { q: 'Will I own the code and the product after launch?', a: 'Yes. Everything we build, the code, the data, the designs, belongs to you. There is no lock in and no surprise exit fees if you ever want to take it elsewhere.' },
+  { q: 'What happens if I need changes after the project is delivered?', a: 'Small fixes after launch are covered. Bigger changes or new features get scoped and quoted separately, just like the original project, so there is never a surprise bill.' },
+  { q: 'Will an AI agent or automation work with the tools we already use?', a: 'Yes. We build around the tools you already run, your CRM, spreadsheets, WhatsApp, whatever your team actually uses, instead of forcing you onto something new.' },
+  { q: 'Is my data and project kept confidential?', a: 'Yes. Several of our projects are under NDA for exactly this reason. Your data and business details stay private, and we are happy to sign an NDA before we even discuss specifics.' },
 ];
 
 const contactFeatures = [
@@ -191,66 +190,106 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
       mainEntity: [
         {
           '@type': 'Question',
-          name: 'How much does a custom website cost in the USA?',
+          name: 'Do I even need a custom website, or can I just use AI?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'AiVirex custom websites start at $200 USD and scale to $20,000 depending on scope. Every project includes research, UX design, development, on-page SEO, AI search optimization, Google Analytics setup, and 1 year of free hosting. Pricing is fixed and transparent — no hourly surprises.',
+            text: "AI builders are great for a quick placeholder, but they're not great at converting visitors, ranking on Google, or holding up as you grow. AiVirex researches your buyers and builds a site engineered to convert, then makes sure both Google and AI assistants recommend it.",
           },
         },
         {
           '@type': 'Question',
-          name: 'How long does it take to build a custom website?',
+          name: 'How do I get my business to show up in ChatGPT and Perplexity?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Standard delivery is 14 days from kickoff, including market research, UX design, development, QA testing, SEO setup, and launch. Clients receive milestone updates throughout the process.',
+            text: "That's GEO, Generative Engine Optimization. AiVirex structures your content, schema, and entity data so AI assistants can confidently recommend you, and pairs it with technical SEO so Google does too. Built into every site, or offered standalone.",
           },
         },
         {
           '@type': 'Question',
-          name: 'Why isn\'t my current website generating leads?',
+          name: 'What problem can AiVirex actually help me with?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Most websites fail to convert because they use generic templates not built around user psychology, have slow load speeds, unclear calls to action, and weak trust signals. AiVirex builds custom from scratch with conversion-focused architecture — every element is designed to turn visitors into customers.',
+            text: "Every business's problem looks different. Some don't have a website at all. Some have one that gets traffic but doesn't convert. Some are invisible to Google and AI search tools. Others need custom software, automations, or a product built from scratch. AiVirex diagnoses what's actually going on first, then builds the right fix for that specific problem, not a generic package.",
           },
         },
         {
           '@type': 'Question',
-          name: 'What is the difference between a custom website and a template website?',
+          name: 'What does it cost to work with AiVirex?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Template websites (Wix, Squarespace) are shared designs that can\'t be tailored to your specific audience or brand. Custom websites are built from scratch after researching your market, competitors, and buyers — giving you full control over speed, SEO, conversion architecture, and branding. Custom sites consistently outperform templates in lead generation.',
+            text: "There's no one size fits all price, because there's no one size fits all problem. What it takes depends entirely on the issue at hand and the work it takes to fix it properly. Book a call, explain what's going on, and AiVirex will scope it and provide a clear, tailored quote.",
           },
         },
         {
           '@type': 'Question',
-          name: 'Do you work with clients in the USA, UK, Canada, and Australia?',
+          name: 'Does AiVirex work with businesses outside India?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Yes. We work with businesses across the USA, UK, Canada, Australia, UAE, and Europe. Our process is fully remote-friendly with async milestone updates, timezone-flexible calls, and clear deliverables at every stage.',
+            text: 'Yes. Most AiVirex clients are in the US, UK, Canada, Australia, UAE, and Europe. The team works in your timezone with async updates and clear milestones.',
           },
         },
         {
           '@type': 'Question',
-          name: 'What is AI search optimization (LLMO / GEO)?',
+          name: 'How does AiVirex decide if it can actually help a client?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'LLM Optimization (LLMO) — also called Generative Engine Optimization (GEO) — makes your business discoverable when people ask AI assistants like ChatGPT, Claude, or Perplexity for recommendations. We structure your content, schema markup, and entity data so AI systems can confidently recommend your business. This is included in every website we build.',
+            text: "AiVirex starts by understanding the specific problem, not by pitching a package. If the team is confident it can genuinely move the needle, it will say so and explain how. If it isn't the right fit, or the problem doesn't need what AiVirex offers, it says that too. AiVirex would rather turn down work than take on a client it can't actually help.",
           },
         },
         {
           '@type': 'Question',
-          name: 'Do you build SaaS platforms and web applications?',
+          name: 'Can AiVirex take my product from idea to launch?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Yes. Beyond marketing websites, AiVirex builds custom web applications, SaaS platforms (from MVP to full-scale), and mobile apps for iOS and Android. We handle architecture, development, and deployment end-to-end.',
+            text: "Yes. AiVirex's 0→1 Product Studio pairs senior product leadership with engineering to go from idea to a launched MVP, helping clients ship what users actually want.",
           },
         },
         {
           '@type': 'Question',
-          name: 'Is AiVirex better than hiring a freelancer or local agency?',
+          name: "I'm not technical, is that a problem?",
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'AiVirex offers the quality of an agency at a fraction of the cost. Unlike freelancers, we provide a full team (researcher, designer, developer, SEO specialist) under one roof with guaranteed 14-day delivery, transparent pricing, and post-launch support. Unlike traditional agencies, there are no hidden hourly fees or 3-month timelines.',
+            text: "Not at all. Most AiVirex clients aren't technical. They tell AiVirex the goal, AiVirex handles the how, and explains everything in plain language.",
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Who will actually be working on my project?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "Clients work directly with the people actually building the project, not a rep who disappears after signing. AiVirex is a small, senior team, so clients always know who's doing the work.",
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Will I own the code and the product after launch?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. Everything AiVirex builds, the code, the data, the designs, belongs to the client. There is no lock in and no surprise exit fees if a client ever wants to take it elsewhere.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What happens if I need changes after the project is delivered?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Small fixes after launch are covered. Bigger changes or new features get scoped and quoted separately, just like the original project, so there is never a surprise bill.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Will an AI agent or automation work with the tools we already use?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: "Yes. AiVirex builds around the tools a business already runs, CRM, spreadsheets, WhatsApp, whatever the team actually uses, instead of forcing a switch to something new.",
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Is my data and project kept confidential?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. Several AiVirex projects are under NDA for exactly this reason. Client data and business details stay private, and AiVirex is happy to sign an NDA before discussing specifics.',
           },
         },
       ],
@@ -737,33 +776,62 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
       <div id="projects-scroll-container" class="relative h-[300vh]">
         <!-- Sticky viewport -->
         <div class="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-          
+
           <!-- The horizontal track -->
           <div id="projects-track" class="flex gap-8 px-4 sm:px-12 w-max will-change-transform">
-            {projects.map((p, i) => (
-              <div class="w-[85vw] md:w-[60vw] lg:w-[45vw] flex-shrink-0 group">
-                <div class="relative rounded-3xl overflow-hidden aspect-[4/3] lg:aspect-video bg-surface-800 border border-white/10 group-hover:border-brand-500/50 transition-colors duration-500">
-                  <div class="absolute inset-0 bg-gradient-to-t from-surface-900 via-surface-900/40 to-transparent z-10"></div>
-                  <!-- Image Placeholder (if image fails) or actual image -->
-                  <img src={p.image} alt={p.title} class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out-expo" loading="lazy" />
+            {featuredProjects.map((p, i) => (
+              <div class="w-[92vw] md:w-[80vw] lg:w-[62vw] flex-shrink-0">
+                <div class="grid grid-cols-1 sm:grid-cols-[1.1fr_1fr] gap-5 sm:gap-6 lg:gap-10 sm:items-stretch bg-surface-800/40 border border-white/10 rounded-3xl p-5 sm:p-8 lg:p-10 h-[572px] sm:h-[535px] lg:h-[492px]">
 
-                  <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-8 lg:p-12 z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <Badge text={p.tag} class="mb-3 lg:mb-4" />
-                    <h3 class="text-2xl sm:text-3xl lg:text-5xl font-display font-700 text-white mb-2 lg:mb-4 leading-tight">{p.title}</h3>
-                    <p class="hidden lg:block text-slate-300 text-lg sm:text-xl max-w-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{p.desc}</p>
+                  <!-- Image -->
+                  <a href={p.href} target={p.href ? '_blank' : undefined} rel={p.href ? 'noopener noreferrer' : undefined} class:list={['block rounded-2xl overflow-hidden border border-white/10 bg-surface-800 h-36 sm:h-full group', !p.href && 'pointer-events-none']}>
+                    <img src={p.image} alt={p.title} class="w-full h-full object-contain sm:object-cover scale-[1.25] sm:scale-100 transform group-hover:scale-105 transition-transform duration-700 ease-out-expo" loading="lazy" />
+                  </a>
 
-                    {p.href && (
-                      <a href={p.href} target="_blank" rel="noopener noreferrer" class="hidden lg:inline-flex items-center gap-2 mt-6 text-brand-400 hover:text-brand-300 font-bold uppercase tracking-wider text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                        View Live Site
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  <!-- Content -->
+                  <div class="flex flex-col sm:h-full">
+                    <div class="flex items-center gap-3 mb-3 sm:mb-4">
+                      <span class="text-sm font-mono text-slate-500">{String(i + 1).padStart(2, '0')}</span>
+                      <Badge text={p.tag} />
+                    </div>
+
+                    <h3 class="text-xl sm:text-3xl font-display font-700 text-white mb-2 sm:mb-3 leading-tight">{p.title}</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed line-clamp-3">{p.description}</p>
+
+                    <div class="flex flex-wrap gap-2 mt-3 sm:mt-4">
+                      {p.technologies.slice(0, 3).map(t => (
+                        <span class="text-[11px] text-slate-400 bg-white/5 border border-white/10 rounded-full px-2.5 py-1">{t}</span>
+                      ))}
+                    </div>
+
+                    <div class="mt-3 sm:mt-4 h-5">
+                      <a href={`/projects#${p.slug}`} class="inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 font-semibold uppercase tracking-wider text-xs transition-colors duration-200">
+                        View More Details
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                       </a>
-                    )}
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 mt-auto pt-4 sm:pt-6">
+                      {p.metrics.map(m => (
+                        <div class="border border-white/10 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 bg-surface-900/40">
+                          <div class="text-lg sm:text-xl font-display font-800 text-brand-400">{m.value}</div>
+                          <div class="text-xs text-slate-500 mt-1">{m.name}</div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 text-center">
+        <a href="/projects" class="inline-flex items-center gap-2 text-brand-400 hover:text-brand-300 font-semibold uppercase tracking-wider text-sm transition-colors duration-200">
+          See all projects
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
       </div>
     </section>
 
@@ -790,17 +858,12 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
 
       <!-- Marquee Row 1 (Left) -->
       <div class="flex w-max animate-marquee space-x-8 hover:[animation-play-state:paused] mb-12">
-        {testimonials.slice(0, 3).map(t => (
+        {testimonials.slice(0, 5).map(t => (
           <div class="w-[500px] flex-shrink-0">
             <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
           </div>
         ))}
-        {testimonials.slice(0, 3).map(t => (
-          <div class="w-[500px] flex-shrink-0">
-            <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
-          </div>
-        ))}
-        {testimonials.slice(0, 3).map(t => (
+        {testimonials.slice(0, 5).map(t => (
           <div class="w-[500px] flex-shrink-0">
             <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
           </div>
@@ -809,18 +872,13 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
 
       <!-- Marquee Row 2 (Right) -->
       <div class="flex w-max animate-marquee-reverse space-x-8 hover:[animation-play-state:paused] ml-[-500px]">
-        {testimonials.slice(3, 6).map(t => (
+        {testimonials.slice(5, 9).map(t => (
           <div class="w-[500px] flex-shrink-0">
             <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
           </div>
         ))}
-        {testimonials.slice(3, 6).map(t => (
-          <div class="w-[400px] flex-shrink-0">
-            <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
-          </div>
-        ))}
-        {testimonials.slice(3, 6).map(t => (
-          <div class="w-[400px] flex-shrink-0">
+        {testimonials.slice(5, 9).map(t => (
+          <div class="w-[500px] flex-shrink-0">
             <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
           </div>
         ))}

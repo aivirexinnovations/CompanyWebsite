@@ -8,7 +8,49 @@ import Badge         from '../../components/ui/Badge.astro';
 import Button        from '../../components/ui/Button.astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
 
-import { projects } from '../../data/projects.js';
+import { projects, pageFaqs } from '../../data/projects.js';
+
+// JSON-LD: Organization + one CreativeWork/SoftwareApplication per project + one
+// FAQPage covering the page level FAQ and every project's faqs. Built from the
+// same projects.js data the page renders, so it can't drift out of sync.
+const orgId = 'https://aivirex.in/#org';
+const softwareSlugs = new Set([
+  'adtown', 'dispatchiq', 'attendify', 'hazlo', 'techiegen', 'temple-billing-system',
+  'data-analysis-tool', 'colorcoding-tool', 'medicaldata', 'plant-species-classification',
+  'loan-approval-system', 'stockmarket-automation',
+]);
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': orgId,
+  name: 'AiVirex Innovations LLP',
+  url: 'https://aivirex.in',
+  description: 'AiVirex builds zero to one products, AI agents and automations, AI visible websites, and custom software, with 20 plus products shipped across India and the USA.',
+};
+
+const projectSchemas = projects.map(p => ({
+  '@context': 'https://schema.org',
+  '@type': softwareSlugs.has(p.slug) ? 'SoftwareApplication' : 'CreativeWork',
+  name: p.title,
+  creator: { '@id': orgId },
+  description: p.nugget || p.description,
+  ...(p.href ? { url: p.href } : {}),
+}));
+
+const allFaqs = [...pageFaqs, ...projects.flatMap(p => p.faqs || [])];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: allFaqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const schemas = [orgSchema, ...projectSchemas, faqSchema];
 ---
 
 <BaseLayout
@@ -16,6 +58,7 @@ import { projects } from '../../data/projects.js';
   description="Every project AiVirex has shipped — websites, AI agents and automations, products, and custom software — with the real metrics behind each one."
   keywords="AiVirex projects, AiVirex portfolio, custom software case studies, AI automation case studies, web development portfolio"
   canonicalUrl="https://aivirex.in/projects"
+  schemas={schemas}
 >
   <Navbar />
 
@@ -46,7 +89,7 @@ import { projects } from '../../data/projects.js';
 
             <!-- Image -->
             <a href={p.href} target={p.href ? '_blank' : undefined} rel={p.href ? 'noopener noreferrer' : undefined} class:list={['block rounded-2xl overflow-hidden border border-white/10 bg-surface-800 aspect-[4/3] lg:aspect-video group', !p.href && 'pointer-events-none']}>
-              <img src={p.image} alt={p.title} class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out-expo" loading="lazy" />
+              <img src={p.image} alt={p.title} class="w-full h-full object-contain scale-125 transform group-hover:scale-[1.3] transition-transform duration-700 ease-out-expo" loading="lazy" />
             </a>
 
             <!-- Content -->
@@ -57,7 +100,20 @@ import { projects } from '../../data/projects.js';
               </div>
 
               <h2 class="text-2xl sm:text-3xl font-display font-700 text-white mb-3 leading-tight">{p.title}</h2>
-              <p class="text-slate-400 leading-relaxed">{p.description}</p>
+
+              {p.questionHeading && (
+                <h3 class="text-base sm:text-lg font-display font-600 text-brand-300 mb-3 leading-snug">{p.questionHeading}</h3>
+              )}
+
+              {p.caseStudy && (
+                <p class="text-slate-400 leading-relaxed">{p.caseStudy}</p>
+              )}
+
+              {p.nugget && (
+                <p class="font-semibold text-white leading-relaxed mt-4 pl-4 border-l-2 border-brand-500/40">{p.nugget}</p>
+              )}
+
+              <p class="text-slate-400 leading-relaxed mt-4">{p.description}</p>
 
               <div class="flex flex-wrap gap-2 mt-4">
                 {p.technologies.map(t => (
@@ -80,9 +136,37 @@ import { projects } from '../../data/projects.js';
                   </div>
                 ))}
               </div>
+
+              {p.faqs && p.faqs.length > 0 && (
+                <div class="mt-6 space-y-3">
+                  {p.faqs.map(f => (
+                    <details class="group border border-white/10 rounded-xl px-4 py-3 bg-surface-900/40">
+                      <summary class="text-sm font-semibold text-white cursor-pointer list-none">{f.q}</summary>
+                      <p class="text-sm text-slate-400 leading-relaxed mt-2">{f.a}</p>
+                    </details>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         ))}
+      </div>
+    </section>
+
+    <!-- Page level FAQ -->
+    <section class="section pt-0" aria-label="Frequently asked questions">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          heading={`Frequently Asked <span class="text-brand-500">Questions</span>`}
+        />
+        <div class="space-y-3 mt-8">
+          {pageFaqs.map(f => (
+            <details class="group border border-white/10 rounded-xl px-5 py-4 bg-surface-900/40">
+              <summary class="text-base font-semibold text-white cursor-pointer list-none">{f.q}</summary>
+              <p class="text-sm text-slate-400 leading-relaxed mt-2">{f.a}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
 

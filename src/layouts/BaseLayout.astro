@@ -24,6 +24,8 @@ export interface Props {
   geoRegion?: string;
   /** geo.placename meta value (default: United States) */
   geoPlacename?: string;
+  /** When true, renders "<siteName> | <title>" instead of the default "<title> | <siteName>" */
+  brandFirst?: boolean;
 }
 
 const {
@@ -37,6 +39,7 @@ const {
   includeHreflang = false,
   geoRegion = 'US',
   geoPlacename = 'United States',
+  brandFirst = false,
 } = Astro.props;
 
 const siteName  = 'AiVirex Innovations';
@@ -55,7 +58,7 @@ const canonical = (() => {
     return rawCanonical;
   }
 })();
-const fullTitle = `${title} | ${siteName}`;
+const fullTitle = brandFirst ? `${siteName} | ${title}` : `${title} | ${siteName}`;
 const ogImageAbs = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
 // Default Organization schema injected when no schemas are provided

@@ -80,6 +80,7 @@ const testimonials = [
   { initial: 'M', name: 'Manikandan M.',      company: 'Google Review',    stars: 5, body: 'Wonderful team, which is so flexible in meeting your needs, and of course on time.', href: reviewUrl },
   { initial: 'P', name: 'Pradeep B.',         company: 'Instagram Review', stars: 4.5, body: 'AiVirex did an outstanding job. They were skilled at understanding the customer needs and delivering a flawless result. I intend to continue doing business with AiVirex in the future.', href: reviewUrl },
   { initial: 'S', name: 'Srividhya C.',       company: 'Google Review',    stars: 5, body: 'A very good team. They take their time to build the software, but it is worth the wait. They know what they are doing.', href: reviewUrl },
+  { initial: 'J', name: 'Justin Lott',        company: 'Founder, DispatchIQ', stars: 5, body: 'Seeing the apps load up and work is amazing. This is real SEO work, and it looks great, all because of your project management skills.' },
 ];
 
 const faqs = [
@@ -109,9 +110,10 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
 ---
 
 <BaseLayout
-  title="Custom Website Development Agency | Websites That Convert"
-  description="Research-backed custom websites built to generate leads — delivered in 14 days. 100% Google Lighthouse score guaranteed. AI search optimized for ChatGPT, Claude & Perplexity. Serving USA, UK, Canada, Australia & Europe."
-  keywords="custom website development agency, high-converting website design, lead generation website, conversion rate optimization agency, custom web development USA, SaaS development company, mobile app development agency, AI development agency, AI search optimization, GEO optimization, LLMO, get found in ChatGPT, Perplexity optimization, offshore web development, affordable web development agency, custom web application, MVP development, research-backed web design, website that generates leads, AiVirex, AiVirex Innovations"
+  title="Get Found by AI"
+  brandFirst={true}
+  description="A research-driven software studio building high-converting websites, AI agents and automations, custom software, and 0→1 products from idea to launch. 100% Google Lighthouse score guaranteed, with AI search optimization (GEO) for ChatGPT, Claude & Perplexity. Serving USA, UK, Canada, Australia & Europe."
+  keywords="custom website development agency, high-converting website design, lead generation website, conversion rate optimization agency, custom web development USA, SaaS development company, mobile app development agency, AI development agency, AI search optimization, GEO optimization, LLMO, get found in ChatGPT, Perplexity optimization, offshore web development, affordable web development agency, custom web application, MVP development, research-backed web design, website that generates leads, AiVirex, AiVirex Innovations, generative engine optimization, GEO agency, get cited by ChatGPT, AI automation agency, custom AI agents, custom software development, fractional product manager"
   ogImage="https://aivirex.in/assets/img/logo.png"
   includeHreflang={true}
   schemas={[
@@ -121,7 +123,7 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
       name: 'AiVirex Innovations LLP',
       url: 'https://aivirex.in',
       logo: 'https://aivirex.in/assets/img/logo.png',
-      description: 'AiVirex is a custom website development agency delivering research-backed, high-converting websites in 14 days. Trusted by 100+ businesses across USA, UK, Canada, Australia, UAE, and Europe.',
+      description: 'AiVirex is a research driven technology studio. We build AI visible websites, AI agents and automations, custom software, and products from idea to launch, for founders and businesses across the USA, UK, Canada, Australia, UAE, and Europe.',
       founder: { '@type': 'Person', name: 'K Sai Anirudh' },
       areaServed: [
         { '@type': 'Country', name: 'United States' },
@@ -872,12 +874,12 @@ import HeroClarityCanvas from '../components/ui/HeroClarityCanvas.astro';
 
       <!-- Marquee Row 2 (Right) -->
       <div class="flex w-max animate-marquee-reverse space-x-8 hover:[animation-play-state:paused] ml-[-500px]">
-        {testimonials.slice(5, 9).map(t => (
+        {testimonials.slice(5, 10).map(t => (
           <div class="w-[500px] flex-shrink-0">
             <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
           </div>
         ))}
-        {testimonials.slice(5, 9).map(t => (
+        {testimonials.slice(5, 10).map(t => (
           <div class="w-[500px] flex-shrink-0">
             <TestimonialCard initial={t.initial} name={t.name} company={t.company} stars={t.stars} body={t.body} href={t.href} />
           </div>

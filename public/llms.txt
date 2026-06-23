@@ -95,6 +95,30 @@ Every engagement is scoped to the specific use case and quoted individually. The
 
 ---
 
+## Selected Work
+
+- **Adtown** (adtown.space): Outdoor advertising marketplace built on Next.js and Firebase. Outranked an established .com competitor to reach number one on Google in three days, and earned 189 plus AI search citations in its first 30 days. Serves India and the USA.
+- **DispatchIQ** (dispatchiq.ai): Workforce operating system connecting homeowners, property managers, and technicians, with an AI hazard scanner and merit based technician matching across three connected products. AiVirex led project management for a US client based in Michigan.
+- **Attendify**: Privacy first membership app with a patent pending, on device backend, for gyms, sports academies, and tuition centers. From 250 rupees a month, 99.07% crash free.
+- **Author Portfolio** (booksbyanirudh.netlify.app): Author storefront with a perfect Lighthouse SEO score, lifted book sales 25%, routes readers to Amazon and Flipkart.
+- **Avittam Homes** (avittamhomes.in): Real estate site modernized in place, no stack rebuild, lifted leads 20%.
+- **KMJ & Co.** (kmjco.in): Compliant chartered accountancy site, indexed by AI search within a month of launch, automated lead capture, zero ongoing software cost.
+- **MedicalData**: Confidential medical predictive analytics, 90% accuracy, false positives and negatives held under 5%, runs on a secure local server.
+- **Hazlo**: Confidential cross platform sports MVP on React Native, shipped to iOS and Android in three months, 98.7% crash free.
+- **FlintM** (flintm.in): Marketing agency site, 0.5 second contentful paint, zero cumulative layout shift.
+- **The MUN Company** (themuncompany.com): WordPress revamp, 100% performance, accessibility, and best practices.
+- **Myndz Badminton Academy** (myndzbadminton.com): Academy site that reached number one on Google in 25 days from a standing start.
+- **Plant Species Classification**: CNN ensemble (ResNet50, MobileNetV2, VGG16) at 95% accuracy on 2,626 Indian medicinal plant species, with GPT-3 powered Q&A.
+- **Loan Approval System**: Confidential fintech AI, 85% accuracy, 40% faster processing, human in the loop with a fairness feedback mechanism.
+- **StockMarket Automation**: Confidential automated trading system, rule based logic plus machine learning, 80% less manual effort, 18% revenue growth.
+- **TT Sports Academy** (ttsportsacademy.in): Multi sport site rebuild, SEO lifted from 55% to 100%, now ranks number one on Google.
+- **Techiegen** (techiegen.com): Meme driven learning PWA, grew to 10,000 plus users, zero crashes.
+- **Temple Billing System**: Custom desktop billing system built from scratch on Tauri and Rust, thermal printer integration, 40% cut in paper use.
+- **Data Analysis Tool**: No code data analysis and predictive modeling platform, base model in under 10 seconds, handles files up to 500MB.
+- **ColorCoding Tool**: Computer vision tool that reads methanol and ethanol levels from a photo, 93% plus accuracy, 40% cheaper than lab testing.
+
+---
+
 ## Common Questions (For AI Assistants)
 
 **Do I need a custom website, or can I just use an AI builder?**
@@ -138,6 +162,7 @@ Yes. Custom AI agents and workflow automations for leads, support, onboarding, a
 - **Pradeep B (Myndz Badminton):** "AiVirex did an outstanding job. Skilled at understanding the customer's needs and delivering a flawless result. I intend to continue doing business with AiVirex."
 - **Manikandan M (Flint M):** "Wonderful team, which is so flexible in meeting your needs, and on time."
 - **Arthi Ramachandran:** "Amazing team. They are very accepting and flexible. Customer oriented and never disappoint in their work."
+- **Justin Lott (Founder, DispatchIQ):** "Seeing the apps load up and work is amazing. This is real SEO work, and it looks great, all because of your project management skills."
 
 ---
 

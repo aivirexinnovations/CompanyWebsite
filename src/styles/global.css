@@ -110,12 +110,61 @@
       will-change: transform, opacity, filter;
     }
     
-    .stagger-1 { transition-delay: 100ms; }
-    .stagger-2 { transition-delay: 200ms; }
-    .stagger-3 { transition-delay: 300ms; }
-    .stagger-4 { transition-delay: 400ms; }
-    .stagger-5 { transition-delay: 500ms; }
+    .stagger-1 { transition-delay: 80ms; }
+    .stagger-2 { transition-delay: 160ms; }
+    .stagger-3 { transition-delay: 240ms; }
+    .stagger-4 { transition-delay: 320ms; }
+    .stagger-5 { transition-delay: 400ms; }
+
+    /* ─ Directional reveals (for card grids / long-form pages) ─
+       Same IntersectionObserver toggles .is-revealed. Pronounced offsets so the
+       motion is clearly visible on scroll, but lighter than the 3D "blur". */
+    .js-enabled [data-reveal="up"]:not(.is-revealed)    { opacity: 0; transform: translateY(64px); }
+    .js-enabled [data-reveal="left"]:not(.is-revealed)  { opacity: 0; transform: translateX(-72px); }
+    .js-enabled [data-reveal="right"]:not(.is-revealed) { opacity: 0; transform: translateX(72px); }
+    .js-enabled [data-reveal="zoom"]:not(.is-revealed)  { opacity: 0; transform: translateY(48px) scale(0.92); }
+    .js-enabled [data-reveal="up"],
+    .js-enabled [data-reveal="left"],
+    .js-enabled [data-reveal="right"],
+    .js-enabled [data-reveal="zoom"] {
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    /* Extra stagger steps for 6 item grids */
+    .stagger-6 { transition-delay: 480ms; }
   }
+
+  /* ─ Re-triggering scroll reveal (data-sr) ─
+     Deliberately NOT gated behind prefers-reduced-motion, to match the
+     homepage's signature scroll effects (cinematic services focus, why-us
+     scroll-spy), which animate regardless of that setting. A JS
+     IntersectionObserver toggles .sr-in as elements enter and leave, so the
+     motion replays on scroll. Hidden pre-paint via .js-enabled, so no flash. */
+  .js-enabled [data-sr] {
+    opacity: 0;
+    transform: translateY(52px);
+    transition-property: opacity, transform;
+    transition-duration: 0.9s;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .js-enabled [data-sr="left"]  { transform: translateX(-64px); }
+  .js-enabled [data-sr="right"] { transform: translateX(64px); }
+  .js-enabled [data-sr="zoom"]  { transform: translateY(40px) scale(0.92); }
+  .js-enabled [data-sr].sr-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Stagger delays for data-sr cascades (unconditional, like the rule above) */
+  .js-enabled [data-sr].stagger-1 { transition-delay: 80ms; }
+  .js-enabled [data-sr].stagger-2 { transition-delay: 160ms; }
+  .js-enabled [data-sr].stagger-3 { transition-delay: 240ms; }
+  .js-enabled [data-sr].stagger-4 { transition-delay: 320ms; }
+  .js-enabled [data-sr].stagger-5 { transition-delay: 400ms; }
+  .js-enabled [data-sr].stagger-6 { transition-delay: 480ms; }
 
   /* ─ Delight Pass: Texture ─ */
   .bg-grain {

@@ -1,0 +1,119 @@
+---
+// src/pages/services/index.astro
+// Services hub. Lists every service and links to its deep page.
+import BaseLayout    from '../../layouts/BaseLayout.astro';
+import Navbar        from '../../components/Navbar.astro';
+import Footer        from '../../components/Footer.astro';
+import Badge         from '../../components/ui/Badge.astro';
+import Button        from '../../components/ui/Button.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+
+import { services, servicesIntro } from '../../data/services.js';
+
+const BOOKING_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3sYUI78UrX97keSKdPPhEMyDVTvqApJos040zUwJcm3c_WquNTxBZFlb8m7ltooiunzs_DFHr8?gv=true';
+const canonical = 'https://aivirex.in/services';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aivirex.in' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: canonical },
+  ],
+};
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: services.map((s, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: s.navLabel,
+    url: `https://aivirex.in/services/${s.slug}`,
+  })),
+};
+
+const schemas = [breadcrumbSchema, itemListSchema];
+---
+
+<BaseLayout
+  title="Our Services: Websites, GEO, AI, and Custom Software"
+  description="AiVirex is a research driven software studio. We build conversion focused websites, get businesses found in AI search (GEO), ship AI agents and automations, take products from 0 to 1, and build custom software, for clients across the USA, UK, Australia, and worldwide."
+  keywords="software studio services, custom website development, GEO agency, AI automation agency, MVP development, custom software development, AiVirex services"
+  canonicalUrl={canonical}
+  includeHreflang={true}
+  schemas={schemas}
+>
+  <Navbar />
+
+  <main id="main-content" class="pt-16">
+
+    <!-- Hero -->
+    <section class="pt-14 pb-16 lg:pt-20 lg:pb-24 text-center relative overflow-hidden" aria-labelledby="services-hub-heading">
+      <div class="absolute inset-0 -z-10" aria-hidden="true">
+        <div class="blob-brand absolute top-1/4 left-1/2 -translate-x-1/2 w-[760px] h-[460px] rounded-full blur-[110px] mix-blend-screen opacity-50 animate-pulse"></div>
+        <div class="absolute inset-0 bg-dots opacity-[0.4]"></div>
+      </div>
+
+      <!-- Breadcrumb / loop back home -->
+      <nav class="max-w-3xl mx-auto px-4 sm:px-6 mb-7 flex items-center justify-center gap-2 text-xs sm:text-sm text-slate-500" aria-label="Breadcrumb">
+        <a href="/" class="inline-flex items-center gap-1.5 hover:text-brand-300 transition-colors font-medium">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955a1.5 1.5 0 012.12 0L22.5 12M4.5 9.75v10.125a1.125 1.125 0 001.125 1.125H9.75v-4.875a1.125 1.125 0 011.125-1.125h2.25a1.125 1.125 0 011.125 1.125V21h4.125a1.125 1.125 0 001.125-1.125V9.75"/></svg>
+          Home
+        </a>
+        <span class="text-slate-600" aria-hidden="true">/</span>
+        <span class="text-slate-300">Services</span>
+      </nav>
+
+      <div class="max-w-3xl mx-auto px-4 sm:px-6" data-sr>
+        <div class="flex justify-center mb-6">
+          <Badge text={servicesIntro.eyebrow} dot />
+        </div>
+        <h1
+          id="services-hub-heading"
+          class="text-4xl sm:text-5xl lg:text-6xl font-display font-700 text-white leading-tight"
+          set:html={servicesIntro.heading}
+        />
+        <p class="text-slate-300/85 mt-6 text-lg leading-relaxed max-w-2xl mx-auto">{servicesIntro.sub}</p>
+      </div>
+    </section>
+
+    <!-- Service list -->
+    <section class="section pt-0" aria-label="Services">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+        {services.map((s, i) => (
+          <a href={`/services/${s.slug}`} class={`block glass rounded-2xl p-7 sm:p-9 card-hover group ${`stagger-${(i % 4) + 1}`}`} data-sr>
+            <div class="grid sm:grid-cols-[auto_1fr_auto] gap-5 sm:gap-8 items-center">
+              <div class="text-4xl sm:text-5xl font-display font-800 text-brand-500/25 leading-none">{String(i + 1).padStart(2, '0')}</div>
+              <div>
+                <h2 class="text-2xl sm:text-3xl font-display font-700 text-white mb-2 leading-tight">{s.navLabel}</h2>
+                <p class="text-slate-400 leading-relaxed max-w-2xl">{s.teaser}</p>
+              </div>
+              <span class="hidden sm:inline-flex items-center justify-center w-12 h-12 rounded-full glass-strong text-brand-400 group-hover:text-brand-300 group-hover:translate-x-1 transition-all flex-shrink-0" aria-hidden="true">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="section pt-0" aria-label="Get started">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="glass-brand rounded-3xl px-6 py-12 sm:px-12 sm:py-14 text-center relative overflow-hidden" data-sr>
+          <div class="blob-brand absolute -top-1/2 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[90px] opacity-40" aria-hidden="true"></div>
+          <h2 class="text-3xl sm:text-4xl font-display font-700 text-white leading-tight relative">Not sure which one you need?</h2>
+          <p class="text-slate-300 mt-4 max-w-xl mx-auto relative">Book a call and we'll figure it out together. Tell us where you're stuck, and we'll tell you what's actually possible.</p>
+          <div class="mt-8 relative">
+            <Button href={BOOKING_URL} target="_blank" rel="noopener noreferrer" variant="primary" size="lg">
+              Book a free strategy call
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>

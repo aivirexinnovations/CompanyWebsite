@@ -240,6 +240,27 @@ const schemaList = schemas && schemas.length > 0 ? schemas : [defaultSchema];
       document.querySelectorAll('[data-reveal]').forEach((el) => {
         observer.observe(el);
       });
+
+      // Re-triggering scroll reveal (data-sr): toggles .sr-in as elements enter
+      // and leave, so the animation replays on every scroll — the same feel as
+      // the homepage scroll-spy / focus effects. Used on the services pages.
+      // Runs regardless of prefers-reduced-motion to match the homepage's
+      // signature animations (which also ignore that setting).
+      const srEls = document.querySelectorAll('[data-sr]');
+      if (srEls.length) {
+        const srObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('sr-in');
+            } else if (entry.boundingClientRect.top > 0) {
+              // only re-hide elements that left via the bottom, so content
+              // scrolled past the top stays put and items replay on scroll down
+              entry.target.classList.remove('sr-in');
+            }
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        srEls.forEach((el) => srObserver.observe(el));
+      }
     </script>
   </body>
 </html>

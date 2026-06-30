@@ -7,10 +7,10 @@ const isHome = pathname === '/' || pathname === '';
 
 const links = {
   Services: [
-    { label: 'Beautiful Websites', href: isHome ? '#services' : '/#services' },
-    { label: 'Mobile Apps',         href: isHome ? '#services' : '/#services' },
-    { label: 'Graphic Design',      href: isHome ? '#services' : '/#services' },
-    { label: 'AI & ML Solutions',   href: isHome ? '#services' : '/#services' },
+    { label: 'AI Visible Websites',     href: '/services/websites' },
+    { label: 'AI Agents & Automations', href: '/services/ai-automation' },
+    { label: '0→1 Product Studio',      href: '/services/product-studio' },
+    { label: 'Custom Software',         href: '/services/custom-software' },
   ],
   Product: [
     { label: 'Features',     href: isHome ? '#services' : '/#services' },
@@ -19,7 +19,7 @@ const links = {
     { label: 'Blog',         href: '/blog' },
   ],
   Company: [
-    { label: 'About',       href: isHome ? '#about' : '/#about' },
+    { label: 'About',       href: '/about' },
     { label: 'Projects',    href: '/projects' },
     { label: 'Testimonials', href: isHome ? '#testimonials' : '/#testimonials' },
     { label: 'Internship',  href: 'https://forms.gle/BBn1C5nLkHhQ6rhaA' },

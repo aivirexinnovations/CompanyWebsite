@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aivirex.in/sitemap-index.xml
+Sitemap: https://aivirex.in/sitemap.xml
+
+# LLM readable overview of AiVirex for AI assistants
+# https://aivirex.in/llms.txt

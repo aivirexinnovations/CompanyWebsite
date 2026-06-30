@@ -11,5 +11,7 @@
 /cancellation.html     /cancellation       301!
 /download.html         /download           301!
 
-# Old sitemap location → new Astro sitemap index (was submitted in Search Console).
-/sitemap.xml           /sitemap-index.xml  301!
+# Sitemap is now a single /sitemap.xml. Redirect the old split-file URLs to it
+# (sitemap-index.xml was submitted in Search Console) so nothing 404s.
+/sitemap-index.xml     /sitemap.xml        301!
+/sitemap-0.xml         /sitemap.xml        301!
